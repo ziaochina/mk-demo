@@ -1,0 +1,49 @@
+{
+  "_from": "mk-template-portal",
+  "_id": "mk-template-portal@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-QxzYoHvH/HbURcZ/cCsbCprd/hv0mDtwA/Ps85sd2B/dhT2uxaf4XZJZ2e7ny5OFEPVu5GRp2ABsUqdvI8EYPw==",
+  "_location": "/mk-template-portal",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mk-template-portal",
+    "name": "mk-template-portal",
+    "escapedName": "mk-template-portal",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mk-template-portal/-/mk-template-portal-1.0.1.tgz",
+  "_shasum": "1d1d97568c8a3d81a1a2f6b8ecda1d4d144384bc",
+  "_spec": "mk-template-portal",
+  "_where": "/home/zlj/my/github/self/mk-demo/master",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/ziaochina/mk-template-portal/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "mk-template-portal",
+  "directories": {
+    "example": "example"
+  },
+  "homepage": "https://github.com/ziaochina/mk-template-portal#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "mk-template-portal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziaochina/mk-template-portal.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1"
+}

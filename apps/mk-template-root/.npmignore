@@ -1,0 +1,7 @@
+example
+node_modules
+logs
+*.log
+npm-debug.log*
+test
+.npm
