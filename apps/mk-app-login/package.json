@@ -1,0 +1,46 @@
+{
+  "_from": "mk-app-login",
+  "_id": "mk-app-login@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-vR9coc8WhOE7WEwiVkoVXE6gbnJsdBwnfsG4463WAlknKHAG+0jvyxMzg6yH8TZ2Galz+OUfpmLr2YVV9+ottw==",
+  "_location": "/mk-app-login",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mk-app-login",
+    "name": "mk-app-login",
+    "escapedName": "mk-app-login",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mk-app-login/-/mk-app-login-1.0.2.tgz",
+  "_shasum": "3ec1c763894a9a7a0a248482ba91a928c4fff5f4",
+  "_spec": "mk-app-login",
+  "_where": "/home/zlj/my/github/self/mk-demo/master",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/ziaochina/mk-app-login/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "mk-app-login",
+  "homepage": "https://github.com/ziaochina/mk-app-login#readme",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "mk-app-login",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziaochina/mk-app-login.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.2"
+}

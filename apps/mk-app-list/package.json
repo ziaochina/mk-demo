@@ -1,0 +1,46 @@
+{
+  "_from": "mk-app-list",
+  "_id": "mk-app-list@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-zOgOJgx4H48ob7o2CCRgAyyeePsNCkYpPIMMODMi6pZYF3atkRV/SLazMi7Ic5/o6uk79mIf/FRAO5Yd7HDPSw==",
+  "_location": "/mk-app-list",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mk-app-list",
+    "name": "mk-app-list",
+    "escapedName": "mk-app-list",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mk-app-list/-/mk-app-list-1.0.1.tgz",
+  "_shasum": "6e6d040b60407c613cc15b08b0d34091ac4b18c0",
+  "_spec": "mk-app-list",
+  "_where": "/home/zlj/my/github/self/mk-demo/master",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/ziaochina/mk-app-list/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "mk-app-list",
+  "homepage": "https://github.com/ziaochina/mk-app-list#readme",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "mk-app-list",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziaochina/mk-app-list.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1"
+}
