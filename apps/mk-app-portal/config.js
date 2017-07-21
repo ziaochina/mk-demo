@@ -1,6 +1,8 @@
 import logo from './img/logo.png'
+import webapi from './webapi'
 
 var _options = {
+	webapi,
 	goAfterLogout: {
 		appName: 'mk-app-login',
 		appParams: {}
@@ -14,12 +16,12 @@ var _options = {
 		name: 'apps',
 		children: [{
 			key: '201',
-			name: 'list',
-			app: 'mk-app-list'
+			name: '人员列表',
+			app: 'mk-app-person-list'
 		}, {
 			key: '202',
-			name: 'card',
-			app: 'mk-app-card'
+			name: '人员卡片',
+			app: 'mk-app-person-card'
 		}]
 	}],
 	menuDefaultSelectedKeys: ['1'],
@@ -33,10 +35,10 @@ var _options = {
 
 function config(options) {
 	if (options) {
-		_options = { ..._options, ...options }
+		Object.assign(_options, options)
 	}
 }
 
-config.getCurrent = () => _options
+config.current = _options
 
 export default config

@@ -1,15 +1,17 @@
+import webapi from './webapi'
+
 var _options = {
-	defaultAppName: 'mk-app-root-about',
+	webapi,
+	defaultAppName: 'mk-app-login',
 	defaultAppParams: {}
 }
 
 function config(options) {
 	if (options) {
-		_options = { ..._options, ...options }
+		Object.assign(_options, options)
 	}
-
 }
 
-config.getCurrent = () => _options
+config.current = _options
 
 export default config

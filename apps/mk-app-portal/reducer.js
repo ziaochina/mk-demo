@@ -5,16 +5,16 @@ import config from './config'
 class reducer {
     constructor(option) {
         this.metaReducer = option.metaReducer
+        this.config = config.current
     }
 
     init = (state, option) => {
-        const cfg = config.getCurrent()
         const data = {
             data: {
-                menu: cfg.menu,
-                menuDefaultSelectedKeys: cfg.menuDefaultSelectedKeys,
-                menuDefaultOpenKeys: cfg.menuDefaultOpenKeys,
-                content: cfg.defaultContent
+                menu: this.config.menu,
+                menuDefaultSelectedKeys: this.config.menuDefaultSelectedKeys,
+                menuDefaultOpenKeys: this.config.menuDefaultOpenKeys,
+                content: this.config.defaultContent
             }
         }
         return this.metaReducer.init(state, data)

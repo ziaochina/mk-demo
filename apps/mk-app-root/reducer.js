@@ -5,14 +5,14 @@ import config from './config'
 class reducer {
     constructor(option) {
         this.metaReducer = option.metaReducer
+        this.config = config.current
     }
 
     init = (state, option) => {
-        const cfg = config.getCurrent()
         const data = {
             data: {
-                currentAppName: cfg.defaultAppName,
-                currentAppParams: cfg.defaultAppParams
+                currentAppName: this.config.defaultAppName,
+                currentAppParams: this.config.defaultAppParams
             }
         }
         return this.metaReducer.init(state, data)

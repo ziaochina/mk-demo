@@ -1,0 +1,119 @@
+.mk-datagrid {
+    flex: 1;
+    &-cellContent {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &-cellContent-left {
+        justify-content: flex-start;
+    }
+    &-cellContent-center {
+        justify-content: center;
+    }
+    &-cellContent-right {
+        justify-content: flex-end;
+    }
+    &-cellContent-text {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    &-sequence-cell {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    //表格边框颜色透明
+    .fixedDataTableLayout_main {
+        border-color: transparent;
+        //border-top-color: transparent;
+    }
+    .public_fixedDataTableCell_main {
+        border-color: #e9e9e9;
+    }
+    .public_fixedDataTable_hasBottomBorder {
+        border-color: #e9e9e9;
+    }
+    //cell内容居中
+    .public_fixedDataTableCell_cellContent {
+        text-align: center;
+    }
+    .public_fixedDataTable_footer .public_fixedDataTableCell_main {
+        background-color: #fff6ea;
+        background-image: linear-gradient(#fff6ea, #fff6ea);
+    }
+    /**
+	 * 设置列头央视
+	 * 字号：14px
+	 * 默认状态字体色值：#454545
+	 * 当前状态色值：#3EABE8，加粗
+	 */
+    .public_fixedDataTable_header,
+    .public_fixedDataTable_header .public_fixedDataTableCell_main {
+        /* background-color: #f6f7f8; */
+        /* background-image: -webkit-linear-gradient(#fff,#efefef); */
+        //background-image: linear-gradient(#e6e6e7,#e6e6e7);
+        background-image: linear-gradient(#3EABE8, #3EABE8);
+        color: #fff;
+        font-size: 12px;
+        font-weight: normal;
+        border-bottom-width: 0px;
+    }
+    .fixedDataTableRowLayout_rowWrapper:hover .public_fixedDataTableCell_main {
+        background-color: #ecf6fd;
+    }
+    .public_fixedDataTableRow_highlighted,
+    .public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
+        background-color: #f8f8f8;
+    }
+    .fixedDataTableRowLayout_fixedColumnsDivider {
+        border: 0px
+    }
+
+    // 兼容ie11上表格的表頭是白色的缺陷
+	.fixedDataTableLayout_rowsContainer .fixedDataTableRowLayout_rowWrapper .public_fixedDataTable_header{
+		background: #3EABE8;
+	}
+}
+
+//可编辑特殊样式
+.mk-datagrid-editable {
+    background-color: #fff;
+    &-add-row {
+        display: none;
+        font-size: 16px;
+        color: #FEA728;
+        &:hover {
+            cursor: pointer;
+            color: #ee8d00;
+        }
+    }
+    &-remove-row {
+        display: none;
+        font-size: 16px;
+        color: #88CC48;
+        &:hover {
+            cursor: pointer;
+            color: #6bbb20;
+        }
+    }
+    .fixedDataTableLayout_main,
+    public_fixedDataTable_main {
+        .fixedDataTableLayout_rowsContainer > div:nth-child(3) > div:hover {
+            .mk-datagrid-sequence-cell {
+                a {
+                    display: none;
+                }
+                .anticon {
+                    display: block!important;
+                }
+            }
+        }
+    }
+}

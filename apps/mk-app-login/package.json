@@ -1,8 +1,8 @@
 {
   "_from": "mk-app-login",
-  "_id": "mk-app-login@1.0.2",
+  "_id": "mk-app-login@1.0.4",
   "_inBundle": false,
-  "_integrity": "sha512-vR9coc8WhOE7WEwiVkoVXE6gbnJsdBwnfsG4463WAlknKHAG+0jvyxMzg6yH8TZ2Galz+OUfpmLr2YVV9+ottw==",
+  "_integrity": "sha512-CGnP5WwD2dEvC2nQocftwbxRG1fO8/+CnClI9qEwwbI/o8eyt4wUCx4JRHczKxwtLW0Gy76UTOJA9zPifF4WvA==",
   "_location": "/mk-app-login",
   "_phantomChildren": {},
   "_requested": {
@@ -19,8 +19,8 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/mk-app-login/-/mk-app-login-1.0.2.tgz",
-  "_shasum": "3ec1c763894a9a7a0a248482ba91a928c4fff5f4",
+  "_resolved": "https://registry.npmjs.org/mk-app-login/-/mk-app-login-1.0.4.tgz",
+  "_shasum": "4bd2fd540d7d5ce9b35f34c01babc1ea93c5501a",
   "_spec": "mk-app-login",
   "_where": "/home/zlj/my/github/self/mk-demo/master",
   "author": "",
@@ -32,7 +32,7 @@
   "description": "mk-app-login",
   "homepage": "https://github.com/ziaochina/mk-app-login#readme",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "main": "index.js",
   "name": "mk-app-login",
   "repository": {
@@ -42,5 +42,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.2"
+  "version": "1.0.4"
 }

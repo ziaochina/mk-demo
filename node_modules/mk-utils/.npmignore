@@ -1,0 +1,8 @@
+src
+examples
+node_modules
+logs
+*.log
+npm-debug.log*
+test
+.npm

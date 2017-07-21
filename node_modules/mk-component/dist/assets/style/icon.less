@@ -1,0 +1,317 @@
+@font-face {font-family: "anticon";
+  src: url('../font/ant/iconfont.eot?t=1474179087'); /* IE9*/
+  src: url('../font/ant/iconfont.eot?t=1474179087#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/ant/iconfont.woff?t=1474179087') format('woff'), /* chrome, firefox */
+  url('../font/ant/iconfont.ttf?t=1474179087') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../font/ant/iconfont.svg?t=1474179087#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: 'mkicon';
+    src: url('../font/mk/iconfont.eot'); /* IE9*/
+    src: url('../font/mk/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/mk/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/mk/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/mk/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.mkicon--primary{
+	&:before {
+        color:@primary-color;
+  	}
+
+  	&:hover:before{
+  		  cursor: pointer;
+        color: ~`colorPalette("@{primary-color}", 5)`;
+    }
+}
+
+.mkicon--showy{
+	  &:before {
+        color:@showy-color ;
+  	}
+
+  	&:hover:before{
+  		  cursor: pointer;
+        color: ~`colorPalette("@{showy-color}", 5)`;
+    }
+}
+
+.mkicon--softly{
+    &:before {
+        color:@softly-color ;
+    }
+
+    &:hover:before{
+        cursor: pointer;
+        color: ~`colorPalette("@{softly-color}", 5)`;
+    }
+}
+
+.mkicon--normal{
+    &:before {
+        color:@text-color ;
+    }
+
+    &:hover:before{
+        cursor: pointer;
+        color: ~`colorPalette("@{text-color}", 5)`;
+    }
+}
+
+
+.mkicon--disabled{
+	  &:before {
+        color:@disabled-color ;
+  	}
+
+  	&:hover:before{
+  		  cursor: not-allowed;
+    }
+}
+
+.mkicon{
+    &:before {
+    	font-family: "mkicon" !important;
+  	}
+}
+
+.mkicon-customer:before { content: "\e603"; } //客户管理
+
+.mkicon-financial:before { content: "\e600"; } //财务核算
+
+.mkicon-payroll:before { content: "\e644"; } //工资单
+
+.mkicon-prediction:before { content: "\e6da"; } //经营预测
+
+.mkicon-send-work-manager:before { content: "\e606"; } //派工管理
+
+.mkicon-water-account:before { content: "\e605"; } //流水账
+
+.mkicon-charge-manager:before { content: "\e607"; } //收费管理
+
+.mkicon-certificate:before { content: "\e649"; } //凭证
+
+.mkicon-taxation:before { content: "\e608"; } //税务管理
+
+.mkicon-report:before { content: "\e609"; } //统计报表
+
+.mkicon-setting:before { content: "\e60a"; } //系统设置
+
+.mkicon-account-book:before { content: "\e6e4"; } //账簿
+
+.mkicon-play-video:before { content: "\e710"; } //播放视频
+
+.mkicon-help:before { content: "\e63d"; } //帮助
+
+.mkicon-query:before { content: "\e601"; } //查询
+
+.mkicon-favorite:before { content: "\e602"; } //常用功能收藏
+
+.mkicon-user:before { content: "\e639"; } //登录-用户
+
+.mkicon-password:before { content: "\e63a"; } //登录-密码
+
+.mkicon-charge:before { content: "\e63f"; } //订阅和计费
+
+.mkicon-about:before { content: "\e63e"; } //关于我们
+
+.mkicon-boss:before { content: "\e604"; } //老板端
+
+.mkicon-person-info:before { content: "\e615"; } //个人信息
+
+.mkicon-theme:before { content: "\e617"; } //换肤
+
+.mkicon-extend:before { content: "\e611"; } //扩展
+
+.mkicon-company:before { content: "\e640"; } //企业公司
+
+.mkicon-my-yj:before { content: "\e622"; } //我的易嘉
+
+.mkicon-share:before { content: "\e707"; } //分享
+
+.mkicon-service:before { content: "\e61f"; } //服务
+
+.mkicon-exit:before { content: "\e636"; } //退出
+
+.mkicon-phone:before { content: "\e613"; } //电话咨询
+
+.mkicon-QRcode:before { content: "\e706"; } //二维码
+
+.mkicon-notice:before { content: "\e618"; } //通知
+
+.mkicon-microblog:before { content: "\e709"; } //微博
+
+.mkicon-WeChat:before { content: "\e708"; } //微信
+
+.mkicon-online-service:before { content: "\e60c"; } //在线服务
+
+.mkicon-message:before { content: "\e60b"; } //消息
+
+.mkicon-qq:before { content: "\e623"; } //QQ咨询
+
+.mkicon-revoke:before { content: "\e612"; } //撤回
+
+.mkicon-see:before { content: "\e619"; } //查看
+
+.mkicon-publish:before { content: "\e630"; } //发布
+
+.mkicon-edit:before { content: "\e631"; } //编辑
+
+.mkicon-print:before { content: "\e643"; } //打印
+
+.mkicon-contract:before { content: "\e616"; } //合同
+
+.mkicon-reject:before { content: "\e70f"; } //反审核
+
+.mkicon-audit:before { content: "\e6f1"; } //审核
+
+.mkicon-go-payroll:before { content: "\e701"; } //进入工资单
+
+.mkicon-shortcut-key:before { content: "\e6de"; } //快捷键
+
+.mkicon-certificate-template:before { content: "\e61e"; } //凭证模板
+
+.mkicon-send-work:before { content: "\e61c"; } //派工
+
+.mkicon-calendar:before { content: "\e620"; } //日历
+
+.mkicon-send-work-record:before { content: "\e61d"; } //派工记录
+
+.mkicon-filter:before { content: "\e62a"; } //筛选
+
+.mkicon-upload:before { content: "\e638"; } //上传
+
+.mkicon-remove:before { content: "\e621"; } //删除
+
+.mkicon-download:before { content: "\e64c"; } //下载
+
+.mkicon-refresh:before { content: "\e64a"; } //刷新
+
+.mkicon-pre-audit:before { content: "\e62b"; } //预审
+
+.mkicon-re-invit:before { content: "\e637"; } //重新邀请
+
+.mkicon-pay-plan:before { content: "\e62f"; } //支付计划
+
+.mkicon-menu-dropdown:before { content: "\e62d"; } //菜单-下拉
+
+.mkicon-menu-more:before { content: "\e642"; } //更多下拉
+
+.mkicon-menu-indent:before { content: "\e62c"; } //菜单-平铺
+
+.mkicon-message-warn:before { content: "\e6f8"; } //提示-警告
+
+.mkicon-message-success:before { content: "\e634"; } //提示-正确
+
+.mkicon-message-error:before { content: "\e6f9"; } //提示-错误
+
+.mkicon-message-info:before { content: "\e6f7"; } //提示-提示
+
+.mkicon-close:before { content: "\e633"; } //关闭
+
+.mkicon-disable:before { content: "\e635"; } //停用
+
+.mkicon-remove-row:before { content: "\e6dc"; } //减行
+
+.mkicon-add-row:before { content: "\e6df"; } //增行
+
+.mkicon-modal-success:before { content: "\e702"; } //弹框提示-正确
+
+.mkicon-modal-error:before { content: "\e705"; } //弹框提示-错误
+
+.mkicon-modal-warn:before { content: "\e703"; } //弹框提示-警告
+
+.mkicon-modal-info:before { content: "\e704"; } //弹框提示-提示
+
+.mkicon-second-level:before { content: "\e64d"; } //二级-合
+
+.mkicon-third-level:before { content: "\e64f"; } //三级
+
+.mkicon-second-level-expand:before { content: "\e64e"; } //二级-展
+
+.mkicon-first-level:before { content: "\e650"; } //一级
+
+.mkicon-water-account-other:before { content: "\e645"; } //理票-其他
+
+.mkicon-water-account-special:before { content: "\e647"; } //理票-特殊业务
+
+.mkicon-water-account-pay:before { content: "\e648"; } //理票-支出
+
+.mkicon-water-account-income:before { content: "\e646"; } //理票-收入
+
+.mkicon-folder:before { content: "\e60f"; } //收缩
+
+.mkicon-expand:before { content: "\e610"; } //展开
+
+.mkicon-move-right:before { content: "\e627"; } //右移
+
+.mkicon-move-up:before { content: "\e625"; } //上移
+
+.mkicon-move-down:before { content: "\e626"; } //下移
+
+.mkicon-move-bottom:before { content: "\e628"; } //置底
+
+.mkicon-move-top:before { content: "\e624"; } //置顶
+
+.mkicon-move-left:before { content: "\e629"; } //左移
+
+.mkicon-beta:before { content: "\e70a"; } //beta
+
+.mkicon-beta2:before { content: "\e70b"; } //beta2
+
+.mkicon-tax-declaration:before { content: "\e678"; } //税务申报
+
+.mkicon-agent-company2:before { content: "\e679"; } //代账公司2
+
+.mkicon-agent-company:before { content: "\e67a"; } //代账公司
+
+.mkicon-handovers:before { content: "\e67b"; } //交接
+
+.mkicon-outlook:before { content: "\e67f"; } //格式-o
+
+.mkicon-unknow-file:before { content: "\e680"; } //格式-未知
+
+.mkicon-ppt:before { content: "\e681"; } //格式-p
+
+.mkicon-pdf:before { content: "\e682"; } //格式-pdf
+
+.mkicon-word:before { content: "\e683"; } //格式-w
+
+.mkicon-picture:before { content: "\e684"; } //格式-pic
+
+.mkicon-excel:before { content: "\e685"; } //格式-x
+
+.mkicon-new:before { content: "\e686"; } //已上传文件
+
+.mkicon-onenote:before { content: "\e687"; } //格式-n
+
+.mkicon-zip:before { content: "\e688"; } //格式-压缩
+
+.mkicon-sort:before { content: "\e689"; } //排序
+
+.mkicon-invoicing-manager:before { content: "\e68a"; } //进销存
+
+.mkicon-assets-manager:before { content: "\e68b"; } //资产管理
+
+.mkicon-assets-dispose:before { content: "\e68c"; } //资产-处置
+
+.mkicon-assets-draft:before { content: "\e68d"; } //资产-草稿
+
+.mkicon-assets-history:before { content: "\e68e"; } //资产-历史记录
+
+.mkicon-anti-settlement:before { content: "\e691"; } //反结账
+
+.mkicon-examine-balance:before { content: "\e693"; } //检查-期初余额
+
+.mkicon-examine-proof:before { content: "\e692"; } //检查-凭证数
+
+.mkicon-examine-broken:before { content: "\e694"; } //检查-凭证断号
+
+.mkicon-examine-carryforward:before { content: "\e695"; } //检查-损益结转
+
+.mkicon-examine-account:before { content: "\e696"; } //检查-流水账
+
+.mkicon-examine-property:before { content: "\e697"; } //检查-资产
+
+.mkicon-consultant-expert:before { content: "\e699"; } //咨询客服

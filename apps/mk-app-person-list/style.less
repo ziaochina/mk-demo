@@ -1,0 +1,38 @@
+.mk-app-person-list{
+	width: 100%;
+	height: 100%;
+
+	&-header{
+	    height: 50px;
+		flex: 0 0 50px;
+		padding: 0 10px;
+
+	    &-left{
+	    	flex-direction:row;
+	    	align-items:center;
+	    	.mk-input{
+	    		width: 200px;
+	    		margin: 0px 10px 0px 5px;
+			}
+			.mk-select{
+				width:100px;
+				margin: 0px 10px 0px 5px;
+			}
+			.ant-calendar-picker{
+				width: 200px;
+				margin: 0px 10px 0px 5px;
+			}
+	    }
+	}
+
+	&-content{
+		flex:1;
+	}
+
+	&-footer{
+		height: 58px;
+	    flex: 0 0 58px;
+		justify-content:center;
+		align-items:flex-end;
+	}
+}

@@ -1,30 +1,22 @@
-import { fetch } from 'mk-utils'
+import webapi from './webapi'
 import logo from './img/logo.png'
 
 var _options = {
-	loginApi: (user, password) => {
-		return fetch.test('', '', {
-			result: true,
-			value: {
-				user: {
-					name: 'liujian zhang'
-				}
-			}
-		})
-	},
-	rediectInfo: {
+	webapi,
+	goAfterLogin: {
 		appName: 'mk-app-portal',
 		appParams: {}
 	},
 	logo: logo
 }
 
+
 function config(options) {
 	if (options) {
-		_options = { ..._options, ...options }
+		Object.assign(_options, options)
 	}
 }
 
-config.getCurrent = () => _options
+config.current = _options
 
 export default config

@@ -5,6 +5,7 @@ import config from './config'
 class action {
     constructor(option) {
         this.metaAction = option.metaAction
+        this.config = config.current
     }
 
     onInit = ({ component, injections }) => {

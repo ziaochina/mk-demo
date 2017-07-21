@@ -1,8 +1,8 @@
 {
   "_from": "mk-app-root",
-  "_id": "mk-app-root@1.0.0",
+  "_id": "mk-app-root@1.0.2",
   "_inBundle": false,
-  "_integrity": "sha512-r804LqjuxYCoECiwiHl3yhH5AefSul84fUEAjKqyYbT0I4sseDbGtY2cXm4eTelaPDxEkxYd9b5FT//C9l+EiA==",
+  "_integrity": "sha512-46MHvyfClt6kzzlxDp5jX9cHkMlzi/DYvIDVnJbtetcO54gBRBhKfFQWzVczFvAbWXOFSH6EvUUelhUs0rHrvg==",
   "_location": "/mk-app-root",
   "_phantomChildren": {},
   "_requested": {
@@ -19,8 +19,8 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/mk-app-root/-/mk-app-root-1.0.0.tgz",
-  "_shasum": "f9444feee30fe5ffd555e505deb0fff6d598bcf8",
+  "_resolved": "https://registry.npmjs.org/mk-app-root/-/mk-app-root-1.0.2.tgz",
+  "_shasum": "c534893c7b4007e5a7d12dcff3c60dd09681626c",
   "_spec": "mk-app-root",
   "_where": "/home/zlj/my/github/self/mk-demo/master",
   "author": "",
@@ -42,5 +42,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.0"
+  "version": "1.0.2"
 }

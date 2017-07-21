@@ -6,6 +6,7 @@ import config from './config'
 class action {
     constructor(option) {
         this.metaAction = option.metaAction
+        this.config = config.current
     }
 
     onInit = ({ component, injections }) => {
@@ -14,7 +15,7 @@ class action {
         injections.reduce('init')
     }
 
-    getLogo = () => config.getCurrent().logo
+    getLogo = () => this.config.logo
 
     getPhoto = () => require('./img/photo.png')
 
@@ -59,13 +60,11 @@ class action {
     }
 
     myMenuClick = (e) => {
-        const cfg = config.getCurrent()
         if (e.key == 'logout') {
-            if (this.component.props.onRedirect && cfg.goAfterLogout) {
+            if (this.component.props.onRedirect && this.config.goAfterLogout) {
                 this.metaAction.context.set('user', undefined)
-                this.component.props.onRedirect(cfg.goAfterLogout)
+                this.component.props.onRedirect(this.config.goAfterLogout)
             }
-
         }
     }
 }

@@ -1,0 +1,49 @@
+{
+  "_from": "mk-app-person-list",
+  "_id": "mk-app-person-list@1.0.3",
+  "_inBundle": false,
+  "_integrity": "sha512-Z5U81296PGjRqtU/34RMpWFbNSxqcTnTLb9ggCLbFF4TJZwbMpziQfNV2FqK24mDxTCOOu8ugV9VkoWSQbGxcw==",
+  "_location": "/mk-app-person-list",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mk-app-person-list",
+    "name": "mk-app-person-list",
+    "escapedName": "mk-app-person-list",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mk-app-person-list/-/mk-app-person-list-1.0.3.tgz",
+  "_shasum": "27c724bc738e646a327d49c3f592f546b9f4de0f",
+  "_spec": "mk-app-person-list",
+  "_where": "/home/zlj/my/github/self/mk-demo/master",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/ziaochina/mk-app-person-list/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "mk-app-portal",
+  "directories": {
+    "example": "example"
+  },
+  "homepage": "https://github.com/ziaochina/mk-app-person-list#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "mk-app-person-list",
+  "name": "mk-app-person-list",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziaochina/mk-app-person-list.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}
