@@ -1,7 +1,7 @@
 {
-  "name": "website-demo",
+  "name": "mk-demo",
   "version": "1.0.0",
-  "description": "website-demo",
+  "description": "mk-demo",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && export NODE_ENV=production COMPRESS=1 && webpack",
