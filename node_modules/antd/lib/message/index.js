@@ -18,7 +18,7 @@ var _icon2 = _interopRequireDefault(_icon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var defaultDuration = 1.5;
+var defaultDuration = 3;
 var defaultTop = void 0;
 var messageInstance = void 0;
 var key = 1;

@@ -59,7 +59,7 @@ var Popover = function (_React$Component) {
                 prefixCls = _props.prefixCls,
                 content = _props.content;
 
-            (0, _warning2['default'])(!('overlay' in this.props), 'Popover[overlay] is removed, please use Popover[content] instead, ' + 'see: http://u.ant.design/popover-content');
+            (0, _warning2['default'])(!('overlay' in this.props), 'Popover[overlay] is removed, please use Popover[content] instead, ' + 'see: https://u.ant.design/popover-content');
             return _react2['default'].createElement(
                 'div',
                 null,

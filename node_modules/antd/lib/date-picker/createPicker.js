@@ -104,7 +104,7 @@ function createPicker(TheCalendar) {
             };
             var value = props.value || props.defaultValue;
             if (value && !_moment2['default'].isMoment(value)) {
-                throw new Error('The value/defaultValue of DatePicker or MonthPicker must be ' + 'a moment object after `antd@2.0`, see: http://u.ant.design/date-picker-value');
+                throw new Error('The value/defaultValue of DatePicker or MonthPicker must be ' + 'a moment object after `antd@2.0`, see: https://u.ant.design/date-picker-value');
             }
             _this.state = {
                 value: value

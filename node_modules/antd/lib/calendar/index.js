@@ -144,7 +144,7 @@ var Calendar = function (_React$Component) {
         });
         var value = props.value || props.defaultValue || (0, _moment2['default'])();
         if (!_moment2['default'].isMoment(value)) {
-            throw new Error('The value/defaultValue of Calendar must be a moment object after `antd@2.0`, ' + 'see: http://u.ant.design/calendar-value');
+            throw new Error('The value/defaultValue of Calendar must be a moment object after `antd@2.0`, ' + 'see: https://u.ant.design/calendar-value');
         }
         _this.state = {
             value: value,

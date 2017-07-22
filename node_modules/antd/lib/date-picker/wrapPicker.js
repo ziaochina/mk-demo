@@ -93,7 +93,7 @@ function wrapPicker(Picker, defaultFormat) {
 
                 onOpenChange(open);
                 if (toggleOpen) {
-                    (0, _warning2['default'])(false, '`toggleOpen` is deprecated and will be removed in the future, ' + 'please use `onOpenChange` instead, see: http://u.ant.design/date-picker-on-open-change');
+                    (0, _warning2['default'])(false, '`toggleOpen` is deprecated and will be removed in the future, ' + 'please use `onOpenChange` instead, see: https://u.ant.design/date-picker-on-open-change');
                     toggleOpen({ open: open });
                 }
             };

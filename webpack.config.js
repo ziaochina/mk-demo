@@ -34,7 +34,7 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         bundle: ["./index.js", "./assets/styles/index.less"],
-        vendor: ["react", 'react-dom', 'mk-meta-engine']
+        vendor: ["react", 'react-dom', 'mk-meta-engine', 'mk-component', 'mk-utils', 'moment']
     },
 
     output: {

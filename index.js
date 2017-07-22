@@ -13,6 +13,18 @@ import mk_app_root_helloWorld from './apps/mk-app-root/apps/mk-app-root-helloWor
 import mk_app_root from './apps/mk-app-root/index.js'
 
 const apps = {
+	config: (options) => {
+		Object.keys(options).forEach(key => {
+			const reg = new RegExp(`^${key == '*' ? '.*' : key}$`) 
+			Object.keys(apps).forEach(appName => { 
+				if (appName != 'config') {
+					if (reg.test(appName)) {
+						apps[appName].config(options[key])
+					}
+				}
+			})
+		})
+	},
 	[mk_app_login.name]:mk_app_login,	
 	[mk_app_person_card.name]:mk_app_person_card,	
 	[mk_app_person_list.name]:mk_app_person_list,	
@@ -26,8 +38,8 @@ const apps = {
 }
 
 
-config(myConfig({apps}))
-
+apps.config({ '*': { apps } })
+config(myConfig({ apps }))
 
 import * as mkComponents from 'mk-component'
 
@@ -35,5 +47,4 @@ Object.keys(mkComponents).forEach(key=>{
 	componentFactory.registerComponent(key, mkComponents[key])
 })
 	
-
 start()

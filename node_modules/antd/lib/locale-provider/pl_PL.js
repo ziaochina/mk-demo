@@ -8,31 +8,31 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _en_US = require('rc-pagination/lib/locale/en_US');
-
-var _en_US2 = _interopRequireDefault(_en_US);
-
-var _pl_PL = require('../date-picker/locale/pl_PL');
+var _pl_PL = require('rc-pagination/lib/locale/pl_PL');
 
 var _pl_PL2 = _interopRequireDefault(_pl_PL);
 
-var _pl_PL3 = require('../time-picker/locale/pl_PL');
+var _pl_PL3 = require('../date-picker/locale/pl_PL');
 
 var _pl_PL4 = _interopRequireDefault(_pl_PL3);
 
-var _pl_PL5 = require('../calendar/locale/pl_PL');
+var _pl_PL5 = require('../time-picker/locale/pl_PL');
 
 var _pl_PL6 = _interopRequireDefault(_pl_PL5);
+
+var _pl_PL7 = require('../calendar/locale/pl_PL');
+
+var _pl_PL8 = _interopRequireDefault(_pl_PL7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 _moment2['default'].locale('pl');
 exports['default'] = {
     locale: 'pl',
-    Pagination: _en_US2['default'],
-    DatePicker: _pl_PL2['default'],
-    TimePicker: _pl_PL4['default'],
-    Calendar: _pl_PL6['default'],
+    Pagination: _pl_PL2['default'],
+    DatePicker: _pl_PL4['default'],
+    TimePicker: _pl_PL6['default'],
+    Calendar: _pl_PL8['default'],
     Table: {
         filterTitle: 'Menu filtra',
         filterConfirm: 'OK',
@@ -52,7 +52,7 @@ exports['default'] = {
     },
     Transfer: {
         notFoundContent: 'Nie znaleziono',
-        searchPlaceholder: 'Wyszukaj tutaj',
+        searchPlaceholder: 'Szukaj',
         itemUnit: 'obiekt',
         itemsUnit: 'obiekty'
     },

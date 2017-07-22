@@ -12,8 +12,6 @@ var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-exports['default'] = ButtonGroup;
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -32,7 +30,8 @@ var __rest = undefined && undefined.__rest || function (s, e) {
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
     }return t;
 };
-function ButtonGroup(props) {
+
+var ButtonGroup = function ButtonGroup(props) {
     var _props$prefixCls = props.prefixCls,
         prefixCls = _props$prefixCls === undefined ? 'ant-btn-group' : _props$prefixCls,
         _props$size = props.size,
@@ -55,5 +54,6 @@ function ButtonGroup(props) {
     }
     var classes = (0, _classnames2['default'])(prefixCls, (0, _defineProperty3['default'])({}, prefixCls + '-' + sizeCls, sizeCls), className);
     return _react2['default'].createElement('div', (0, _extends3['default'])({}, others, { className: classes }));
-}
+};
+exports['default'] = ButtonGroup;
 module.exports = exports['default'];

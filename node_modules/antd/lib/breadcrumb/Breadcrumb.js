@@ -78,7 +78,7 @@ var Breadcrumb = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             var props = this.props;
-            (0, _warning2['default'])(!('linkRender' in props || 'nameRender' in props), '`linkRender` and `nameRender` are removed, please use `itemRender` instead, ' + 'see: http://u.ant.design/item-render.');
+            (0, _warning2['default'])(!('linkRender' in props || 'nameRender' in props), '`linkRender` and `nameRender` are removed, please use `itemRender` instead, ' + 'see: https://u.ant.design/item-render.');
         }
     }, {
         key: 'render',
