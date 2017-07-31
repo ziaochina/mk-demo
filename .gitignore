@@ -1,0 +1,13 @@
+logs
+*.log
+npm-debug.log*
+.grunt
+.lock-wscript
+dist
+lib
+node_modules
+.npm
+.dist
+.vscode
+jsconfig.json
+package-lock.json
