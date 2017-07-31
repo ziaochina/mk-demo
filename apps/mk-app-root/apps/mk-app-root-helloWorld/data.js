@@ -22,3 +22,7 @@ export function getMeta() {
 		}]
 	}
 }
+
+export function getInitState() {
+	return { data: {} }
+}

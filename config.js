@@ -25,6 +25,35 @@ function config(options) {
 	//对应用进行配置，key会被转换为'^<key>$'跟app名称正则匹配
 	_options.apps && _options.apps.config({
 		//'*': { webapi } //正式网站应该有一个完整webapi对象，提供所有web请求函数
+		'mk-app-root': {
+			startAppName: 'mk-app-login'
+		},
+		'mk-app-login': {
+			goAfterLogin: {
+				appName: 'mk-app-portal'
+			}
+		},
+		'mk-app-portal': {
+			menu: [{
+				key: '1',
+				name: 'about',
+				appName: 'mk-app-portal-about',
+				isDefault: true
+			}, {
+				key: '2',
+				name: 'apps',
+				isExpand: true,
+				children: [{
+					key: '201',
+					name: '人员列表',
+					appName: 'mk-app-person-list'
+				}, {
+					key: '202',
+					name: '人员卡片',
+					appName: 'mk-app-person-card'
+				}]
+			}]
+		}
 	})
 
 	_options.targetDomId = 'app' //react render到目标dom

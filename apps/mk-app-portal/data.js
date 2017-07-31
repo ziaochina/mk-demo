@@ -82,6 +82,7 @@ export function getMeta() {
 				name: 'main',
 				component: 'Layout',
 				className: 'mk-app-portal-content-main',
+				_visible: '{{!!data.content.appName}}',
 				children: {
 					name: 'app',
 					component: 'AppLoader',
@@ -93,5 +94,13 @@ export function getMeta() {
 	}
 }
 
-
-
+export function getInitState() {
+	return {
+		data: {
+			menu: [],
+			menuDefaultSelectedKeys: [],
+			menuDefaultOpenKeys: [],
+			content: {}
+		}
+	}
+}

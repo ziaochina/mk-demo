@@ -2,6 +2,7 @@ import { Map, List, fromJS } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
 import moment from 'moment'
+import { getInitState } from './data'
 
 class reducer {
     constructor(option) {
@@ -9,24 +10,7 @@ class reducer {
     }
 
     init = (state, option) => {
-        const data = {
-            data: {
-                form: {
-                    name: '',
-                    sex: '0',
-                    birthday: moment('1981-1-1'),
-                    mobile: '',
-                    department: '',
-                    address: '北京海淀'
-                },
-                other: {
-                    departments: []
-                }
-            }
-        }
-
-        data.data.other.isPop = !!option.isPop
-        return this.metaReducer.init(state, data)
+        return this.metaReducer.init(state, getInitState(option))
     }
 
     load = (state, { person, departments }) => {
@@ -40,7 +24,7 @@ class reducer {
     }
 
     setPerson = (state, person) => {
-        state =  this.metaReducer.sf(state, 'data.form', fromJS({
+        state = this.metaReducer.sf(state, 'data.form', fromJS({
             ...person, birthday: moment(person.birthday)
         }))
 

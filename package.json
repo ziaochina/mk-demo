@@ -4,8 +4,8 @@
   "description": "mk-demo",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && export NODE_ENV=production COMPRESS=1 && webpack",
-    "start": "export NODE_ENV=production && webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
+    "build": "rm -rf dist && NODE_ENV=production COMPRESS=1 && webpack",
+    "start": "NODE_ENV=production && webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

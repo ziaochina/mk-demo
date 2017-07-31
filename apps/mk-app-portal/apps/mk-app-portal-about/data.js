@@ -5,3 +5,7 @@ export function getMeta() {
 		children: 'about'
 	}
 }
+
+export function getInitState() {
+	return { data: {} }
+}

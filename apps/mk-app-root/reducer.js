@@ -1,6 +1,7 @@
 import { Map } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
+import { getInitState } from './data'
 
 class reducer {
     constructor(option) {
@@ -9,18 +10,16 @@ class reducer {
     }
 
     init = (state, option) => {
-        const data = {
-            data: {
-                currentAppName: this.config.defaultAppName,
-                currentAppParams: this.config.defaultAppParams
-            }
-        }
-        return this.metaReducer.init(state, data)
+        const initState = getInitState()
+
+        setTimeout(() => location.hash = initState.data.currentAppName, 0)
+
+        return this.metaReducer.init(state, initState)
     }
 
-    redirect = (state, appName, appProps) => {
+    redirect = (state, appName) => {
+        setTimeout(() => location.hash = appName, 0)
         state = this.metaReducer.sf(state, 'data.currentAppName', appName)
-        state = this.metaReducer.sf(state, 'data.currentAppProps', appProps)
         return state
     }
 }

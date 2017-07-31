@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export function getMeta() {
 	return {
 		name: 'root',
@@ -12,21 +14,21 @@ export function getMeta() {
 				name: 'left',
 				component: 'Layout',
 				className: 'mk-app-person-card-header-left',
-				children:[{
-					name:'page',
-					component:'Button.Group',
-					children:[{
-						name:'prev',
-						component:'Button',
-						type:'softly',
-						icon:'left',
-						onClick:'{{$prev}}'
-					},{
-						name:'next',
-						component:'Button',
-						type:'softly',
-						icon:'right',
-						onClick:'{{$next}}'
+				children: [{
+					name: 'page',
+					component: 'Button.Group',
+					children: [{
+						name: 'prev',
+						component: 'Button',
+						type: 'softly',
+						icon: 'left',
+						onClick: '{{$prev}}'
+					}, {
+						name: 'next',
+						component: 'Button',
+						type: 'softly',
+						icon: 'right',
+						onClick: '{{$next}}'
 					}]
 				}]
 			}, {
@@ -40,7 +42,7 @@ export function getMeta() {
 					type: 'primary',
 					style: { marginRight: 10 },
 					onClick: '{{$add}}'
-				},{
+				}, {
 					name: 'save',
 					component: 'Button',
 					children: '保存',
@@ -154,4 +156,27 @@ export function getMeta() {
 			}]
 		}]
 	}
+}
+
+
+export function getInitState(option) {
+	var state = {
+		data: {
+			form: {
+				name: '',
+				sex: '0',
+				birthday: moment('1981-1-1'),
+				mobile: '',
+				department: '',
+				address: '北京海淀'
+			},
+			other: {
+				departments: []
+			}
+		}
+	}
+
+	state.data.other.isPop = !!option.isPop //是否弹出卡片使用
+
+	return state
 }

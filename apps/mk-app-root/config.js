@@ -2,8 +2,7 @@ import webapi from './webapi'
 
 var _options = {
 	webapi,
-	defaultAppName: 'mk-app-login',
-	defaultAppParams: {}
+	startAppName: 'mk-app-root-about'
 }
 
 function config(options) {

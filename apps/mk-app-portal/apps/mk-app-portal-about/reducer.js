@@ -1,6 +1,7 @@
 import { Map } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
+import { getInitState } from './data'
 
 class reducer {
     constructor(option) {
@@ -9,8 +10,7 @@ class reducer {
     }
 
     init = (state, option) => {
-        const data = { data: {} }
-        return this.metaReducer.init(state, data)
+        return this.metaReducer.init(state, getInitState())
     }
 }
 

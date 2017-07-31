@@ -1,6 +1,7 @@
-import { Map } from 'immutable'
+import { Map, fromJS } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
+import { getInitState } from './data'
 
 class reducer {
     constructor(option) {
@@ -9,15 +10,57 @@ class reducer {
     }
 
     init = (state, option) => {
-        const data = {
-            data: {
-                menu: this.config.menu,
-                menuDefaultSelectedKeys: this.config.menuDefaultSelectedKeys,
-                menuDefaultOpenKeys: this.config.menuDefaultOpenKeys,
-                content: this.config.defaultContent
-            }
+        state = this.metaReducer.init(state, getInitState())
+
+        if (this.config.menu && !this.config.webapi.getMenu) {
+            return this.load(state, { menu: this.config.menu })
         }
-        return this.metaReducer.init(state, data)
+
+        return state
+    }
+
+    load = (state, { menu }) => {
+        if (!menu || menu.lenght == 0)
+            return state
+
+        var defaultMenuItem, firstMenuItem, defaultOpens = []
+
+        const loop = (children) => {
+            const ret = []
+            children.forEach(child => {
+                if (!child.children) {
+                    if (!firstMenuItem) {
+                        firstMenuItem = child
+                    }
+
+                    if (child.isDefault) {
+                        defaultMenuItem = child
+                    }
+                }
+                else {
+                    if (child.isExpand) {
+                        defaultOpens.push(child)
+                    }
+                    loop(child.children)
+                }
+            })
+            return ret
+        }
+
+        loop(menu)
+
+        defaultMenuItem = defaultMenuItem || firstMenuItem
+
+        const menuDefaultSelectedKeys = fromJS(defaultMenuItem ? [defaultMenuItem.key] : [])
+        const menuDefaultOpenKeys = fromJS(defaultOpens.map(o => o.key))
+        const defaultContent = fromJS(defaultMenuItem ? defaultMenuItem : {})
+
+        state = this.metaReducer.sf(state, 'data.menu', fromJS(menu))
+        state = this.metaReducer.sf(state, 'data.menuDefaultSelectedKeys', menuDefaultSelectedKeys)
+        state = this.metaReducer.sf(state, 'data.menuDefaultOpenKeys', menuDefaultOpenKeys)
+        state = this.metaReducer.sf(state, 'data.content', defaultContent)
+
+        return state
     }
 
     setContent = (state, appName, appProps) => {

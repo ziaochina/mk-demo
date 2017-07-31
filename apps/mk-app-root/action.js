@@ -6,6 +6,14 @@ class action {
     constructor(option) {
         this.metaAction = option.metaAction
         this.config = config.current
+
+        window.onhashchange = () => {
+            const hash = document.location.hash || ''
+            if (!hash || hash.substr(1) == this.metaAction.gf('data.currentAppName')){
+                return
+            }
+            this.onRedirect({ appName: hash.substr(1) })
+        }
     }
 
     onInit = ({ component, injections }) => {
@@ -14,8 +22,8 @@ class action {
         injections.reduce('init')
     }
 
-    onRedirect = ({ appName, appProps }) => {
-        this.injections.reduce('redirect', appName, appProps)
+    onRedirect = ({ appName }) => {
+        this.injections.reduce('redirect', appName)
     }
 }
 

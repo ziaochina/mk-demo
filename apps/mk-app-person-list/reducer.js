@@ -1,6 +1,7 @@
 import { Map, fromJS } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
+import { getInitState } from './data'
 
 class reducer {
     constructor(option) {
@@ -8,15 +9,7 @@ class reducer {
     }
 
     init = (state, option) => {
-        const data = {
-            data: {
-                list: [],
-                pagination: { current: 1, total: 0, pageSize: 20 },
-                filter: {},
-                other: {}
-            }
-        }
-        return this.metaReducer.init(state, data)
+        return this.metaReducer.init(state, getInitState())
     }
 
     load = (state, response) => {
@@ -39,7 +32,7 @@ class reducer {
         return state
     }
 
-    
+
 }
 
 export default function creator(option) {

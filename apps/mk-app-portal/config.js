@@ -10,26 +10,22 @@ var _options = {
 	menu: [{
 		key: '1',
 		name: 'about',
-		app: 'mk-app-portal-about'
+		appName: 'mk-app-portal-about',
+		isDefault: true
 	}, {
 		key: '2',
 		name: 'apps',
+		isExpand:true,
 		children: [{
 			key: '201',
-			name: '人员列表',
-			app: 'mk-app-person-list'
+			name: 'app1',
+			appName: 'mk-app-portal-app1'
 		}, {
 			key: '202',
-			name: '人员卡片',
-			app: 'mk-app-person-card'
+			name: 'app2',
+			appName: 'mk-app-portal-app2'
 		}]
 	}],
-	menuDefaultSelectedKeys: ['1'],
-	menuDefaultOpenKeys: ['2'],
-	defaultContent: {
-		appName: 'mk-app-portal-about',
-		appParams: {}
-	},
 	logo
 }
 

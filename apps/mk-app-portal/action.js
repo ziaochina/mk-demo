@@ -7,12 +7,22 @@ class action {
     constructor(option) {
         this.metaAction = option.metaAction
         this.config = config.current
+        this.webapi = this.config.webapi
     }
 
     onInit = ({ component, injections }) => {
         this.component = component
         this.injections = injections
         injections.reduce('init')
+
+        this.load()
+    }
+
+    load = async () => {
+        if (this.webapi.getMenu) {
+            const menu = await this.webapi.getMenu()
+            this.injections.reduce('load', {menu})
+        }
     }
 
     getLogo = () => this.config.logo
@@ -55,7 +65,7 @@ class action {
 
         const hit = find(menu)
         if (hit) {
-            this.injections.reduce('setContent', hit.app, {})
+            this.injections.reduce('setContent', hit.appName, hit.appParams)
         }
     }
 

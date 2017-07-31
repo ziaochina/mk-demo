@@ -5,3 +5,7 @@ export function getMeta() {
 		children: 'app2'
 	}
 }
+
+export function getInitState() {
+	return { data: {} }
+}
