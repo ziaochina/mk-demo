@@ -9,12 +9,13 @@ fetch.config({
 	mock: true, //脱离后台测试，启用mock，否则这行注释
 
 	//fetch支持切面扩展（before,after），对restful api统一做返回值或者异常处理
-	after: (response) => {
+	after: (response, url) => {
 		if (response.result) {
 			return response.value
 		}
 		else {
 			Toast.error(response.error.message)
+			throw { url, response }
 		}
 	}
 })
