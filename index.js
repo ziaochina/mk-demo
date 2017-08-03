@@ -3,6 +3,7 @@ import * as mkComponents from 'mk-component'
 import myConfig  from './config'
 
 import mk_app_bar_graph from './apps/mk-app-bar-graph/index.js'
+import mk_app_complex_table from './apps/mk-app-complex-table/index.js'
 import mk_app_login from './apps/mk-app-login/index.js'
 import mk_app_person_card from './apps/mk-app-person-card/index.js'
 import mk_app_person_list from './apps/mk-app-person-list/index.js'
@@ -17,6 +18,7 @@ import mk_app_root from './apps/mk-app-root/index.js'
 const apps = {
 		
 	[mk_app_bar_graph.name]: mk_app_bar_graph,	
+	[mk_app_complex_table.name]: mk_app_complex_table,	
 	[mk_app_login.name]: mk_app_login,	
 	[mk_app_person_card.name]: mk_app_person_card,	
 	[mk_app_person_list.name]: mk_app_person_list,	

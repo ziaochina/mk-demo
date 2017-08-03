@@ -53,7 +53,11 @@ function config(options) {
 					name: '卡片',
 					appName: 'mk-app-person-card'
 				},{
-					key: '203',
+					key:'203',
+					name:'复杂表格',
+					appName: 'mk-app-complex-table'
+				},{
+					key: '204',
 					name: '柱状图',
 					appName: 'mk-app-bar-graph'
 				}]

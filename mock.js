@@ -1,5 +1,6 @@
 
 import './apps/mk-app-bar-graph/mock.js';
+import './apps/mk-app-complex-table/mock.js';
 import './apps/mk-app-login/mock.js';
 import './apps/mk-app-person-card/mock.js';
 import './apps/mk-app-person-list/mock.js';
