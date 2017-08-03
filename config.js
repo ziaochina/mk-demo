@@ -46,12 +46,16 @@ function config(options) {
 				isExpand: true,
 				children: [{
 					key: '201',
-					name: '人员列表',
+					name: '列表',
 					appName: 'mk-app-person-list'
 				}, {
 					key: '202',
-					name: '人员卡片',
+					name: '卡片',
 					appName: 'mk-app-person-card'
+				},{
+					key: '203',
+					name: '柱状图',
+					appName: 'mk-app-bar-graph'
 				}]
 			}]
 		}
