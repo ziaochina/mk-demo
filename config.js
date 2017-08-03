@@ -57,7 +57,11 @@ function config(options) {
 					name:'复杂表格',
 					appName: 'mk-app-complex-table'
 				},{
-					key: '204',
+					key:'204',
+					name:'可编辑表格',
+					appName: 'mk-app-editable-table'
+				},{
+					key: '205',
 					name: '柱状图',
 					appName: 'mk-app-bar-graph'
 				}]
