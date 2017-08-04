@@ -61,7 +61,11 @@ function config(options) {
 					name:'可编辑表格',
 					appName: 'mk-app-editable-table'
 				},{
-					key: '205',
+					key:'205',
+					name:'树表',
+					appName: 'mk-app-tree-table'
+				},{
+					key: '206',
 					name: '柱状图',
 					appName: 'mk-app-bar-graph'
 				}]

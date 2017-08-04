@@ -15,6 +15,7 @@ import mk_app_portal from './apps/mk-app-portal/index.js'
 import mk_app_root_about from './apps/mk-app-root/apps/mk-app-root-about/index.js'
 import mk_app_root_helloWorld from './apps/mk-app-root/apps/mk-app-root-helloWorld/index.js'
 import mk_app_root from './apps/mk-app-root/index.js'
+import mk_app_tree_table from './apps/mk-app-tree-table/index.js'
 
 const apps = {
 		
@@ -30,7 +31,8 @@ const apps = {
 	[mk_app_portal.name]: mk_app_portal,	
 	[mk_app_root_about.name]: mk_app_root_about,	
 	[mk_app_root_helloWorld.name]: mk_app_root_helloWorld,	
-	[mk_app_root.name]: mk_app_root,
+	[mk_app_root.name]: mk_app_root,	
+	[mk_app_tree_table.name]: mk_app_tree_table,
 }
 
 apps.config = (options) => {
