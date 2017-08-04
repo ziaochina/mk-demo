@@ -25,6 +25,18 @@ class action {
         this.injections.reduce('load', response)
     }
 
+    save = async () => {
+        var list = this.metaAction.gf('data.list').toJS()
+        list = list
+            .filter(o => o.name || o.mobile)
+            .map(o => ({ ...o, birthday: o.birthday ? o.birthday.format('YYYY-MM-DD') : o.birthday }))
+
+        await this.webapi.editableTable.save(list)
+
+        this.metaAction.toast('success', '保存成功')
+        this.load()
+    }
+
 
     addrow = (ps) => {
         this.injections.reduce('addEmptyRow', ps.rowIndex + 1)
@@ -57,11 +69,11 @@ class action {
     }
 
     sexChange = (ps) => (v) => {
-        if (!v){
+        if (!v) {
             this.metaAction.sf(`data.list.${ps.rowIndex}.sex`, undefined)
             return
         }
-            
+
 
         this.metaAction.sf(`data.list.${ps.rowIndex}.sex`, v == 0
             ? Map({ value: 0, text: '男' })
@@ -76,12 +88,14 @@ class action {
 
         if (columnKey == 'name') {
             setTimeout(() => {
-                ReactDOM.findDOMNode(this.refName).focus()
+                const dom = ReactDOM.findDOMNode(this.refName)
+                dom.select()
             }, 0)
         }
         else if (columnKey == 'mobile')
             setTimeout(() => {
-                ReactDOM.findDOMNode(this.refMobile).focus()
+                const dom = ReactDOM.findDOMNode(this.refMobile)
+                dom.select()
             }, 0)
 
 

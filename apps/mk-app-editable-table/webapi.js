@@ -8,6 +8,7 @@ import { fetch } from 'mk-utils'
 
 export default {
     editableTable: {
-        query: (option) => fetch.post('/v1/editabletable/query', option)
+        query: (option) => fetch.post('/v1/editabletable/query', option),
+        save: (list) => fetch.post('/v1/editabletable/save', {list}),
     }
 }

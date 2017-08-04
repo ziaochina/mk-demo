@@ -4,6 +4,17 @@ export function getMeta() {
 		component: 'Layout',
 		className: 'mk-app-editable-table',
 		children: [{
+			name: 'header',
+			component: 'Layout',
+			className: 'mk-app-editable-table-header',
+			children: [{
+				name: 'save',
+				component: 'Button',
+				type: 'softly',
+				onClick: '{{$save}}',
+				children: '保存'
+			}]
+		}, {
 			name: 'table',
 			component: 'DataGrid',
 			headerHeight: 50,

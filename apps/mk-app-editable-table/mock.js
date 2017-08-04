@@ -16,8 +16,6 @@ function init() {
                 sex: { value: i % 2 + '', text: i % 2 == 0 ? '男' : '女' },
                 birthday: `1980-${i % 11 + 1}-${i % 28 + 1}`,
                 mobile: '13818181' + (100 + i),
-                department: undefined,
-                address: '北京海淀'
             })
         }
     }
@@ -34,3 +32,12 @@ fetch.mock('/v1/editabletable/query', (option) => {
         }
     }
 })
+
+fetch.mock('/v1/editabletable/save', (option) => {
+    mockData.editableTable = option.list
+
+    return {
+        result: true, value: true
+    }
+})
+
