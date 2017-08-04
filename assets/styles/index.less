@@ -1,3 +1,33 @@
 @import "~mk-component/dist/assets/style/index.less";
 @import "../theme/index.less";
 @import "./apps.less";
+
+
+::-webkit-scrollbar/*整体部分*/
+{
+	width: 10px;
+	height:10px;
+}
+
+::-webkit-scrollbar-track/*滑动轨道*/
+{
+	-webkit-box-shadow: inset 0 0 5px #ccc;
+	border-radius: 10px;
+	background: #eee;
+}
+
+::-webkit-scrollbar-thumb/*滑块*/
+{
+	border-radius: 10px;
+	background-color: #c2c2c2;
+	padding-top: 4px;
+	-webkit-box-shadow: inset 0 0 5px rgba(114,114,114,0.2);
+	background: rgba(114,114,114,0.5);
+}
+
+::-webkit-scrollbar-thumb:hover/*滑块效果*/
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 5px rgba(114,114,114,0.2);
+	background: rgba(114,114,114,0.8);
+}
