@@ -15,7 +15,7 @@
 		height:54px;
 		background-color: #333;
 		color:#fff;
-		overflow: hidden;
+		overflow: visible;
 
 		&-left{
 			flex:1;
@@ -37,16 +37,34 @@
 			flex-direction:row;
 			align-items:center;
 			justify-content: flex-end;
-			i{
+			overflow: visible;
+
+			&-my-title{
+				display: flex;
+    			flex-direction: row;
+    			align-items: center;
+			}
+
+			.mk-menu > li{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+
+				i{
+					font-size: 18px;
+				}
+
+			}
+			/*i{
 				font-size: 25px;
 				cursor:pointer;
 				margin-right: 30px;
 
-			}
+			}*/
 
 			&-photo {
-			    width: 40px;
-    			height: 40px;
+			    width: 30px;
+    			height: 30px;
     			border-radius: 30px;
     			margin-right: 10px;
 			}

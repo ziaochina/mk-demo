@@ -26,38 +26,53 @@ export function getMeta() {
 				component: 'Layout',
 				className: 'mk-app-portal-header-right',
 				children: [{
-					name: 'notification',
-					component: 'Icon',
-					type: 'notification'
-				}, {
-					name: 'setting',
-					component: 'Icon',
-					type: 'setting'
-				}, {
-					name: 'photo',
-					component: '::img',
-					className: 'mk-app-portal-header-right-photo',
-					src: '{{$getPhoto()}}'
-				}, {
-					name: 'my',
-					component: 'Dropdown',
-					overlay: {
-						name: 'myMenu',
-						component: 'Menu',
-						onClick: '{{$myMenuClick}}',
+					name: 'topMenu',
+					component: 'Menu',
+					mode: 'horizontal',
+					theme: 'dark',
+					style: { backgroundColor: '#333' },
+					onClick: '{{$topMenuClick}}',
+					selectedKeys: [],
+					children: [{
+						name: 'gitter',
+						component: 'Menu.Item',
+						key: 'gitter',
+						children: [{
+							name: 'icon',
+							component: 'Icon',
+							type: 'smile-o'
+						}, '聊天']
+					}, {
+						name: 'github',
+						component: 'Menu.Item',
+						key: 'github',
+						children: [{
+							name: 'icon',
+							component: 'Icon',
+							type: 'github'
+						}, '源代码']
+					}, {
+						name: 'my',
+						component: 'Menu.SubMenu',
+						key: 'my',
+						title: {
+							name: 'myTitle',
+							component: '::span',
+							className: 'mk-app-portal-header-right-my-title',
+							children: [{
+								name: 'photo',
+								component: '::img',
+								className: 'mk-app-portal-header-right-photo',
+								src: '{{$getPhoto()}}'
+							}, '我的']
+						},
 						children: [{
 							name: 'logout',
 							component: 'Menu.Item',
 							key: 'logout',
-							children: 'logout'
+							children: '注销'
 						}]
-					},
-					children: {
-						name: 'me',
-						component: '::a',
-						style: { fontSize: 15 },
-						children: 'monkey king'
-					}
+					}]
 				}]
 			}]
 		}, {
