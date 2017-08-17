@@ -156,33 +156,31 @@ class action {
         return this.metaAction.isFocus(path) ? 'mk-app-voucher-cell edit-control' : ''
     }
 
-    cellClick = (e) => {
-        const path = this.metaAction.findPathByEvent(e)
-        if (this.metaAction.isFocus(path)) return
+    mousedown = (e) => {
+        if (!this.metaAction.focusByEvent(e)) return
+        
+        setTimeout(this.cellAutoFocus, 16)
+    }
 
-        this.metaAction.sf('data.other.focusFieldPath', path)
+    cellAutoFocus = () =>{
+        const editorDOM = ReactDOM.findDOMNode(this.component).querySelector(".edit-control")
+        if (!editorDOM) return
 
-        const that = this
-        setTimeout(() => {
-            const editorDOM = ReactDOM.findDOMNode(that.component).querySelector(".edit-control")
-            if (!editorDOM) return
+        if (editorDOM.className.indexOf('input') != -1) {
+            editorDOM.select()
+            return
+        }
 
-            if (editorDOM.className.indexOf('input') != -1) {
-                editorDOM.select()
-                return
-            }
+        if (editorDOM.className.indexOf('select') != -1) {
+            editorDOM.click()
+            return
+        }
 
-            if (editorDOM.className.indexOf('select') != -1) {
-                editorDOM.click()
-                return
-            }
-
-            if (editorDOM.className.indexOf('datepicker') != -1) {
-                const input = editorDOM.querySelector('input')
-                input.click()
-                return
-            }
-        }, 16)
+        if (editorDOM.className.indexOf('datepicker') != -1) {
+            const input = editorDOM.querySelector('input')
+            input.click()
+            return
+        }
     }
 
 }

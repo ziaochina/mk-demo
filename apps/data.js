@@ -3,7 +3,7 @@ export function getMeta() {
 		name: 'root',
 		component: 'Layout',
 		className: 'mk-app-voucher',
-		onFocus: '{{$focus}}',
+		onMouseDown: '{{$mousedown}}',
 		children: [{
 			name: 'header',
 			component: 'Layout',
@@ -208,7 +208,6 @@ export function getMeta() {
 					component: "{{$isFocus(_fullPath) ? 'Input' : 'DataGrid.TextCell'}}",
 					className: "{{$getCellClassName(_fullPath)}}",
 					value: "{{data.form.details[_rowIndex].name}}",
-					onClick: "{{$cellClick}}",
 					onChange: "{{(e)=>$sf('data.form.details.' + _rowIndex + '.name', e.target.value)}}",
 					_power: '({rowIndex})=>rowIndex',
 				}
@@ -239,7 +238,6 @@ export function getMeta() {
 							? data.form.details[_rowIndex].rela.id
 							: data.form.details[_rowIndex].rela.name
 					}}}`,
-					onClick: "{{$cellClick}}",
 					children: {
 						name: 'option',
 						component: 'Select.Option',
@@ -270,7 +268,6 @@ export function getMeta() {
 					component: "{{$isFocus(_fullPath) ? 'Input.Number' : 'DataGrid.TextCell'}}",
 					className: "{{$getCellClassName(_fullPath)}}",
 					value: "{{data.form.details[_rowIndex].mobile}}",
-					onClick: "{{$cellClick}}",
 					onChange: "{{(v)=>$sf('data.form.details.' + _rowIndex + '.mobile', v)}}",
 					_power: '({rowIndex})=>rowIndex',
 				}
@@ -294,7 +291,6 @@ export function getMeta() {
 							? $stringToMoment(data.form.details[_rowIndex].birthday)
 							: data.form.details[_rowIndex].birthday
 					}}}`,
-					onClick: "{{$cellClick}}",
 					onChange: "{{(v)=>$sf('data.form.details.' + _rowIndex + '.birthday', $momentToString(v,'YYYY-MM-DD'))}}",
 					_power: '({rowIndex})=>rowIndex',
 				}
@@ -314,7 +310,6 @@ export function getMeta() {
 					className: "{{$getCellClassName(_fullPath)}}",
 					value: "{{ data.form.details[_rowIndex].isWork ? '是': '否' }}",
 					checked: "{{ data.form.details[_rowIndex].isWork }}",
-					onClick: "{{$cellClick}}",
 					onChange: "{{(e)=>$sf('data.form.details.' + _rowIndex + '.isWork', e.target.checked)}}",
 					_power: '({rowIndex})=>rowIndex',
 				}
