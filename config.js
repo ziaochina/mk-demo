@@ -53,19 +53,23 @@ function config(options) {
 					name: '卡片',
 					appName: 'mk-app-person-card'
 				},{
-					key:'203',
+					key: '203',
+					name: '单据',
+					appName: 'mk-app-voucher'
+				},{
+					key:'204',
 					name:'复杂表格',
 					appName: 'mk-app-complex-table'
 				},{
-					key:'204',
+					key:'205',
 					name:'可编辑表格',
 					appName: 'mk-app-editable-table'
 				},{
-					key:'205',
+					key:'206',
 					name:'树表',
 					appName: 'mk-app-tree-table'
 				},{
-					key: '206',
+					key: '207',
 					name: '柱状图',
 					appName: 'mk-app-bar-graph'
 				}]

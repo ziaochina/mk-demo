@@ -16,6 +16,8 @@ import mk_app_root_about from './apps/mk-app-root/apps/mk-app-root-about/index.j
 import mk_app_root_helloWorld from './apps/mk-app-root/apps/mk-app-root-helloWorld/index.js'
 import mk_app_root from './apps/mk-app-root/index.js'
 import mk_app_tree_table from './apps/mk-app-tree-table/index.js'
+import mk_app_voucher_education from './apps/mk-app-voucher/apps/mk-app-voucher-education/index.js'
+import mk_app_voucher from './apps/mk-app-voucher/index.js'
 
 const apps = {
 		
@@ -32,7 +34,9 @@ const apps = {
 	[mk_app_root_about.name]: mk_app_root_about,	
 	[mk_app_root_helloWorld.name]: mk_app_root_helloWorld,	
 	[mk_app_root.name]: mk_app_root,	
-	[mk_app_tree_table.name]: mk_app_tree_table,
+	[mk_app_tree_table.name]: mk_app_tree_table,	
+	[mk_app_voucher_education.name]: mk_app_voucher_education,	
+	[mk_app_voucher.name]: mk_app_voucher,
 }
 
 apps.config = (options) => {
