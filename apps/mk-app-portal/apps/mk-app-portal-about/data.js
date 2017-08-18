@@ -3,7 +3,7 @@ export function getMeta() {
 		name: 'root',
 		component: '::div',
 		className: 'mk-app-portal-about',
-		children: 'Monkey King'
+		children: 'about'
 	}
 }
 

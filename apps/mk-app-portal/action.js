@@ -21,7 +21,7 @@ class action {
     load = async () => {
         if (this.webapi.getMenu) {
             const menu = await this.webapi.getMenu()
-            this.injections.reduce('load', { menu })
+            this.injections.reduce('load', {menu})
         }
     }
 
@@ -56,13 +56,14 @@ class action {
                 }
                 break;
             case 'github':
-                window.open('https://www.github.com/ziaochina/mk-demo')
+                window.open('https://www.github.com/ziaochina/mk-app-portal')
                 break;
             case 'gitter':
                 window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
                 break;
         }
     }
+
 
     menuClick = (e) => {
 
@@ -83,15 +84,6 @@ class action {
         const hit = find(menu)
         if (hit) {
             this.injections.reduce('setContent', hit.appName, hit.appParams)
-        }
-    }
-
-    myMenuClick = (e) => {
-        if (e.key == 'logout') {
-            if (this.component.props.onRedirect && this.config.goAfterLogout) {
-                this.metaAction.context.set('user', undefined)
-                this.component.props.onRedirect(this.config.goAfterLogout)
-            }
         }
     }
 }
