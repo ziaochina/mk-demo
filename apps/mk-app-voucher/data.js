@@ -185,8 +185,11 @@ export function getMeta() {
 			enableSequence: true,
 			enableAddDelrow: true,
 			startSequence: 1,
+			scrollToColumn: '{{data.other.scrollToColumn}}',
+			scrollToRow: '{{data.other.scrollToRow}}',
 			onAddrow: '{{$addrow}}',
 			onDelrow: '{{$delrow}}',
+			onKeyDown: '{{$gridKeydown}}',
 			columns: [{
 				name: 'name',
 				component: 'DataGrid.Column',
@@ -292,6 +295,7 @@ export function getMeta() {
 							: data.form.details[_rowIndex].birthday
 					}}}`,
 					onChange: "{{(v)=>$sf('data.form.details.' + _rowIndex + '.birthday', $momentToString(v,'YYYY-MM-DD'))}}",
+					onOpenChange: "{{$gridBirthdayOpenChange}}",
 					_power: '({rowIndex})=>rowIndex',
 				}
 			}, {
@@ -327,7 +331,10 @@ export function getInitState() {
 				mobile: '',
 				details: [{}]
 			},
-			other: {}
+			other: {
+				//scrollToColumn: 0,
+				//scrollToRow: 0
+			}
 		}
 	}
 }
