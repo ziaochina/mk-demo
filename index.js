@@ -12,6 +12,8 @@ import mk_app_portal_about from './apps/mk-app-portal/apps/mk-app-portal-about/i
 import mk_app_portal_app1 from './apps/mk-app-portal/apps/mk-app-portal-app1/index.js'
 import mk_app_portal_app2 from './apps/mk-app-portal/apps/mk-app-portal-app2/index.js'
 import mk_app_portal from './apps/mk-app-portal/index.js'
+import mk_app_agreement from './apps/mk-app-register/apps/mk-app-agreement/index.js'
+import mk_app_register from './apps/mk-app-register/index.js'
 import mk_app_root_about from './apps/mk-app-root/apps/mk-app-root-about/index.js'
 import mk_app_root_helloWorld from './apps/mk-app-root/apps/mk-app-root-helloWorld/index.js'
 import mk_app_root from './apps/mk-app-root/index.js'
@@ -31,6 +33,8 @@ const apps = {
 	[mk_app_portal_app1.name]: mk_app_portal_app1,	
 	[mk_app_portal_app2.name]: mk_app_portal_app2,	
 	[mk_app_portal.name]: mk_app_portal,	
+	[mk_app_agreement.name]: mk_app_agreement,	
+	[mk_app_register.name]: mk_app_register,	
 	[mk_app_root_about.name]: mk_app_root_about,	
 	[mk_app_root_helloWorld.name]: mk_app_root_helloWorld,	
 	[mk_app_root.name]: mk_app_root,	

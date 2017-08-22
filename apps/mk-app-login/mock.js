@@ -7,8 +7,25 @@ import { fetch } from 'mk-utils'
 
 const mockData = fetch.mockData
 
+function initMockData() {
+    if (!mockData.users) {
+        mockData.users = [{
+            id: 1,
+            mobile: 13334445556,
+            password: '1'
+        }]
+    }
+}
+
 fetch.mock('/v1/user/login', (option) => {
-    if(option.user == 1 && option.password == 1)
+    initMockData()
+
+    const user = mockData.users.find(o=>o.mobile == option.mobile && o.password == option.password)
+
+    if(user){
         return {result: true, value: option}
-    return {result:false, error:{message:'请输入正确的用户名密码（user:1,pwd:1）'}}
+    }
+    else{
+         return {result:false, error:{message:'请输入正确的用户名密码（系统内置用户user:13334445556,pwd:1）'}}
+    }
 })
