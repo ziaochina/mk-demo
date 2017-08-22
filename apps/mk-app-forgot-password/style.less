@@ -1,0 +1,100 @@
+.mk-app-forgot-password{
+    width: 100%;
+    height: 100%;
+
+    &-header{
+	    height: 58px;
+	    flex: 0 0 58px;
+	    background: #fff;
+	    border-bottom: 1px solid #d9d9d9;
+    	font-size: 20px;
+    	font-weight: bold;
+    	flex-direction:row;
+    	align-items:center;
+    	overflow: hidden;
+
+    	&-logo {
+    		width: 90px;
+    		height: 90px;
+    		margin-right: 10px;
+    	}
+	}
+
+    &-form{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        overflow:hidden;
+
+        .mk-form-item{
+            margin-bottom: 30px
+        }
+
+        .ant-form-item-control-wrapper, .ant-input-group-wrapper{
+            width: 400px;
+        }
+        
+
+        .ant-form-item-control, .ant-input-wrapper{
+            height: 50px;
+        }
+
+        .mk-input{
+            height: 100%;
+        }
+
+        .ant-form-explain{
+            margin-top: 5px;
+        }
+
+        &-title {
+            text-align: center;
+            font-size: xx-large
+        }
+
+        &-mobile,&-captcha, &-password, &-confirmPassword   {
+            .ant-input{
+                padding-left: 20px !important;
+                font-size: large
+            }
+        }
+
+        &-captcha .ant-input  {
+            border-right-width: 0px;
+        }
+
+        &-next, &-modify{
+            .mk-btn{
+                width: 100%;
+                height: 100%;
+            }
+            margin-bottom: 5px !important;
+        }
+
+        .ant-input-group-addon{
+            padding: 0px;
+            border-width: 0px;
+
+            .mk-btn{
+                height: 50px;
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+            }
+        }
+
+        .mk-checkbox{
+            margin-right: 0px;
+        }
+
+    }
+
+    &-footer{
+    	height: 50px;
+    	flex: 0 0 58px;
+    	justify-content: center;
+    	align-items: center;
+    	background: #fafafa;
+	}
+}

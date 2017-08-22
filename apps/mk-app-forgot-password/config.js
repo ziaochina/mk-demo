@@ -3,21 +3,12 @@ import logo from './img/logo.png'
 
 var _options = {
 	webapi,
-	goAfterLogin: {
-		appName: 'mk-app-portal',
-		appParams: {}
-	},
-	goRegister:{
-		appName: 'mk-app-register',
-		appParams: {}
-	},
-	goForgot:{
-		appName: 'mk-app-forgot-password',
+	goLogin:{
+		appName: 'mk-app-login',
 		appParams: {}
 	},
 	logo: logo
 }
-
 
 function config(options) {
 	if (options) {

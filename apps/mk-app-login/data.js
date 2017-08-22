@@ -79,6 +79,7 @@ export function getMeta() {
 						name: 'forgot',
 						component: '::a',
 						style: { float: 'right' },
+						onClick: '{{$goForgot}}',
 						children: '忘记密码'
 					}]
 				}, {

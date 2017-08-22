@@ -17,27 +17,27 @@ function initMockData() {
     }
 }
 
-fetch.mock('/v1/user/create', (option) => {
+
+fetch.mock('/v1/user/modifyPassword', (option) => {
     initMockData()
-
-    if (option.captcha != '123456') {
-        return { result: false, error: { message: '验证码错误，请重新获取验证码录入' } }
-    }
-
-    const id = mockData.users.length
-    const v = { ...option, id }
-    mockData.users.push(v)
-
-    return { result: true, value: v }
+    var user = mockData.users.find(o => o.mobile == option.mobile)
+    user.password = option.password
+    return { result: true, value: user }
 })
 
 fetch.mock('/v1/user/existsMobile', (mobile) => {
     initMockData()
     return { result: true, value: mockData.users.findIndex(o => o.mobile == mobile) != -1 }
-
 })
 
 fetch.mock('/v1/captcha/fetch', (option) => {
     return { result: true, value: '123456' }
+})
+
+fetch.mock('/v1/captcha/validate', (captcha) => {
+    if (captcha != '123456') {
+        return { result: false, error: { message: '验证码错误，请重新获取验证码录入' } }
+    }
+    return { result: true, value: true }
 })
 
