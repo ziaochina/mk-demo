@@ -8,7 +8,7 @@ import { fetch } from 'mk-utils'
 
 export default {
     user: {
-        modifyPassword: (option) => fetch.post('/v1/user/modifyPassword', option),
+        resetPassword: (option) => fetch.post('/v1/user/resetPassword', option),
         existsMobile: (mobile) => fetch.post('/v1/user/existsMobile', mobile)
     },
     captcha: {

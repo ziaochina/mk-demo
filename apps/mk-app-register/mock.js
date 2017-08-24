@@ -24,7 +24,7 @@ fetch.mock('/v1/user/create', (option) => {
         return { result: false, error: { message: '验证码错误，请重新获取验证码录入' } }
     }
 
-    const id = mockData.users.length
+    const id = mockData.users.length + 1
     const v = { ...option, id }
     mockData.users.push(v)
 

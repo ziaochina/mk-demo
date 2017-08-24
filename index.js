@@ -7,6 +7,9 @@ import mk_app_complex_table from './apps/mk-app-complex-table/index.js'
 import mk_app_editable_table from './apps/mk-app-editable-table/index.js'
 import mk_app_forgot_password from './apps/mk-app-forgot-password/index.js'
 import mk_app_login from './apps/mk-app-login/index.js'
+import mk_app_modify_password_test from './apps/mk-app-modify-password/apps/mk-app-modify-password-test/index.js'
+import mk_app_modify_password from './apps/mk-app-modify-password/index.js'
+import mk_app_my_setting from './apps/mk-app-my-setting/index.js'
 import mk_app_person_card from './apps/mk-app-person-card/index.js'
 import mk_app_person_list from './apps/mk-app-person-list/index.js'
 import mk_app_portal_about from './apps/mk-app-portal/apps/mk-app-portal-about/index.js'
@@ -29,6 +32,9 @@ const apps = {
 	[mk_app_editable_table.name]: mk_app_editable_table,	
 	[mk_app_forgot_password.name]: mk_app_forgot_password,	
 	[mk_app_login.name]: mk_app_login,	
+	[mk_app_modify_password_test.name]: mk_app_modify_password_test,	
+	[mk_app_modify_password.name]: mk_app_modify_password,	
+	[mk_app_my_setting.name]: mk_app_my_setting,	
 	[mk_app_person_card.name]: mk_app_person_card,	
 	[mk_app_person_list.name]: mk_app_person_list,	
 	[mk_app_portal_about.name]: mk_app_portal_about,	

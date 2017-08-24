@@ -1,0 +1,143 @@
+.mk-app-my-setting{
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+    justify-content:center;
+    //align-items: center;
+
+    &-left{
+        width: 150px;
+        flex: 0 0 150px;
+        padding: 10px;
+    }
+
+    &-baseInfo{
+        padding: 30px;
+        &-title{
+            border: 0px dashed #ccc;
+            border-bottom-width: 1px;
+            margin-bottom: 15px;
+        }
+
+        &-form{
+            .ant-form-item-control-wrapper, .ant-input-group-wrapper{
+                width: 400px;
+            }
+
+            .ant-form-item-label{
+                width: 100px;
+                margin-right: 15px;
+            }
+            .mk-input{
+                height: 100%;
+            }
+
+            .mk-datepicker{
+               width:100%;
+            }
+
+            &-photo {
+                img{
+                    width: 150px;
+                    height: 150px;
+                    border: 1px solid #ccc;
+                }
+
+                .mk-upload{
+                    display: none;
+                    position: absolute;
+                    width: 150px;
+                    height: 26px;
+                    text-align: center;
+                    background: #444;
+                    bottom: 0px;
+                    opacity: 0.8;
+                    line-height: 26px;
+                    color:#fff;
+                    cursor: pointer;
+                }
+
+                div:hover .mk-upload{
+                    display:  block
+                }
+                    
+            }
+        }
+    }
+
+    &-security{
+        padding: 30px;
+        &-title{
+            border: 0px dashed #ccc;
+            border-bottom-width: 1px;
+            margin-bottom: 15px;
+        }
+
+        &-level{
+            padding: 30px;
+
+            & > span{
+                margin-left: 20px
+            }
+
+            .ant-progress{
+                width: 300px;
+                margin-left: 20px
+            }
+
+            .mk-btn {
+                 margin-left: 20px
+            }
+
+            &-error {
+                & > span{
+                    color: @error-color  
+                }
+
+                .ant-progress-bg{
+                    background-color: @error-color  
+                }
+            }
+
+            &-warn {
+                & > span{
+                    color: @warning-color  
+                }
+
+                .ant-progress-bg{
+                    background-color: @warning-color  
+                }
+            }
+
+            &-normal {
+                & > span{
+                    color: #cfefdf
+                }
+
+                .ant-progress-bg{
+                    background-color: #cfefdf
+                }
+            }
+
+            &-good {
+                & > span{
+                    color: @softly-color
+                }
+
+                .ant-progress-bg{
+                    background-color: @softly-color
+                }
+            }
+
+            &-success {
+                & > span{
+                    color: @success-color
+                }
+
+                .ant-progress-bg{
+                    background-color: @success-color
+                }
+            }
+        }
+    }
+}

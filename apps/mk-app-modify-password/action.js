@@ -3,6 +3,7 @@ import { action as MetaAction, AppLoader } from 'mk-meta-engine'
 import { List, fromJS } from 'immutable'
 import moment from 'moment'
 import config from './config'
+import utils from 'mk-utils'
 
 class action {
     constructor(option) {
@@ -26,59 +27,55 @@ class action {
         return await this.save()
     }
 
-    next = async () => {
+    save = async () => {
         const form = this.metaAction.gf('data.form').toJS()
         const ok = await this.check([{
-            path: 'data.form.mobile', value: form.mobile
-        }, {
-            path: 'data.form.captcha', value: form.captcha
-        }])
-
-        if (!ok) return
-
-        await this.webapi.captcha.validate(form.captcha)
-
-        this.metaAction.sf('data.other.step', 2)
-    }
-
-    prev = async () => {
-        this.metaAction.sf('data.other.step', 1)
-    }
-
-    modify = async () => {
-        const form = this.metaAction.gf('data.form').toJS()
-        const ok = await this.check([{
+            path: 'data.form.oldPassword', value: form.oldPassword
+        },{
             path: 'data.form.password', value: form.password
         }, {
             path: 'data.form.confirmPassword', value: form.confirmPassword
         }])
 
-        if (!ok) return
+        if (!ok) return false
 
-        await this.webapi.user.resetPassword({mobile:form.mobile, password: form.password})
-        this.metaAction.toast('success', `重设密码成功`)
+        const currentUser = this.metaAction.context.get('currentUser')
+        var id = currentUser && currentUser.id
 
-        this.goLogin()
+        //网站中不存在login应用，那么就不做用户相关处理，正式环境应该不需要这段代码，仅为单应用运行使用
+        if (!this.config.apps['mk-app-login']) {
+            id = 1
+        }
+
+        await this.webapi.user.modifyPassword({
+            id,
+            oldPassword:form.oldPassword,
+            password: form.password
+        })
+
+        this.metaAction.toast('success', `修改密码成功`)
+
+        return true
     }
 
-    getLogo = () => this.config.logo
-
-    getCaptcha = async () => {
-        const captcah = await this.webapi.captcha.fetch()
-        this.metaAction.toast('success', `验证码已经发送到您的手机，请输入[模拟先输入：123456]`)
+    getSecurityLevelText = (password) => {
+        if(!password)
+            return ''
+        const level = utils.password.analyzeSecurityLevel(password)
+        if (level == 1)
+            return '强度：低'
+        else if (level == 2)
+            return '强度：中低'
+        else if (level == 3)
+            return '强度：中'
+        else if (level == 4)
+            return '强度：中高'
+        else
+            return '强度：高'
     }
 
     fieldChange = async (fieldPath, value) => {
         await this.check([{ path: fieldPath, value }])
-    }
-
-    goLogin = () => {
-        if (!this.config.apps['mk-app-login']) {
-            throw '请将这个应用加入到带mk-app-root和mk-app-login的网站中，跳转功能才能正常使用'
-        }
-        if (this.component.props.onRedirect && this.config.goLogin) {
-            this.component.props.onRedirect(this.config.goLogin)
-        }
     }
 
     check = async (fieldPathAndValues) => {
@@ -89,12 +86,10 @@ class action {
 
         for (var o of fieldPathAndValues) {
             let r = { ...o }
-            if (o.path == 'data.form.mobile') {
-                Object.assign(r, await this.checkMobile(o.value))
+            if (o.path == 'data.form.oldPassword') {
+                Object.assign(r, await this.checkOldPassword(o.value))
             }
-            else if (o.path == 'data.form.captcha') {
-                Object.assign(r, await this.checkCaptcha(o.value))
-            }
+            
             else if (o.path == 'data.form.password') {
                 Object.assign(r, await this.checkPassword(o.value))
                 const confirmPassword = this.metaAction.gf('data.form.confirmPassword')
@@ -122,33 +117,18 @@ class action {
         return hasError
     }
 
-
-    checkMobile = async (mobile) => {
+    checkOldPassword = async (password) => {
         var message
+        if (!password)
+            message = '请录入旧的密码'
 
-        if (!mobile)
-            message = '请录入手机号'
-        else if (!/^1[3|4|5|8][0-9]\d{8}$/.test(mobile))
-            message = '请录入有效的手机号'
-        else if (await this.webapi.user.existsMobile(mobile) == false)
-            message = '该手机号未注册'
-
-        return { errorPath: 'data.other.error.mobile', message }
-    }
-
-    checkCaptcha = async (captcha) => {
-        var message
-
-        if (!captcha)
-            message = '请录入验证码'
-
-        return { errorPath: 'data.other.error.captcha', message }
+        return { errorPath: 'data.other.error.oldPassword', message }
     }
 
     checkPassword = async (password) => {
         var message
         if (!password)
-            message = '请录入密码'
+            message = '请录入新的密码'
 
         return { errorPath: 'data.other.error.password', message }
     }

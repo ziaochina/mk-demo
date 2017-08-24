@@ -18,7 +18,7 @@ function initMockData() {
 }
 
 
-fetch.mock('/v1/user/modifyPassword', (option) => {
+fetch.mock('/v1/user/resetPassword', (option) => {
     initMockData()
     var user = mockData.users.find(o => o.mobile == option.mobile)
     user.password = option.password

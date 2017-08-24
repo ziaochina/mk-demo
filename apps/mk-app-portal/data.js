@@ -64,9 +64,14 @@ export function getMeta() {
 								component: '::img',
 								className: 'mk-app-portal-header-right-photo',
 								src: '{{$getPhoto()}}'
-							}, '我的']
+							},"{{data.other.currentUser?data.other.currentUser.nickname:''}}"]
 						},
 						children: [{
+							name: 'mySetting',
+							component: 'Menu.Item',
+							key: 'mySetting',
+							children: '个人设置'
+						},{
 							name: 'logout',
 							component: 'Menu.Item',
 							key: 'logout',
@@ -102,6 +107,7 @@ export function getMeta() {
 					name: 'app',
 					component: 'AppLoader',
 					appName: '{{data.content.appName}}',
+					onPortalReload: '{{$load}}',
 					'...': '{{data.content.appParams}}'
 				}
 			}]
@@ -115,7 +121,8 @@ export function getInitState() {
 			menu: [],
 			menuDefaultSelectedKeys: [],
 			menuDefaultOpenKeys: [],
-			content: {}
+			content: {},
+			other:{}
 		}
 	}
 }

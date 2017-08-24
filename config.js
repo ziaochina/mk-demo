@@ -11,6 +11,10 @@ fetch.config({
 	//fetch支持切面扩展（before,after），对restful api统一做返回值或者异常处理
 	after: (response, url) => {
 		if (response.result) {
+			console.log(url, response)
+			if(response.token){
+				fetch.config({token:response.token})
+			}
 			return response.value
 		}
 		else {

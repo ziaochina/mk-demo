@@ -13,8 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "mk-component": "^1.0.10",
-    "mk-meta-engine": "^1.0.30",
-    "mk-utils": "^1.0.2",
+    "mk-meta-engine": "^1.0.32",
+    "mk-utils": "^1.0.15",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"

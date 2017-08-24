@@ -147,7 +147,7 @@ export function getMeta() {
 					name: 'modify',
 					component: 'Button',
 					type: 'softly',
-					children: '确认修改',
+					children: '重置密码',
 					onClick: '{{$modify}}'
 				}]
 			}, {

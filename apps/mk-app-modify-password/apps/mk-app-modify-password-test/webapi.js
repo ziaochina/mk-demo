@@ -7,10 +7,8 @@
 import { fetch } from 'mk-utils'
 
 export default {
-    portal: {
-        init: (option) => fetch.post('/v1/portal/init', option),
-    },
-    user: {
-        logout: () => fetch.post('/v1/user/logout')
-    }
+    /*
+    person: {
+        query: (option) => fetch.post('/v1/person/query', option)
+    }*/
 }

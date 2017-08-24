@@ -29,7 +29,7 @@ class action {
         if (!ok) return
 
         const response = await this.webapi.user.login(form)
-        this.metaAction.context.set('user', response.user)
+        this.metaAction.context.set('currentUser', response)
 
         if (this.component.props.onRedirect && this.config.goAfterLogin) {
             this.component.props.onRedirect(this.config.goAfterLogin)
@@ -46,7 +46,6 @@ class action {
     }
 
     goForgot = () =>{
-        debugger
         if(!this.config.apps['mk-app-forgot-password']){
             throw '请将这个应用加入到带mk-app-root和mk-app-forgot-password的网站中，跳转功能才能正常使用'
         }
