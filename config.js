@@ -76,6 +76,10 @@ function config(options) {
 					key: '207',
 					name: '柱状图',
 					appName: 'mk-app-bar-graph'
+				},{
+					key: '208',
+					name: '版本时间轴',
+					appName: 'mk-app-versions'
 				}]
 			}]
 		}
