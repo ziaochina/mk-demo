@@ -58,7 +58,7 @@ export function getMeta() {
 		}, {
 			name: 'editableTable',
 			component: '::div',
-			onClick: '{{$openComplexTable}}',
+			onClick: '{{$openEditableTable}}',
 			children: [{
 				name: 'img',
 				component: '::img',
