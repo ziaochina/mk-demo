@@ -41,8 +41,8 @@ function config(options) {
 		'mk-app-portal': {
 			menu: [{
 				key: '1',
-				name: 'about',
-				appName: 'mk-app-portal-about',
+				name: '首页',
+				appName: 'mk-app-home',
 				isDefault: true
 			}, {
 				key: '2',

@@ -33,7 +33,7 @@ class action {
             this.metaAction.context.set('currentUser', response.user)
             this.metaAction.sf('data.other.currentUser', fromJS(response.user))
         }
-        else{
+        else {
             this.metaAction.context.set('currentUser', undefined)
             if (this.component.props.onRedirect && this.config.goAfterLogout) {
                 this.component.props.onRedirect(this.config.goAfterLogout)
@@ -82,7 +82,7 @@ class action {
                 }
                 break;
             case 'github':
-                window.open('https://www.github.com/ziaochina/mk-demo')
+                window.open('https://www.github.com/ziaochina/mk-app-portal')
                 break;
             case 'gitter':
                 window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
@@ -114,6 +114,10 @@ class action {
         if (hit) {
             this.injections.reduce('setContent', hit.appName, hit.appParams)
         }
+    }
+
+    setContent = (appName, appParams) => {
+        this.injections.reduce('setContent', appName, appParams)
     }
 }
 

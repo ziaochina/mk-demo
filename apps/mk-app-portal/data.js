@@ -108,6 +108,7 @@ export function getMeta() {
 					component: 'AppLoader',
 					appName: '{{data.content.appName}}',
 					onPortalReload: '{{$load}}',
+					setPortalContent: '{{$setContent}}',
 					'...': '{{data.content.appParams}}'
 				}
 			}]

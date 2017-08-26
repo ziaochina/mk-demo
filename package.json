@@ -12,7 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "mk-component": "^1.0.10",
+    "mk-component": "^1.0.19",
     "mk-meta-engine": "^1.0.34",
     "mk-utils": "^1.0.15",
     "moment": "^2.18.1",
