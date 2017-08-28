@@ -80,6 +80,10 @@ function config(options) {
 					key: '208',
 					name: '版本时间轴',
 					appName: 'mk-app-versions'
+				},{
+					key: '209',
+					name: '报表',
+					appName: 'mk-app-report'
 				}]
 			}]
 		}
