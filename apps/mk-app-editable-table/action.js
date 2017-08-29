@@ -5,6 +5,9 @@ import config from './config'
 import { Input, DataGrid, DatePicker, Select } from 'mk-component'
 import { Map } from 'immutable'
 import moment from 'moment'
+import utils from 'mk-utils'
+
+const colKeys = ['name', 'mobile', 'birthday', 'sex']
 
 class action {
     constructor(option) {
@@ -27,12 +30,7 @@ class action {
 
     save = async () => {
         var list = this.metaAction.gf('data.list').toJS()
-        list = list
-            .filter(o => o.name || o.mobile)
-            .map(o => ({ ...o, birthday: o.birthday ? o.birthday.format('YYYY-MM-DD') : o.birthday }))
-
         await this.webapi.editableTable.save(list)
-
         this.metaAction.toast('success', '保存成功')
         this.load()
     }
@@ -48,6 +46,56 @@ class action {
         this.injections.reduce('delrow', id)
     }
 
+
+    mousedown = (e) => {
+        const path = utils.path.findPathByEvent(e)
+        if (this.metaAction.isFocus(path)) return
+
+        if (path.indexOf('cell.cell') != -1) {
+            this.focusCell(this.getCellInfo(path))
+        }
+        else {
+            if (!this.metaAction.focusByEvent(e)) return
+            setTimeout(this.cellAutoFocus, 16)
+        }
+    }
+
+    getCellInfo(path) {
+        const parsedPath = utils.path.parsePath(path)
+
+        const rowCount = this.metaAction.gf('data.list').size
+        const colCount = 4
+        var colKey = parsedPath.path
+            .replace('root.children.table.columns.', '')
+            .replace('.cell.cell', '')
+            .replace(/\s/g, '')
+
+        return {
+            x: colKeys.findIndex(o => o == colKey),
+            y: Number(parsedPath.vars[0]),
+            colCount,
+            rowCount,
+        }
+    }
+
+    focusCell(position) {
+        this.metaAction.sfs({
+            'data.other.focusFieldPath': `root.children.table.columns.${colKeys[position.x]}.cell.cell,${position.y}`,
+            'data.other.scrollToRow': position.y,
+            'data.other.scrollToColumn': position.x
+        })
+
+        setTimeout(this.cellAutoFocus, 16)
+    }
+
+    cellAutoFocus = () => {
+        utils.dom.gridCellAutoFocus(this.component, '.editable-cell')
+    }
+
+    getCellClassName = (path) => {
+        return this.metaAction.isFocus(path) ? 'mk-app-editable-table-cell editable-cell' : ''
+    }
+
     isFocusCell = (ps, columnKey) => {
         const focusCellInfo = this.metaAction.gf('data.other.focusCellInfo')
         if (!focusCellInfo)
@@ -55,115 +103,14 @@ class action {
         return focusCellInfo.columnKey == columnKey && focusCellInfo.rowIndex == ps.rowIndex
     }
 
+    gridBirthdayOpenChange = (status) => {
+        if (status) return
+        const editorDOM = ReactDOM.findDOMNode(this.component).querySelector(".editable-cell")
+        if (!editorDOM) return
 
-    nameChange = (ps) => (e) => {
-        this.metaAction.sf(`data.list.${ps.rowIndex}.name`, e.target.value)
-    }
-
-    mobileChange = (ps) => (v) => {
-        this.metaAction.sf(`data.list.${ps.rowIndex}.mobile`, v)
-    }
-
-    birthdayChange = (ps) => (v) => {
-        this.metaAction.sf(`data.list.${ps.rowIndex}.birthday`, v)
-    }
-
-    sexChange = (ps) => (v) => {
-        if (!v) {
-            this.metaAction.sf(`data.list.${ps.rowIndex}.sex`, undefined)
-            return
-        }
-
-
-        this.metaAction.sf(`data.list.${ps.rowIndex}.sex`, v == 0
-            ? Map({ value: 0, text: '男' })
-            : Map({ value: 1, text: '女' })
-        )
-    }
-
-    cellClick = (ps, columnKey) => (e) => {
-        e.stopPropagation()
-
-        this.metaAction.sf('data.other.focusCellInfo', { rowIndex: ps.rowIndex, columnKey })
-
-        if (columnKey == 'name') {
-            setTimeout(() => {
-                const dom = ReactDOM.findDOMNode(this.refName)
-                dom.select()
-            }, 0)
-        }
-        else if (columnKey == 'mobile')
-            setTimeout(() => {
-                const dom = ReactDOM.findDOMNode(this.refMobile)
-                dom.select()
-            }, 0)
-
-
-    }
-
-    cellGetter = (columnKey) => (ps) => {
-        var cellValue = this.metaAction.gf(`data.list.${ps.rowIndex}.${columnKey}`)
-        var showValue = cellValue
-
-        if (columnKey == 'birthday') {
-            showValue = cellValue ? cellValue.format('YYYY-MM-DD') : cellValue
-        }
-        else if (columnKey == 'sex') {
-            showValue = cellValue ? cellValue.get('text') : ''
-        }
-
-        if (!this.isFocusCell(ps, columnKey)) {
-            return (
-                <DataGrid.TextCell
-                    onClick={this.cellClick(ps, columnKey)}
-                    value={showValue}
-                />
-            )
-        }
-
-        if (columnKey == 'name') {
-            return (
-                <Input
-                    className='mk-app-editable-table-cell'
-                    onChange={this.nameChange(ps)}
-                    value={cellValue}
-                    ref={o => this.refName = o}
-                />
-            )
-        }
-        else if (columnKey == 'mobile') {
-            return (
-                <Input.Number
-                    className='mk-app-editable-table-cell'
-                    onChange={this.mobileChange(ps)}
-                    value={cellValue}
-                    ref={o => this.refMobile = o}
-                />
-            )
-        }
-
-        else if (columnKey == 'birthday') {
-            return (
-                <DatePicker
-                    className='mk-app-editable-table-cell'
-                    onChange={this.birthdayChange(ps)}
-                    value={moment(cellValue)}
-                />
-            )
-        }
-
-        else if (columnKey == 'sex') {
-            return (
-                <Select
-                    className='mk-app-editable-table-cell'
-                    allowClear
-                    onChange={this.sexChange(ps)}
-                    value={cellValue ? cellValue.get('value') + '' : undefined}
-                >
-                    <Option value="0">男</Option>
-                    <Option value="1">女</Option>
-                </Select>
-            )
+        if (editorDOM.className.indexOf('datepicker') != -1) {
+            const input = editorDOM.querySelector('input')
+            input.focus()
         }
     }
 }

@@ -21,12 +21,14 @@ export function getMeta() {
 						name: 'prev',
 						component: 'Button',
 						type: 'softly',
+						size: 'small',
 						icon: 'left',
 						onClick: '{{$prev}}'
 					}, {
 						name: 'next',
 						component: 'Button',
 						type: 'softly',
+						size: 'small',
 						icon: 'right',
 						onClick: '{{$next}}'
 					}]
@@ -60,14 +62,13 @@ export function getMeta() {
 				component: 'Form.Item',
 				label: '姓名',
 				required: true,
-				hasFeedback: true,
-				validateStatus: '{{$checkName().status}}',
-				help: '{{$checkName().message}}',
+				validateStatus: "{{data.other.error.name?'error':'success'}}",
+				help: '{{data.other.error.name}}',
 				children: [{
 					name: 'name',
 					component: 'Input',
 					value: '{{data.form.name}}',
-					onChange: "{{(e)=>$setField('data.form.name',e.target.value)}}"
+					onChange: `{{(e)=>$fieldChange('data.form.name',e.target.value)}}`,
 				}]
 			}, {
 				name: 'sexItem',
@@ -97,14 +98,13 @@ export function getMeta() {
 				component: 'Form.Item',
 				label: '手机',
 				required: true,
-				hasFeedback: true,
-				validateStatus: '{{$checkMobile().status}}',
-				help: '{{$checkMobile().message}}',
+				validateStatus: "{{data.other.error.mobile?'error':'success'}}",
+				help: '{{data.other.error.mobile}}',
 				children: [{
 					name: 'mobile',
 					component: 'Input.Number',
 					value: '{{data.form.mobile}}',
-					onChange: "{{(v)=>$setField('data.form.mobile', v)}}"
+					onChange: `{{(v)=>$fieldChange('data.form.mobile',v)}}`,
 				}]
 			}, {
 				name: 'birthdayItem',
@@ -114,8 +114,8 @@ export function getMeta() {
 				children: [{
 					name: 'birthday',
 					component: 'DatePicker',
-					value: '{{data.form.birthday}}',
-					onChange: "{{(d)=>$setField('data.form.birthday',d)}}"
+					value: '{{$stringToMoment(data.form.birthday)}}',
+					onChange: "{{(v)=>$sf('data.form.birthday', $momentToString(v,'YYYY-MM-DD'))}}",
 				}]
 			}, {
 				name: 'departmentItem',
@@ -171,7 +171,8 @@ export function getInitState(option) {
 				address: '北京海淀'
 			},
 			other: {
-				departments: []
+				departments: [],
+				error: {}
 			}
 		}
 	}

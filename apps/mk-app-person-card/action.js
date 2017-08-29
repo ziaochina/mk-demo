@@ -39,30 +39,21 @@ class action {
         this.injections.reduce('load', payload)
     }
 
-    onOk = () => {
-        return new Promise(async (reslove, reject) => {
-            const ret = await this.save()
-            if (ret === false)
-                reslove(false)
-            else
-                reslove(true)
-        })
+    onOk = async () => {
+        return await this.save()
     }
 
     save = async () => {
-        if (this.checkName(true).status == 'error'
-            || this.checkMobile(true).status == 'error') {
-            this.injections.reduce('setCheckFields', [
-                'data.form.name',
-                'data.form.sex',
-                'data.form.mobile',
-                'data.form.birthday'
-            ])
-            return false
-        }
-
         const form = this.metaAction.gf('data.form').toJS()
-        form.birthday = form.birthday.format('YYYY-MM-DD')
+        
+        const ok = await this.check([{
+            path: 'data.form.name', value: form.name
+        }, {
+            path: 'data.form.mobile', value: form.mobile
+        }])
+
+        if (!ok) return false
+
         if (form.id || form.id == 0) {
             const response = await this.webapi.person.update(form)
             if (response) {
@@ -77,7 +68,7 @@ class action {
                 this.injections.reduce('setPerson', response)
             }
         }
-
+        return true
     }
     add = () => {
         this.injections.reduce('setPerson', {
@@ -107,20 +98,58 @@ class action {
         }
     }
 
-
-
-    checkName = (force) => {
-        const checkFields = this.metaAction.gf('data.other.checkFields') || List()
-        if (force !== true && !checkFields.includes('data.form.name')) return {}
-        const name = this.metaAction.gf('data.form.name')
-        return name ? { status: 'success' } : { status: 'error', message: '请录入姓名' }
+    fieldChange = async (fieldPath, value) => {
+        await this.check([{ path: fieldPath, value }])
     }
 
-    checkMobile = (force) => {
-        const checkFields = this.metaAction.gf('data.other.checkFields') || List()
-        if (force !== true && !checkFields.includes('data.form.mobile')) return {}
-        const mobile = this.metaAction.gf('data.form.mobile')
-        return mobile ? { status: 'success' } : { status: 'error', message: '请录入手机号' }
+    check = async (fieldPathAndValues) => {
+        if (!fieldPathAndValues)
+            return
+
+        var checkResults = []
+
+        for (var o of fieldPathAndValues) {
+            let r = { ...o }
+            if (o.path == 'data.form.name') {
+                Object.assign(r, await this.checkName(o.value))
+            }
+            else if (o.path == 'data.form.mobile') {
+                Object.assign(r, await this.checkMobile(o.value))
+            }
+            checkResults.push(r)
+        }
+
+        var json = {}
+        var hasError = true
+        checkResults.forEach(o => {
+            json[o.path] = o.value
+            json[o.errorPath] = o.message
+            if (o.message)
+                hasError = false
+        })
+
+        this.metaAction.sfs(json)
+        return hasError
+    }
+
+    checkName = async (name) => {
+        var message
+
+        if (!name)
+            message = '请录入姓名'
+
+        return { errorPath: 'data.other.error.name', message }
+    }
+
+    checkMobile = async (mobile) => {
+        var message
+
+        if (!mobile)
+            message = '请录入手机号'
+        else if (!/^1[3|4|5|8][0-9]\d{8}$/.test(mobile))
+            message = '请录入有效的手机号'
+
+        return { errorPath: 'data.other.error.mobile', message }
     }
 
     departmentFocus = async () => {

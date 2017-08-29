@@ -3,6 +3,7 @@ export function getMeta() {
 		name: 'root',
 		component: 'Layout',
 		className: 'mk-app-editable-table',
+		onMouseDown: '{{$mousedown}}',
 		children: [{
 			name: 'header',
 			component: 'Layout',
@@ -37,7 +38,14 @@ export function getMeta() {
 					component: 'DataGrid.Cell',
 					children: '姓名'
 				},
-				cell: "{{$cellGetter('name')}}",
+				cell: {
+					name: 'cell',
+					component: "{{$isFocus(_fullPath) ? 'Input' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_fullPath)}}",
+					value: "{{data.list[_rowIndex].name}}",
+					onChange: "{{(e)=>$sf('data.list.' + _rowIndex + '.name', e.target.value)}}",
+					_power: '({rowIndex})=>rowIndex',
+				}
 			}, {
 				name: 'mobile',
 				component: 'DataGrid.Column',
@@ -49,7 +57,14 @@ export function getMeta() {
 					component: 'DataGrid.Cell',
 					children: '手机'
 				},
-				cell: "{{$cellGetter('mobile')}}",
+				cell: {
+					name: 'cell',
+					component: "{{$isFocus(_fullPath) ? 'Input.Number' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_fullPath)}}",
+					value: "{{data.list[_rowIndex].mobile}}",
+					onChange: "{{(v)=>$sf('data.list.' + _rowIndex + '.mobile', v)}}",
+					_power: '({rowIndex})=>rowIndex',
+				}
 			}, {
 				name: 'birthday',
 				component: 'DataGrid.Column',
@@ -62,6 +77,19 @@ export function getMeta() {
 					children: '生日'
 				},
 				cell: "{{$cellGetter('birthday')}}",
+				cell: {
+					name: 'cell',
+					component: "{{$isFocus(_fullPath) ? 'DatePicker' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_fullPath)}}",
+					value: `{{{
+						return $isFocus(_fullPath)
+							? $stringToMoment(data.list[_rowIndex].birthday)
+							: data.list[_rowIndex].birthday
+					}}}`,
+					onChange: "{{(v)=>$sf('data.list.' + _rowIndex + '.birthday', $momentToString(v,'YYYY-MM-DD'))}}",
+					onOpenChange: "{{$gridBirthdayOpenChange}}",
+					_power: '({rowIndex})=>rowIndex',
+				}
 			}, {
 				name: 'sex',
 				component: 'DataGrid.Column',
@@ -73,7 +101,32 @@ export function getMeta() {
 					component: 'DataGrid.Cell',
 					children: '性别'
 				},
-				cell: "{{$cellGetter('sex')}}",
+				cell: {
+					name: 'cell',
+					component: "{{$isFocus(_fullPath) ? 'Select' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_fullPath)}}",
+					showSearch: false,
+					value: `{{{
+						if(!data.list[_rowIndex].sex) return undefined
+						return $isFocus(_fullPath)
+							? data.list[_rowIndex].sex
+							: (data.list[_rowIndex].sex == 0 ? '男' : '女')
+					}}}`,
+					onChange: `{{(v)=>$sf('data.list.'+ _rowIndex + '.sex', v)}}`,
+					_excludeProps: "{{$isFocus(_fullPath)? ['onClick'] : ['children'] }}",
+					_power: '({rowIndex})=>rowIndex',
+					children: [{
+						name: 'man',
+						component: 'Select.Option',
+						value: '0',
+						children: '男'
+					}, {
+						name: 'woman',
+						component: 'Select.Option',
+						value: '1',
+						children: '女'
+					}],
+				}
 			}]
 		}]
 	}

@@ -16,7 +16,6 @@ class reducer {
     }
 
     load = (state, response) => {
-        response.list.forEach(o=>o.birthday = moment(o.birthday))
         state = this.metaReducer.sf(state, 'data.list', fromJS(response.list))
         return this.metaReducer.sf(state, 'data.other.focusCellInfo', undefined)
     }

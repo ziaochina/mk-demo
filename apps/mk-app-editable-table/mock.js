@@ -13,7 +13,7 @@ function init() {
             mockData.editableTable.push({
                 id: i,
                 name: '诸葛' + (i + 1),
-                sex: { value: i % 2 + '', text: i % 2 == 0 ? '男' : '女' },
+                sex: i % 2,
                 birthday: `1980-${i % 11 + 1}-${i % 28 + 1}`,
                 mobile: '13818181' + (100 + i),
             })
