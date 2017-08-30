@@ -84,6 +84,10 @@ function config(options) {
 					key: '209',
 					name: '报表',
 					appName: 'mk-app-report'
+				},{
+					key: '210',
+					name: '商品列表',
+					appName: 'mk-app-product-list'
 				}]
 			}]
 		}

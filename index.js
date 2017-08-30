@@ -20,6 +20,7 @@ import mk_app_portal_about from './apps/mk-app-portal/apps/mk-app-portal-about/i
 import mk_app_portal_app1 from './apps/mk-app-portal/apps/mk-app-portal-app1/index.js'
 import mk_app_portal_app2 from './apps/mk-app-portal/apps/mk-app-portal-app2/index.js'
 import mk_app_portal from './apps/mk-app-portal/index.js'
+import mk_app_product_list from './apps/mk-app-product-list/index.js'
 import mk_app_agreement from './apps/mk-app-register/apps/mk-app-agreement/index.js'
 import mk_app_register from './apps/mk-app-register/index.js'
 import mk_app_report from './apps/mk-app-report/index.js'
@@ -51,6 +52,7 @@ const apps = {
 	[mk_app_portal_app1.name]: mk_app_portal_app1,	
 	[mk_app_portal_app2.name]: mk_app_portal_app2,	
 	[mk_app_portal.name]: mk_app_portal,	
+	[mk_app_product_list.name]: mk_app_product_list,	
 	[mk_app_agreement.name]: mk_app_agreement,	
 	[mk_app_register.name]: mk_app_register,	
 	[mk_app_report.name]: mk_app_report,	
