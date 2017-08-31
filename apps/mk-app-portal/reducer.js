@@ -1,4 +1,4 @@
-import { Map, fromJS } from 'immutable'
+import { Map, List, fromJS } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
 import { getInitState } from './data'
@@ -23,11 +23,12 @@ class reducer {
         if (!menu || menu.lenght == 0)
             return state
 
-        var defaultMenuItem, firstMenuItem, defaultOpens = []
+        var defaultMenuItem, firstMenuItem, defaultOpens = [], menuKeyNameMap = {}
 
         const loop = (children) => {
             const ret = []
             children.forEach(child => {
+                menuKeyNameMap[child.name] = child.key
                 if (!child.children) {
                     if (!firstMenuItem) {
                         firstMenuItem = child
@@ -41,6 +42,7 @@ class reducer {
                     if (child.isExpand) {
                         defaultOpens.push(child)
                     }
+
                     loop(child.children)
                 }
             })
@@ -51,22 +53,49 @@ class reducer {
 
         defaultMenuItem = defaultMenuItem || firstMenuItem
 
-        const menuDefaultSelectedKeys = fromJS(defaultMenuItem ? [defaultMenuItem.key] : [])
+        const menuSelectedKeys = fromJS(defaultMenuItem ? [defaultMenuItem.key] : [])
         const menuDefaultOpenKeys = fromJS(defaultOpens.map(o => o.key))
-        const defaultContent = fromJS(defaultMenuItem ? defaultMenuItem : {})
+        const defaultContent = defaultMenuItem ? defaultMenuItem : {}
 
         state = this.metaReducer.sf(state, 'data.menu', fromJS(menu))
-        state = this.metaReducer.sf(state, 'data.menuDefaultSelectedKeys', menuDefaultSelectedKeys)
+        state = this.metaReducer.sf(state, 'data.menuKeyNameMap', fromJS(menuKeyNameMap))
+        state = this.metaReducer.sf(state, 'data.menuSelectedKeys', menuSelectedKeys)
         state = this.metaReducer.sf(state, 'data.menuDefaultOpenKeys', menuDefaultOpenKeys)
-        state = this.metaReducer.sf(state, 'data.content', defaultContent)
+
+        return this.setContent(state, defaultContent.name, defaultContent.appName, defaultContent.appProps)
+    }
+
+    setContent = (state, name, appName, appProps) => {
+        const content = fromJS({ name, appName, appProps })
+        state = this.metaReducer.sf(state, 'data.content', content)
+
+        var openTabs = this.metaReducer.gf(state, 'data.openTabs') || List()
+        var hit = openTabs.findIndex(o => o.get('name') == name || o.get('appName') == appName) != -1
+        const isTabsStyle = this.metaReducer.gf(state, 'data.isTabsStyle')
+
+        if (!hit) {
+            if (isTabsStyle)
+                openTabs = openTabs.push(content)
+            else
+                openTabs = List().push(content)
+            state = this.metaReducer.sf(state, 'data.openTabs', openTabs)
+        }
+        else {
+            if (!isTabsStyle) {
+                openTabs = List().push(content)
+                state = this.metaReducer.sf(state, 'data.openTabs', openTabs)
+            }
+        }
 
         return state
     }
 
-    setContent = (state, appName, appProps) => {
-        state = this.metaReducer.sf(state, 'data.content.appName', appName)
-        state = this.metaReducer.sf(state, 'data.content.appParams', appProps)
-        return state
+    closeContent = (state, name) => {
+        var openTabs = this.metaReducer.gf(state, 'data.openTabs') || List()
+        var hitIndex = openTabs.findIndex(o => o.get('name') == name)
+        openTabs = openTabs.remove(hitIndex)
+        state = this.metaReducer.sf(state, 'data.openTabs', openTabs)
+        return this.metaReducer.sf(state, 'data.content', openTabs.get(openTabs.size - 1))
     }
 }
 

@@ -59,7 +59,6 @@ class action {
         const loop = (children) => {
             const ret = []
             children.forEach(child => {
-
                 if (!child.children) {
                     ret.push(<Menu.Item key={child.key}>{child.name}</Menu.Item>)
                 }
@@ -88,21 +87,24 @@ class action {
                 window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
                 break;
             case 'mySetting':
-                this.injections.reduce('setContent', 'mk-app-my-setting', {})
+                if(!this.config.apps['mk-app-my-setting'])
+                    throw '不存在mk-app-my-setting应用，该功能不能使用'
+                
+                this.setContent('个人设置', 'mk-app-my-setting')
                 break;
+            case 'toggleTabs':
+                this.metaAction.sf('data.isTabsStyle', !this.metaAction.gf('data.isTabsStyle'))
         }
     }
 
 
     menuClick = (e) => {
-
         const menu = this.metaAction.gf('data.menu').toJS()
         const find = (children) => {
             for (let child of children) {
                 if (child.key == e.key) {
                     return child
                 }
-
                 if (child.children) {
                     let o = find(child.children)
                     if (o) return o
@@ -112,12 +114,31 @@ class action {
 
         const hit = find(menu)
         if (hit) {
-            this.injections.reduce('setContent', hit.appName, hit.appParams)
+            this.setContent(hit.name, hit.appName, hit.appParams)
         }
     }
 
-    setContent = (appName, appParams) => {
-        this.injections.reduce('setContent', appName, appParams)
+    getMenuSelectKeys = () => {
+        const content = this.metaAction.gf('data.content')
+        if(!content) return 
+        const menuKeyNameMap =  this.metaAction.gf('data.menuKeyNameMap')
+        return [menuKeyNameMap.get(content.get('name'))]
+        
+    }
+    tabChange = (key) => {
+        const openTabs = this.metaAction.gf('data.openTabs')
+        const curr = openTabs.find(o=>o.get('name') == key)
+        this.setContent(curr.get('name'), curr.get('appName'), curr.get('appProps'))
+    }
+
+    tabEdit = (key, action) => {
+        if( action == 'remove'){
+            this.injections.reduce('closeContent', key)
+        }
+    }
+
+    setContent = (name, appName, appProps = {}) => {
+        this.injections.reduce('setContent', name, appName, appProps)
     }
 }
 

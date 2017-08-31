@@ -18,28 +18,28 @@ class action {
     getFunImg = () => funImg
 
     openList = () => {
-        this.open('mk-app-person-list')
+        this.open('列表','mk-app-person-list')
     }
 
     openCard = () => {
-        this.open('mk-app-person-card')
+        this.open('卡片', 'mk-app-person-card')
     }
 
     openVoucher = () => {
-        this.open('mk-app-voucher')
+        this.open('单据','mk-app-voucher')
     }
 
     openComplexTable = () => {
-        this.open('mk-app-complex-table')
+        this.open('复杂表格','mk-app-complex-table')
     }
 
     openEditableTable = () => {
-        this.open('mk-app-editable-table')
+        this.open('可编辑表格','mk-app-editable-table')
     }
 
-    open = (appName) => {
+    open = (name,appName) => {
         this.component.props.setPortalContent &&
-            this.component.props.setPortalContent(appName)
+            this.component.props.setPortalContent(name, appName)
     }
 
 }

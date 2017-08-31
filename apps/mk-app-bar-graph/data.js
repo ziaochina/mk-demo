@@ -1,7 +1,7 @@
 export function getMeta() {
 	return {
 		name: 'root',
-		component: '::div',
+		component: 'Layout',
 		className: 'mk-app-bar-graph',
 		children: [{
 			name: 'chart',
