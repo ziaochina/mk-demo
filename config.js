@@ -88,6 +88,10 @@ function config(options) {
 					key: '210',
 					name: '商品列表',
 					appName: 'mk-app-product-list'
+				},{
+					key: '211',
+					name: 'devtools',
+					appName: 'mk-app-devtools'
 				}]
 			}]
 		}

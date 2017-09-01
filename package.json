@@ -12,9 +12,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "mk-component": "^1.0.19",
+    "mk-component": "^1.0.20",
     "mk-meta-engine": "^1.0.36",
-    "mk-utils": "^1.0.16",
+    "mk-utils": "^1.0.17",
     "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"

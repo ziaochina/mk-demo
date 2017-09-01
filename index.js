@@ -4,6 +4,7 @@ import myConfig  from './config'
 
 import mk_app_bar_graph from './apps/mk-app-bar-graph/index.js'
 import mk_app_complex_table from './apps/mk-app-complex-table/index.js'
+import mk_app_devtools from './apps/mk-app-devtools/index.js'
 import mk_app_editable_table from './apps/mk-app-editable-table/index.js'
 import mk_app_forgot_password from './apps/mk-app-forgot-password/index.js'
 import mk_app_home_chart from './apps/mk-app-home/apps/mk-app-home-chart/index.js'
@@ -36,6 +37,7 @@ const apps = {
 		
 	[mk_app_bar_graph.name]: mk_app_bar_graph,	
 	[mk_app_complex_table.name]: mk_app_complex_table,	
+	[mk_app_devtools.name]: mk_app_devtools,	
 	[mk_app_editable_table.name]: mk_app_editable_table,	
 	[mk_app_forgot_password.name]: mk_app_forgot_password,	
 	[mk_app_home_chart.name]: mk_app_home_chart,	
