@@ -12,12 +12,12 @@ export function getMeta() {
 				component: 'Menu',
 				theme: 'dark',
 				onSelect: '{{$menuSelected}}',
-				selectedKeys: '{{[data.selectApp.fullName]}}',
+				selectedKeys: '{{[data.selectApp.name]}}',
 				children: [{
 					name: 'app',
 					component: 'Menu.Item',
-					key: '{{data.apps[_rowIndex].fullName}}',
-					children: '{{data.apps[_rowIndex].fullName}}',
+					key: '{{data.apps[_rowIndex].name}}',
+					children: '{{data.apps[_rowIndex].name}}',
 					_power: 'for in data.apps'
 				}]
 			}]

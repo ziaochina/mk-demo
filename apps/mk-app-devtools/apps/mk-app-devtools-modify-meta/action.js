@@ -14,31 +14,30 @@ class action {
     onInit = ({ component, injections }) => {
         this.component = component
         this.injections = injections
-
         injections.reduce('init', { apps: this.getApps() })
     }
 
     getApps = () => {
-        const apps = this.metaAction.getAppInstances()
+        const apps = this.config.apps
         const keys = Object.keys(apps)
         const ret = []
 
         keys.forEach(k => {
-            ret.push({
-                fullName: k,
-                name: apps[k].appName,
-                query: apps[k].query,
-                meta: common.beautifyJS(JSON.stringify(apps[k].app.meta))
-            })
+            if (k != 'config') {
+                ret.push({
+                    name: apps[k].name,
+                    meta: common.beautifyJS(JSON.stringify(apps[k].meta))
+                })
+            }
         })
-
         return ret
-
     }
+
+
 
     menuSelected = ({ item, key }) => {
         const apps = this.metaAction.gf('data.apps')
-        const hit = apps.find(o => o.get('fullName') == key)
+        const hit = apps.find(o => o.get('name') == key)
         if (hit)
             this.metaAction.sf('data.selectApp', hit)
     }
@@ -86,18 +85,16 @@ class action {
     }
 
     reset = () => {
-        const apps = this.metaAction.getAppInstances()
+        const apps = this.config.apps
         const keys = Object.keys(apps)
         const selectApp = this.metaAction.gf('data.selectApp')
         keys.forEach(k => {
-            if (apps[k].appName == selectApp.get('name')) {
-                const resetMeta = common.beautifyJS(JSON.stringify(apps[k].app.meta))
+            if (apps[k].name == selectApp.get('name')) {
+                const resetMeta = common.beautifyJS(JSON.stringify(apps[k].meta))
                 this.metaAction.sf('data.selectApp.meta', resetMeta)
-
-                this.forceUpdateComponent(selectApp.get('name'), apps[k].app.meta)
+                this.forceUpdateComponent(selectApp.get('name'), apps[k].meta)
             }
         })
-
     }
 }
 
