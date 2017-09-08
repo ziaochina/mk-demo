@@ -1,0 +1,64 @@
+.mk-app-meta-design {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: space-between;
+
+    &-top {
+        flex: 0 0 400px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 10px;        
+        &-meta,&-state,&-style {
+            flex: 0 0 32%;
+        }
+    }
+    &-bottom {
+        flex: 1;
+        
+    }
+    &-title {
+        padding: 6px;
+        font-size: 14px;
+        background-color: antiquewhite;
+
+        & > div {
+            display: inline-block
+        }
+
+        i{
+            float: right;
+            padding: 5px 15px 5px;
+        }
+        .mk-btn {
+            float: right
+        }
+       
+    }
+
+    &-app {
+        fill:1;
+        border: 1px solid #ccc
+    }
+
+    &-error {
+        color: red !important;
+    }
+
+    &-success {
+         color: green !important
+    }
+    
+    .ant-tabs-bar{
+        margin-bottom: 0px;
+    }
+
+    .react-codemirror2 {
+        flex:1;
+        overflow: auto;
+    }
+    .CodeMirror{
+        height: 100%
+    }
+}

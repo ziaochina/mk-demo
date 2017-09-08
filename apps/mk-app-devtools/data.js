@@ -7,18 +7,18 @@ export function getMeta() {
 			name: 'tabs',
 			component: 'Tabs',
 			className: 'mk-app-devtools-tabs',
+			activeKey: '{{data.tabKey}}',
 			onChange: '{{$tabChange}}',
-			
 			children: [{
 				name: 'apps',
 				component: 'Tabs.TabPane',
 				key: 'apps',
-				tab: '当期网站所有app'
+				tab: '当前网站所有app'
 			}, {
 				name: 'state',
 				component: 'Tabs.TabPane',
 				key: 'state',
-				tab: '当前网站完整状态(state)'
+				tab: '当前状态(state)'
 			}, {
 				name: 'mockData',
 				component: 'Tabs.TabPane',
@@ -29,6 +29,11 @@ export function getMeta() {
 				component: 'Tabs.TabPane',
 				key: 'apis',
 				tab: '所有API'
+			}, {
+				name: 'modifyMeta',
+				component: 'Tabs.TabPane',
+				key: 'modifyMeta',
+				tab: '修改app元数据'
 			}]
 		}, {
 			name: 'content',
@@ -54,6 +59,11 @@ export function getMeta() {
 				component: 'JSONTree',
 				_visible: "{{data.tabKey=='apis'}}",
 				data: '{{$getAPIs()}}'
+			}, {
+				name: 'modifyMeta',
+				component: 'AppLoader',
+				notRender: "{{data.tabKey!='modifyMeta'}}",
+				appName: 'mk-app-devtools-modify-meta'
 			}]
 		}]
 	}

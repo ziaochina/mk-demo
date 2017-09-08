@@ -1,14 +1,18 @@
-.mk-app-devtools{
+.mk-app-devtools {
     width: 100%;
     height: 100%;
-
     &-tabs {
-        height:37px;
+        height: 37px;
         flex: 0 0 37px;
     }
-
-    &-content{
+    &-content {
         padding: 10px;
+        display: flex;
+        flex: 1;
         overflow: auto;
+        &>ul {
+            overflow: auto;
+            flex: 1;
+        }
     }
 }

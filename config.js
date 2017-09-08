@@ -90,8 +90,12 @@ function config(options) {
 					appName: 'mk-app-product-list'
 				},{
 					key: '211',
-					name: 'devtools',
+					name: '开发工具',
 					appName: 'mk-app-devtools'
+				},{
+					key: '212',
+					name: '元数据设计',
+					appName: 'mk-app-meta-design'
 				}]
 			}]
 		}

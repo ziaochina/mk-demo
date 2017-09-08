@@ -1,0 +1,37 @@
+.mk-app-devtools-modify-meta {
+    flex:1;
+    flex-direction: row;
+
+    &-left {
+        flex: 0 0 200px;
+        margin-right: 10px;
+        .mk-menu {
+            flex: 1
+        }
+    }
+    &-content {
+        padding: 2px;
+        justify-content: space-between;
+        
+        &-meta,&-preview {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .ant-card-header {
+        flex: 0 0 28px;
+    }
+    .ant-card-body {
+        flex: 1;
+        overflow: auto;
+        padding: 0px;
+    }
+    .react-codemirror2 {
+        height: 100%;
+        overflow: auto;
+    }
+    .CodeMirror {
+        height: 100%;
+    }
+}
