@@ -1,22 +1,37 @@
-.mk-app-tree-table{
-	width: 100%;
-	height: 100%;
-	flex-direction: row;
-
-	&-left {
-		width: 200px;
-		flex: 0 0 200px;
-		border-right:1px solid #ddd;
-	}
-
-	&-content{
-		flex:1;
-
-		&-footer{
-			height: 58px;
-	    	flex: 0 0 58px;
-			justify-content:center;
-			align-items:flex-end;
-		}
-	}
-}	
+.mk-app-tree-table {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    flex-direction: row;
+    &-left {
+        width: 200px;
+        flex: 0 0 200px;
+        margin-right: 10px;
+    }
+    &-content {
+        flex: 1;
+        &-footer {
+            height: 58px;
+            flex: 0 0 58px;
+            justify-content: center;
+            align-items: flex-end;
+        }
+    }
+    .mk-card {
+        display: flex;
+        flex-direction: column;
+        .ant-card-head {
+            padding: 0 10px;
+            flex: 0 0 50px;
+            .mk-btn {
+                margin-right: 4px;
+            }
+        }
+        .ant-card-body {
+            padding: 4px;
+            flex:1;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

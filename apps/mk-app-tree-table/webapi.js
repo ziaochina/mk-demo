@@ -8,6 +8,11 @@ import { fetch } from 'mk-utils'
 export default {
     goods: {
         init: (option) => fetch.post('/v1/goods/init', option),
-        query: (option) => fetch.post('/v1/person/query', option)
+        query: (option) => fetch.post('/v1/goods/query', option),
+        del: (option)  => fetch.post('/v1/goods/del', option),
+
+    },
+    goodsType: {
+        del: (option) => fetch.post('/v1/goodsType/del', option)
     }
 }

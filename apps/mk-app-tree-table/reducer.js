@@ -16,9 +16,23 @@ class reducer {
         state = this.metaReducer.sf(state, 'data.list', fromJS(response.list))
         state = this.metaReducer.sf(state, 'data.pagination', fromJS(response.pagination))
         state = this.metaReducer.sf(state, 'data.filter', fromJS(response.filter))
-        if(response.goodsTypes){
+        if (response.goodsTypes) {
             state = this.metaReducer.sf(state, 'data.other.goodsTypes', fromJS(response.goodsTypes))
         }
+        return state
+    }
+
+
+    selectAll = (state, checked) => {
+        var lst = this.metaReducer.gf(state, 'data.list')
+
+        if (!lst || lst.size == 0)
+            return state
+
+        for (let i = 0; i < lst.size; i++) {
+            state = this.metaReducer.sf(state, `data.list.${i}.selected`, checked)
+        }
+
         return state
     }
 }

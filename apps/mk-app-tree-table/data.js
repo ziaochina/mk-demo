@@ -5,18 +5,67 @@ export function getMeta() {
 		className: 'mk-app-tree-table',
 		children: [{
 			name: 'left',
-			component: 'Layout',
+			component: 'Card',
 			className: 'mk-app-tree-table-left',
+			title: '分类',
+			extra: {
+				name: 'header',
+				component: '::div',
+				children: [{
+					name: 'add',
+					component: 'Button',
+					type: "showy",
+					shape: "circle",
+					icon: 'plus',
+					onClick: '{{$addType}}'
+				}, {
+					name: 'modify',
+					component: 'Button',
+					type: "showy",
+					shape: "circle",
+					icon: 'edit',
+					onClick: '{{$modifyType}}'
+				}, {
+					name: 'del',
+					component: 'Button',
+					type: "showy",
+					shape: "circle",
+					icon: 'close',
+					onClick: '{{$delType}}'
+				}]
+
+			},
+			
 			children: [{
 				name: 'tree',
 				component: 'Tree',
+				selectedKeys: `{{[data.filter.type+'']}}`,
 				onSelect: '{{$selectType}}',
 				children: '{{$loopTreeChildren(data.other.goodsTypes)}}'
 			}]
 		}, {
 			name: 'content',
+			component: 'Card',
 			className: 'mk-app-tree-table-content',
-			component: 'Layout',
+			title: '商品列表',
+			extra: {
+				name: 'header',
+				component: '::div',
+				className: 'mk-app-tree-table-content-header',
+				children: [{
+					name: 'add',
+					component: 'Button',
+					type: 'softly',
+					children: '新增',
+					onClick: '{{$addDetail}}'
+				}, {
+					name: 'del',
+					component: 'Button',
+					type: 'softly',
+					children: '删除',
+					onClick: '{{$batchDelDetail}}'
+				}]
+			},
 			children: [{
 				name: 'dataGrid',
 				component: 'DataGrid',
@@ -26,6 +75,33 @@ export function getMeta() {
 				startSequence: '{{(data.pagination.current-1)*data.pagination.pageSize + 1}}',
 				rowsCount: "{{$getListRowsCount()}}",
 				columns: [{
+					name: 'select',
+					component: 'DataGrid.Column',
+					columnKey: 'select',
+					width: 40,
+					fixed: true,
+					header: {
+						name: 'header',
+						component: 'DataGrid.Cell',
+						children: {
+							name: 'cb',
+							component: 'Checkbox',
+							checked: '{{$isSelectAll()}}',
+							onChange: '{{$selectAll}}'
+						}
+					},
+					cell: {
+						name: 'cell',
+						component: 'DataGrid.Cell',
+						_power: '({rowIndex})=>rowIndex',
+						children: {
+							name: 'checkbox',
+							component: 'Checkbox',
+							checked: '{{data.list[_rowIndex].selected}}',
+							onChange: "{{ (e, option) => $setField('data.list.' + _rowIndex + '.selected', e.target.checked ) }}",
+						}
+					}
+				}, {
 					name: 'code',
 					component: 'DataGrid.Column',
 					columnKey: 'code',
@@ -40,9 +116,14 @@ export function getMeta() {
 						name: 'cell',
 						component: 'DataGrid.Cell',
 						_power: '({rowIndex})=>rowIndex',
-						children: '{{data.list[_rowIndex].code}}',
+						children: {
+							name: 'link',
+							component: '::a',
+							children: '{{data.list[_rowIndex].code}}',
+							onClick: '{{$modifyDetail(data.list[_rowIndex].id)}}'
+						},
 					}
-				},{
+				}, {
 					name: 'name',
 					component: 'DataGrid.Column',
 					columnKey: 'name',

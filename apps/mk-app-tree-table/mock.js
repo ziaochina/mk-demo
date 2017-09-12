@@ -8,6 +8,9 @@ import { fetch } from 'mk-utils'
 const mockData = fetch.mockData
 
 function initGoods() {
+    if (mockData.goodsTypes && mockData.goodsTypes.length > 0)
+        return
+
     mockData.goodsTypes = [{
         id: 1,
         code: '001',
@@ -109,7 +112,7 @@ function initGoods() {
             id: 7000 + i,
             code: 7000 + i + '',
             name: '鞋子' + i,
-            type: 301
+            type: 3
         })
     }
 }
@@ -121,6 +124,10 @@ fetch.mock('/v1/goods/init', (option) => {
     return ret
 })
 
+fetch.mock('/v1/goodsType/query', (option) => {
+    initGoods()
+    return mockData.goodsTypes
+})
 
 fetch.mock('/v1/goods/query', (option) => {
     return query(option)
@@ -132,15 +139,14 @@ function query(option) {
     const { pagination, filter } = option
 
     var data = mockData.goods
-    
+
     if (filter) {
-        if (filter.type){
+        if (filter.type) {
             data = data.filter(o => {
-                debugger
                 return o.type.toString().substr(0, filter.type.toString().length) == filter.type
             })
         }
-            
+
     }
 
     var current = pagination.current
@@ -166,3 +172,32 @@ function query(option) {
 
     return ret
 }
+
+
+fetch.mock('/v1/goodsType/del', (option) => {
+    const del = (types) => {
+        types.forEach((t, index) => {
+            if (t.id == option.id) {
+                types.splice(index, 1)
+                return true
+            } else if (t.children) {
+                del(t.children)
+            }
+        })
+    }
+    del(mockData.goodsTypes)
+
+    return { result: true, value: true }
+})
+
+
+fetch.mock('/v1/goods/del', (option) => {
+    option.ids.forEach(id => {
+        let index = mockData.goods.findIndex(o => o.id == id)
+        
+        if (index || index === 0)
+            mockData.goods.splice(index, 1)
+    })
+
+    return { result: true, value: true }
+})

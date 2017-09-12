@@ -28,6 +28,8 @@ import './apps/mk-app-register/mock.js';
 import './apps/mk-app-report/mock.js';
 import './apps/mk-app-root/apps/mk-app-root-about/mock.js';
 import './apps/mk-app-root/apps/mk-app-root-helloWorld/mock.js';
+import './apps/mk-app-tree-table/apps/mk-app-tree-table-detail/mock.js';
+import './apps/mk-app-tree-table/apps/mk-app-tree-table-type/mock.js';
 import './apps/mk-app-tree-table/mock.js';
 import './apps/mk-app-versions/mock.js';
 import './apps/mk-app-voucher/apps/mk-app-voucher-education/mock.js';
