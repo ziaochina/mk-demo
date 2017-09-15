@@ -2,6 +2,7 @@ import { config, start, componentFactory } from 'mk-meta-engine'
 import * as mkComponents from 'mk-component'
 import myConfig  from './config'
 
+import mk_app_apidoc from './apps/mk-app-apidoc/index.js'
 import mk_app_bar_graph from './apps/mk-app-bar-graph/index.js'
 import mk_app_complex_table from './apps/mk-app-complex-table/index.js'
 import mk_app_devtools_modify_meta from './apps/mk-app-devtools/apps/mk-app-devtools-modify-meta/index.js'
@@ -41,6 +42,7 @@ import mk_app_voucher from './apps/mk-app-voucher/index.js'
 
 const apps = {
 		
+	[mk_app_apidoc.name]: mk_app_apidoc,	
 	[mk_app_bar_graph.name]: mk_app_bar_graph,	
 	[mk_app_complex_table.name]: mk_app_complex_table,	
 	[mk_app_devtools_modify_meta.name]: mk_app_devtools_modify_meta,	

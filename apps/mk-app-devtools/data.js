@@ -56,9 +56,12 @@ export function getMeta() {
 				data: '{{$getMockData()}}'
 			}, {
 				name: 'apis',
-				component: 'JSONTree',
+				component: `{{$isExistsApidocApp()?'AppLoader':'::div'}}`,
+				notRender: "{{data.tabKey!='apis'}}",
 				_visible: "{{data.tabKey=='apis'}}",
-				data: '{{$getAPIs()}}'
+				appName: 'mk-app-apidoc',
+				children: '运行网站需要mk-app-apidoc应用，可以使用[mk clone mk-app-apidoc apps/]克隆应用',
+				_excludeProps: "{{$isExistsApidocApp()?['_visible','children']:['notRender','appName']}}"
 			}, {
 				name: 'modifyMeta',
 				component: 'AppLoader',

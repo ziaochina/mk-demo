@@ -3,7 +3,7 @@ import * as data from './data'
 
 export default {
 	name: "mk-app-modify-password",
-	version: "1.0.0",
+	version: "1.0.2",
 	description: "mk-app-modify-password",
 	meta: data.getMeta(),
 	components: [],

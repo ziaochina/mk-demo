@@ -3,7 +3,9 @@ import { action as MetaAction, AppLoader } from 'mk-meta-engine'
 import config from './config'
 import { fromJS } from 'immutable'
 import utils from 'mk-utils'
+import beautify from 'mk-utils/lib/beautify'
 import common from './common'
+
 
 class action {
     constructor(option) {
@@ -46,15 +48,15 @@ class action {
     }
 
     formatMeta = () => {
-        this.metaAction.sf('data.uiMeta', common.beautifyJS(this.metaAction.gf('data.uiMeta')))
+        this.metaAction.sf('data.uiMeta', beautify.beautifyJS(this.metaAction.gf('data.uiMeta')))
     }
 
     formatState = () => {
-        this.metaAction.sf('data.uiData', common.beautifyJS(this.metaAction.gf('data.uiData')))
+        this.metaAction.sf('data.uiData', beautify.beautifyJS(this.metaAction.gf('data.uiData')))
     }
 
     formatStyle = () => {
-        this.metaAction.sf('data.uiStyle', common.beautifyCSS(this.metaAction.gf('data.uiStyle')))
+        this.metaAction.sf('data.uiStyle', beautify.beautifyCSS(this.metaAction.gf('data.uiStyle')))
     }
 
     getAppProps = () => {

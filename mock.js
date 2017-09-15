@@ -1,4 +1,5 @@
 
+import './apps/mk-app-apidoc/mock.js';
 import './apps/mk-app-bar-graph/mock.js';
 import './apps/mk-app-complex-table/mock.js';
 import './apps/mk-app-devtools/apps/mk-app-devtools-modify-meta/mock.js';

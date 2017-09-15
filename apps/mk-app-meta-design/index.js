@@ -1,10 +1,10 @@
 import config from './config'
 import * as data from './data'
-import CodeMirror from './components/codeMirror'
+import CodeMirror from 'mk-component/lib/components/codeMirror'
 
 export default {
 	name: "mk-app-meta-design",
-	version: "1.0.1",
+	version: "1.0.2",
 	description: "mk-app-meta-design",
 	meta: data.getMeta(),
 	components: [{
@@ -12,7 +12,6 @@ export default {
 		component: CodeMirror
 	}],
 	config: config,
-	dependencies: ['js-beautify', 'react-codemirror2'],
 	load: (cb) => {
 		require.ensure([], require => {
 			cb(require('./component'), require('./action'), require('./reducer'))

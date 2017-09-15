@@ -3,6 +3,7 @@ import { action as MetaAction, AppLoader } from 'mk-meta-engine'
 import config from './config'
 import utils from 'mk-utils'
 import common from './common'
+import beautify from 'mk-utils/lib/beautify'
 import { fromJS } from 'immutable'
 
 class action {
@@ -26,7 +27,7 @@ class action {
             if (k != 'config') {
                 ret.push({
                     name: apps[k].name,
-                    meta: common.beautifyJS(JSON.stringify(apps[k].meta))
+                    meta: beautify.beautifyJS(JSON.stringify(apps[k].meta))
                 })
             }
         })
@@ -81,7 +82,7 @@ class action {
     }*/
 
     formatMeta = () => {
-        this.metaAction.sf('data.selectApp.meta', common.beautifyJS(this.metaAction.gf('data.selectApp.meta')))
+        this.metaAction.sf('data.selectApp.meta', beautify.beautifyJS(this.metaAction.gf('data.selectApp.meta')))
     }
 
     reset = () => {
@@ -90,7 +91,7 @@ class action {
         const selectApp = this.metaAction.gf('data.selectApp')
         keys.forEach(k => {
             if (apps[k].name == selectApp.get('name')) {
-                const resetMeta = common.beautifyJS(JSON.stringify(apps[k].meta))
+                const resetMeta = beautify.beautifyJS(JSON.stringify(apps[k].meta))
                 this.metaAction.sf('data.selectApp.meta', resetMeta)
                 this.forceUpdateComponent(selectApp.get('name'), apps[k].meta)
             }

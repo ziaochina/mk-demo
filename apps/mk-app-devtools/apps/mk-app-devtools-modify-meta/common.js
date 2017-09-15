@@ -1,14 +1,4 @@
-import beautify from 'js-beautify'
 import less from 'less/lib/less'
-import utils from 'mk-utils'
-
-export function beautifyJS(str) {
-    return beautify.js_beautify(str, { indent_size: 4 })
-}
-
-export function beautifyCSS(str) {
-    return beautify.css_beautify(str, { indent_size: 4 })
-}
 
 export function addStyleSheet(str) {
     less().render(str, (e, output) => {
@@ -31,7 +21,5 @@ export function addStyleSheet(str) {
 }
 
 export default {
-    beautifyJS,
-    beautifyCSS,
     addStyleSheet
 }

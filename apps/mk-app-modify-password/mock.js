@@ -21,7 +21,6 @@ function initMockData() {
 fetch.mock('/v1/user/modifyPassword', (option) => {
     initMockData()
     var user = mockData.users.find(o => o.id == option.id)
-    console.log(user, option)
     if (user.password != option.oldPassword) {
         return { result: false, error: { message: '旧密码不对，请重新录入' } }
     }

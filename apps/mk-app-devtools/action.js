@@ -43,7 +43,9 @@ class action {
         return utils.fetch.mockApi
     }
 
-
+    isExistsApidocApp = () => {
+        return !!this.config.apps['mk-app-apidoc']
+    }
 }
 
 export default function creator(option) {

@@ -1,0 +1,109 @@
+.mk-app-apidoc {
+    flex:1;
+    flex-direction: row;
+    padding: 10px;
+    &-left {
+        width: 250px;
+        flex: 0 0 250px;
+        margin-right: 10px;
+
+        & > .ant-card-body > ul {
+            overflow: auto
+        }
+    }
+    &-content {
+        flex: 1;
+        flex-direction: column;
+        &-header {
+            flex: 1;
+            .ant-input-search {
+                width: 300px;
+            }
+        }
+        &-grid {
+            flex: 0 0 30%;
+            justify-content: center;
+            align-items: flex-end;
+            &-content-cell {
+                justify-content: flex-start;
+                padding-left: 4px;
+                cursor: pointer;
+            }
+
+            &-content-selectrow {
+                color: #42426F;
+                font-weight:bold;
+            }
+        }
+        &-detail {
+            flex: 1;
+            padding: 5px 0px;
+            p {
+                font-size: 14px;
+                padding: 4px;
+            }
+            &-main {
+                flex: 1;
+                padding-left: 10px;
+                overflow: auto;
+            }
+            &-run {
+                //flex-direction: row;
+                &-url {
+                    flex: 0 0 40px;
+                    flex-direction: row;
+                    align-items: center;
+                }
+                &-params {
+                    flex: 0 0 150px;
+                    flex-direction: row;
+                    align-items: center;
+                }
+                &-oprate {
+                    flex: 0 0 40px;
+                    justify-content: center;
+                    align-items: flex-end;
+                    overflow: hidden;
+                    .mk-btn {
+                        width: 120px;
+                    }
+                }
+                &-return {
+                    flex: 1;
+                    flex-direction: row;
+                    align-items: center;
+                }
+            }
+        }
+    }
+    .mk-card {
+        display: flex;
+        flex-direction: column;
+        .ant-card-head {
+            padding: 0 10px;
+            flex: 0 0 40px;
+            height: 40px;
+            line-height: 40px;
+        }
+        .ant-card-body {
+            padding: 4px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .ant-card-extra {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .react-codemirror2 {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
+    .CodeMirror {
+        height: 100%;
+        width: 100%;
+    }
+}
