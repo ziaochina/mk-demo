@@ -3,7 +3,7 @@ import * as data from './data'
 
 export default {
 	name: "mk-app-trace-action",
-	version: "1.0.0",
+	version: "1.0.1",
 	description: "mk-app-trace-action",
 	meta: data.getMeta(),
 	components: [],

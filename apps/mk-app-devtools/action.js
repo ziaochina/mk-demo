@@ -43,8 +43,8 @@ class action {
         return utils.fetch.mockApi
     }
 
-    isExistsApidocApp = () => {
-        return !!this.config.apps['mk-app-apidoc']
+    isExistsApp = (appName) => {
+        return !!this.config.apps[appName]
     }
 }
 

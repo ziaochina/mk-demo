@@ -34,6 +34,11 @@ export function getMeta() {
 				component: 'Tabs.TabPane',
 				key: 'modifyMeta',
 				tab: '修改app元数据'
+			},{
+				name: 'traceAction',
+				component: 'Tabs.TabPane',
+				key: 'traceAction',
+				tab: 'action监控'
 			}]
 		}, {
 			name: 'content',
@@ -56,17 +61,25 @@ export function getMeta() {
 				data: '{{$getMockData()}}'
 			}, {
 				name: 'apis',
-				component: `{{$isExistsApidocApp()?'AppLoader':'::div'}}`,
+				component: `{{$isExistsApp('mk-app-apidoc')?'AppLoader':'::div'}}`,
 				notRender: "{{data.tabKey!='apis'}}",
 				_visible: "{{data.tabKey=='apis'}}",
 				appName: 'mk-app-apidoc',
 				children: '运行网站需要mk-app-apidoc应用，可以使用[mk clone mk-app-apidoc apps/]克隆应用',
-				_excludeProps: "{{$isExistsApidocApp()?['_visible','children']:['notRender','appName']}}"
+				_excludeProps: "{{$isExistsApp('mk-app-apidoc')?['_visible','children']:['notRender','appName']}}"
 			}, {
 				name: 'modifyMeta',
 				component: 'AppLoader',
 				notRender: "{{data.tabKey!='modifyMeta'}}",
 				appName: 'mk-app-devtools-modify-meta'
+			}, {
+				name: 'traceAction',
+				component: `{{$isExistsApp('mk-app-trace-action')?'AppLoader':'::div'}}`,
+				notRender: "{{data.tabKey!='traceAction'}}",
+				_visible: "{{data.tabKey=='traceAction'}}",
+				appName: 'mk-app-trace-action',
+				children: '运行网站需要mk-app-trace-action应用，可以使用[mk clone mk-app-trace-action apps/]克隆应用',
+				_excludeProps: "{{$isExistsApp('mk-app-trace-action')?['_visible','children']:['notRender','appName']}}"
 			}]
 		}]
 	}
