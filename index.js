@@ -33,6 +33,7 @@ import mk_app_report from './apps/mk-app-report/index.js'
 import mk_app_root_about from './apps/mk-app-root/apps/mk-app-root-about/index.js'
 import mk_app_root_helloWorld from './apps/mk-app-root/apps/mk-app-root-helloWorld/index.js'
 import mk_app_root from './apps/mk-app-root/index.js'
+import mk_app_trace_action from './apps/mk-app-trace-action/index.js'
 import mk_app_tree_table_detail from './apps/mk-app-tree-table/apps/mk-app-tree-table-detail/index.js'
 import mk_app_tree_table_type from './apps/mk-app-tree-table/apps/mk-app-tree-table-type/index.js'
 import mk_app_tree_table from './apps/mk-app-tree-table/index.js'
@@ -73,6 +74,7 @@ const apps = {
 	[mk_app_root_about.name]: mk_app_root_about,	
 	[mk_app_root_helloWorld.name]: mk_app_root_helloWorld,	
 	[mk_app_root.name]: mk_app_root,	
+	[mk_app_trace_action.name]: mk_app_trace_action,	
 	[mk_app_tree_table_detail.name]: mk_app_tree_table_detail,	
 	[mk_app_tree_table_type.name]: mk_app_tree_table_type,	
 	[mk_app_tree_table.name]: mk_app_tree_table,	

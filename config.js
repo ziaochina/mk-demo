@@ -102,6 +102,10 @@ function config(options) {
 					key: '213',
 					name: 'webapi文档',
 					appName: 'mk-app-apidoc'
+				},{
+					key: '214',
+					name: 'action监控',
+					appName: 'mk-app-trace-action'
 				}]
 			}]
 		},
