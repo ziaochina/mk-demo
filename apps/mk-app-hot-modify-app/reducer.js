@@ -2,6 +2,7 @@ import { Map } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
 import { getInitState } from './data'
+import beautify from 'mk-utils/lib/beautify'
 
 class reducer {
     constructor(option) {
@@ -12,8 +13,11 @@ class reducer {
     init = (state, option) => {
         const initState = getInitState()
         initState.data.apps = option.apps
-        if(option.apps.length > 0)
+        if (option.apps.length > 0) {
             initState.data.selectApp = option.apps[0]
+            initState.data.selectType = 'meta'
+            initState.data.currentJson = beautify.beautifyJS(JSON.stringify(option.apps[0].meta))
+        }
 
         return this.metaReducer.init(state, initState)
     }

@@ -106,6 +106,10 @@ function config(options) {
 					key: '214',
 					name: 'action监控',
 					appName: 'mk-app-trace-action'
+				},{
+					key: '215',
+					name: '元数据、状态修改',
+					appName: 'mk-app-hot-modify-app'
 				}]
 			}]
 		},

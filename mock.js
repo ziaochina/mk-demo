@@ -2,7 +2,6 @@
 import './apps/mk-app-apidoc/mock.js';
 import './apps/mk-app-bar-graph/mock.js';
 import './apps/mk-app-complex-table/mock.js';
-import './apps/mk-app-devtools/apps/mk-app-devtools-modify-meta/mock.js';
 import './apps/mk-app-devtools/apps/mk-app-devtools-test/mock.js';
 import './apps/mk-app-devtools/mock.js';
 import './apps/mk-app-editable-table/mock.js';
@@ -11,6 +10,7 @@ import './apps/mk-app-home/apps/mk-app-home-chart/mock.js';
 import './apps/mk-app-home/apps/mk-app-home-list/mock.js';
 import './apps/mk-app-home/apps/mk-app-home-shortcuts/mock.js';
 import './apps/mk-app-home/mock.js';
+import './apps/mk-app-hot-modify-app/mock.js';
 import './apps/mk-app-login/mock.js';
 import './apps/mk-app-meta-design/apps/mk-app-meta-design-preview/mock.js';
 import './apps/mk-app-meta-design/mock.js';

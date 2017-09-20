@@ -1,20 +1,23 @@
-.mk-app-devtools-modify-meta {
-    flex:1;
+.mk-app-hot-modify-app {
+    flex: 1;
     flex-direction: row;
-
+    padding: 10px;
     &-left {
-        flex: 0 0 200px;
+        flex: 0 0 300px;
         margin-right: 10px;
         .mk-menu {
             flex: 1
         }
+        .ant-input-search{
+            margin-bottom: 4px;
+        }
     }
     &-content {
+        flex: 1;
         padding: 2px;
         justify-content: space-between;
-        
-        &-meta,&-preview {
-            height: 100%;
+        &-main {
+            flex: 1;
             display: flex;
             flex-direction: column;
         }
@@ -24,11 +27,12 @@
     }
     .ant-card-body {
         flex: 1;
-        overflow: auto;
+        display: flex; //overflow: auto;
         padding: 0px;
     }
     .react-codemirror2 {
-        height: 100%;
+        //height: 100%;
+        flex: 1;
         overflow: auto;
     }
     .CodeMirror {

@@ -15,30 +15,36 @@ export function getMeta() {
 				key: 'apps',
 				tab: '当前网站所有app'
 			}, {
+				name: 'modifyApp',
+				component: 'Tabs.TabPane',
+				key: 'modifyApp',
+				tab: '元数据、状态修改'
+			}, {
+				name: 'traceAction',
+				component: 'Tabs.TabPane',
+				key: 'traceAction',
+				tab: 'action监控'
+			}, {
 				name: 'state',
 				component: 'Tabs.TabPane',
+				_visible: false,
 				key: 'state',
 				tab: '当前状态(state)'
-			}, {
-				name: 'mockData',
-				component: 'Tabs.TabPane',
-				key: 'mockData',
-				tab: 'mock数据'
 			}, {
 				name: 'apis',
 				component: 'Tabs.TabPane',
 				key: 'apis',
 				tab: '所有API'
 			}, {
-				name: 'modifyMeta',
+				name: 'mockData',
 				component: 'Tabs.TabPane',
-				key: 'modifyMeta',
-				tab: '修改app元数据'
+				key: 'mockData',
+				tab: 'mock数据'
 			},{
-				name: 'traceAction',
+				name: 'metaDesign',
 				component: 'Tabs.TabPane',
-				key: 'traceAction',
-				tab: 'action监控'
+				key: 'metaDesign',
+				tab: '元数据设计'
 			}]
 		}, {
 			name: 'content',
@@ -68,10 +74,14 @@ export function getMeta() {
 				children: '运行网站需要mk-app-apidoc应用，可以使用[mk clone mk-app-apidoc apps/]克隆应用',
 				_excludeProps: "{{$isExistsApp('mk-app-apidoc')?['_visible','children']:['notRender','appName']}}"
 			}, {
-				name: 'modifyMeta',
-				component: 'AppLoader',
-				notRender: "{{data.tabKey!='modifyMeta'}}",
-				appName: 'mk-app-devtools-modify-meta'
+				name: 'modifyApp',
+				_visible: "{{data.tabKey=='modifyApp'}}",
+				component: `{{$isExistsApp('mk-app-hot-modify-app')?'AppLoader':'::div'}}`,
+				notRender: "{{data.tabKey!='modifyApp'}}",
+				appName: 'mk-app-hot-modify-app',
+				children: '运行网站需要mk-app-hot-modify-app应用，可以使用[mk clone mk-app-hot-modify-app apps/]克隆应用',
+				_excludeProps: "{{$isExistsApp('mk-app-hot-modify-app')?['_visible','children']:['notRender','appName']}}"
+
 			}, {
 				name: 'traceAction',
 				component: `{{$isExistsApp('mk-app-trace-action')?'AppLoader':'::div'}}`,
@@ -80,6 +90,14 @@ export function getMeta() {
 				appName: 'mk-app-trace-action',
 				children: '运行网站需要mk-app-trace-action应用，可以使用[mk clone mk-app-trace-action apps/]克隆应用',
 				_excludeProps: "{{$isExistsApp('mk-app-trace-action')?['_visible','children']:['notRender','appName']}}"
+			},{
+				name: 'metaDesign',
+				component: `{{$isExistsApp('mk-app-meta-design')?'AppLoader':'::div'}}`,
+				notRender: "{{data.tabKey!='metaDesign'}}",
+				_visible: "{{data.tabKey=='metaDesign'}}",
+				appName: 'mk-app-meta-design',
+				children: '运行网站需要mk-app-meta-design应用，可以使用[mk clone mk-app-meta-design apps/]克隆应用',
+				_excludeProps: "{{$isExistsApp('mk-app-meta-design')?['_visible','children']:['notRender','appName']}}"
 			}]
 		}]
 	}
