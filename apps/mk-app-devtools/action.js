@@ -20,10 +20,10 @@ class action {
         const keys = Object.keys(this.config.apps)
         var ret = {}
         keys.forEach(k=>{
-            if(k != 'config')
-                ret[k] = this.config.apps[k]
+            if(k != 'config'){
+                ret[k] = {...this.config.apps[k], _notParse: true}
+            }
         })
-
         return ret
     }
 

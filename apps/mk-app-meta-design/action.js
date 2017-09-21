@@ -62,8 +62,8 @@ class action {
     getAppProps = () => {
         const data = this.metaAction.gf('data').toJS()
         return {
-            uiMeta: utils.string.toJson(data.uiMeta),
-            uiData: utils.string.toJson(data.uiData),
+            uiMeta: data.uiMeta,
+            uiData: data.uiData,
         }
     }
 }

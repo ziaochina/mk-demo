@@ -56,14 +56,26 @@ class action {
 
     getMenuChildren = () => {
         const menu = this.metaAction.gf('data.menu').toJS()
+
         const loop = (children) => {
             const ret = []
             children.forEach(child => {
                 if (!child.children) {
-                    ret.push(<Menu.Item key={child.key}>{child.name}</Menu.Item>)
+                    ret.push({
+                        name: child.key,
+                        key: child.key,
+                        component: 'Menu.Item',
+                        children: child.name
+                    })
                 }
                 else {
-                    ret.push(<Menu.SubMenu key={child.key} title={child.name}>{loop(child.children)}</Menu.SubMenu>)
+                    ret.push({
+                        name: child.key,
+                        key: child.key,
+                        title: child.name,
+                        component: 'Menu.SubMenu',
+                        children: loop(child.children)
+                    })
                 }
             })
             return ret

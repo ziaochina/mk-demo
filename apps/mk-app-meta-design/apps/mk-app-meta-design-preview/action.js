@@ -2,6 +2,7 @@ import React from 'react'
 import { action as MetaAction, AppLoader } from 'mk-meta-engine'
 import config from './config'
 import { fromJS } from 'immutable'
+import utils from 'mk-utils'
 
 class action {
     constructor(option) {
@@ -14,14 +15,14 @@ class action {
         this.injections = injections
         injections.reduce('init')
 
-        this.metaAction.setMetaForce('mk-app-meta-design-preview', this.component.props.uiMeta)
-        this.metaAction.sf('data', fromJS(this.component.props.uiData))
+        this.metaAction.setMetaForce('mk-app-meta-design-preview', utils.string.toJson(this.component.props.uiMeta))
+        this.metaAction.sf('data', fromJS(utils.string.toJson(this.component.props.uiData)))
     }
 
     componentWillReceiveProps = (nextProps) => {
         setTimeout(() => {
-            this.metaAction.setMetaForce('mk-app-meta-design-preview', nextProps.uiMeta)
-            this.metaAction.sf('data', fromJS(nextProps.uiData))
+            this.metaAction.setMetaForce('mk-app-meta-design-preview', utils.string.toJson(nextProps.uiMeta))
+            this.metaAction.sf('data', fromJS(utils.string.toJson(nextProps.uiData)))
         }, 0)
 
     }
