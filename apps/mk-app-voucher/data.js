@@ -208,8 +208,8 @@ export function getMeta() {
 				},
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'Input' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'Input' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					value: "{{data.form.details[_rowIndex].name}}",
 					onChange: "{{(e)=>$sf('data.form.details.' + _rowIndex + '.name', e.target.value)}}",
 					_power: '({rowIndex})=>rowIndex',
@@ -232,12 +232,12 @@ export function getMeta() {
 				},
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'Select' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'Select' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					showSearch: false,
 					value: `{{{
 						if(!data.form.details[_rowIndex].rela) return undefined
-						return $isFocus(_fullPath)
+						return $isFocus(_ctrlPath)
 							? data.form.details[_rowIndex].rela.id
 							: data.form.details[_rowIndex].rela.name
 					}}}`,
@@ -252,7 +252,7 @@ export function getMeta() {
 						const rela = data.other.relaDataSource.find(o=>o.id==v)
 						$sf('data.form.details.'+ _rowIndex + '.rela', $fromJS(rela,undefined))
 					}}}`,
-					_excludeProps: "{{$isFocus(_fullPath)? ['onClick'] : ['children'] }}",
+					_excludeProps: "{{$isFocus(_ctrlPath)? ['onClick'] : ['children'] }}",
 					_power: '({rowIndex})=>rowIndex',
 				}
 			}, {
@@ -268,8 +268,8 @@ export function getMeta() {
 				},
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'Input.Number' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'Input.Number' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					value: "{{data.form.details[_rowIndex].mobile}}",
 					onChange: "{{(v)=>$sf('data.form.details.' + _rowIndex + '.mobile', v)}}",
 					_power: '({rowIndex})=>rowIndex',
@@ -287,10 +287,10 @@ export function getMeta() {
 				},
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'DatePicker' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'DatePicker' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					value: `{{{
-						return $isFocus(_fullPath)
+						return $isFocus(_ctrlPath)
 							? $stringToMoment(data.form.details[_rowIndex].birthday)
 							: data.form.details[_rowIndex].birthday
 					}}}`,
@@ -310,8 +310,8 @@ export function getMeta() {
 				},
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'Checkbox' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'Checkbox' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					value: "{{ data.form.details[_rowIndex].isWork ? '是': '否' }}",
 					checked: "{{ data.form.details[_rowIndex].isWork }}",
 					onChange: "{{(e)=>$sf('data.form.details.' + _rowIndex + '.isWork', e.target.checked)}}",

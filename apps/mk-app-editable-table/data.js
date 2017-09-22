@@ -40,8 +40,8 @@ export function getMeta() {
 				},
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'Input' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'Input' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					value: "{{data.list[_rowIndex].name}}",
 					onChange: "{{(e)=>$sf('data.list.' + _rowIndex + '.name', e.target.value)}}",
 					_power: '({rowIndex})=>rowIndex',
@@ -59,8 +59,8 @@ export function getMeta() {
 				},
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'Input.Number' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'Input.Number' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					value: "{{data.list[_rowIndex].mobile}}",
 					onChange: "{{(v)=>$sf('data.list.' + _rowIndex + '.mobile', v)}}",
 					_power: '({rowIndex})=>rowIndex',
@@ -79,10 +79,10 @@ export function getMeta() {
 				cell: "{{$cellGetter('birthday')}}",
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'DatePicker' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'DatePicker' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					value: `{{{
-						return $isFocus(_fullPath)
+						return $isFocus(_ctrlPath)
 							? $stringToMoment(data.list[_rowIndex].birthday)
 							: data.list[_rowIndex].birthday
 					}}}`,
@@ -103,17 +103,17 @@ export function getMeta() {
 				},
 				cell: {
 					name: 'cell',
-					component: "{{$isFocus(_fullPath) ? 'Select' : 'DataGrid.TextCell'}}",
-					className: "{{$getCellClassName(_fullPath)}}",
+					component: "{{$isFocus(_ctrlPath) ? 'Select' : 'DataGrid.TextCell'}}",
+					className: "{{$getCellClassName(_ctrlPath)}}",
 					showSearch: false,
 					value: `{{{
 						if(!data.list[_rowIndex].sex) return undefined
-						return $isFocus(_fullPath)
+						return $isFocus(_ctrlPath)
 							? data.list[_rowIndex].sex
 							: (data.list[_rowIndex].sex == 0 ? '男' : '女')
 					}}}`,
 					onChange: `{{(v)=>$sf('data.list.'+ _rowIndex + '.sex', v)}}`,
-					_excludeProps: "{{$isFocus(_fullPath)? ['onClick'] : ['children'] }}",
+					_excludeProps: "{{$isFocus(_ctrlPath)? ['onClick'] : ['children'] }}",
 					_power: '({rowIndex})=>rowIndex',
 					children: [{
 						name: 'man',
