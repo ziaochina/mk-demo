@@ -80,7 +80,11 @@ class action {
             })
             return ret
         }
-        return loop(menu)
+        return {
+            _isMeta: true,
+            value: loop(menu)
+        } 
+
     }
 
     topMenuClick = async (e) => {
