@@ -3,7 +3,6 @@ import { action as MetaAction, AppLoader } from 'mk-meta-engine'
 import { fromJS } from 'immutable'
 import config from './config'
 import moment from 'moment'
-import { Tree } from 'mk-component'
 
 class action {
     constructor(option) {
@@ -60,14 +59,42 @@ class action {
         this.load(pagination, filter)
     }
 
-    loopTreeChildren = data => {
+    loopTreeChildrenInternal = data => {
         if (!data) return null
+
+        return data.map((item) => {
+            if (item.children && item.children.length) {
+                return {
+                    name: item.id,
+                    component: 'Tree.TreeNode',
+                    key: item.id,
+                    title: item.name,
+                    children: this.loopTreeChildrenInternal(item.children)
+                }
+            }
+
+            return {
+                name: item.id,
+                component: 'Tree.TreeNode',
+                key: item.id,
+                title: item.name
+            }
+        })
+    }
+
+    loopTreeChildren = data => {
+        var ret = {
+            _isMeta: true,
+            value: this.loopTreeChildrenInternal(data)
+        }
+        /*
         return data.map((item) => {
             if (item.children && item.children.length) {
                 return <Tree.TreeNode key={item.id} title={item.name}>{this.loopTreeChildren(item.children)}</Tree.TreeNode>
             }
             return <Tree.TreeNode key={item.id} title={item.name} />
-        })
+        })*/
+        return ret;
     }
 
 
@@ -186,7 +213,7 @@ class action {
             content: '确认删除?'
         })
 
-        if(!ret)
+        if (!ret)
             return
 
         const ids = selectRows.map(o => o.get('id')).toJS()

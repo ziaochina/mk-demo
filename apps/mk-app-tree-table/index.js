@@ -3,7 +3,7 @@ import * as data from './data'
 
 export default {
 	name: "mk-app-tree-table",
-	version: "1.0.1",
+	version: "1.0.3",
 	description: "mk-app-tree-table",
 	meta: data.getMeta(),
 	components: [],
