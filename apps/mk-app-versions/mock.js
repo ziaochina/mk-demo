@@ -23,6 +23,5 @@ function initMockData() {
 
 fetch.mock('/v1/version/query', (option) => {
     initMockData()
-    debugger
     return { result: true, value: mockData.versions }
 })

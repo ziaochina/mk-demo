@@ -9,7 +9,9 @@ class reducer {
     }
 
     init = (state, option) => {
-        return this.metaReducer.init(state, getInitState())
+        const initState = getInitState()
+        return this.metaReducer.init(state, initState)
+
     }
 
     load = (state, response) => {
@@ -31,8 +33,6 @@ class reducer {
 
         return state
     }
-
-
 }
 
 export default function creator(option) {
