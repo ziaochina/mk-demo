@@ -2,7 +2,7 @@
 
 该demo是使用mk框架创建的一个demo
 
-> DEMO在线效果:[https://ziaochina.github.io/mk-demo/](https://ziaochina.github.io/mk-demo/)
+> DEMO在线效果（用户名:13334445556 密码：1）:[https://ziaochina.github.io/mk-demo/](https://ziaochina.github.io/mk-demo/)
 
 > mk框架介绍网站:[https://ziaochina.github.io/mk-docs/](https://ziaochina.github.io/mk-docs/)
 
