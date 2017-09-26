@@ -37,7 +37,7 @@ $ npm install
 
 mk框架前端包含内容：
 
-<img src="https://reactchina.sxlcdn.com/uploads/default/original/2X/8/8ab1e3f1d054fc24e0c23f2a238bfcf3f9e35ea5.png" width="365" height="500">
+<img src="https://reactchina.sxlcdn.com/uploads/default/optimized/2X/7/77611b9d4cd7c320c4035093794c2d93f0153eab_1_365x500.jpg" width="365" height="500">
 
 登录：
 
