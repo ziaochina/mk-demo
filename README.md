@@ -2,9 +2,9 @@
 
 该demo是使用mk框架创建的一个demo，右上角有个star,亲点点哈，您懂的
 
-[DEMO在线效果，https://ziaochina.github.io/mk-demo/](https://ziaochina.github.io/mk-demo/)
+> DEMO在线效果:[https://ziaochina.github.io/mk-demo/](https://ziaochina.github.io/mk-demo/)
 
-[mk框架介绍网站，https://ziaochina.github.io/mk-docs/](https://ziaochina.github.io/mk-docs/)
+> mk框架介绍网站:[https://ziaochina.github.io/mk-docs/](https://ziaochina.github.io/mk-docs/)
 
 
 ## 环境准备
