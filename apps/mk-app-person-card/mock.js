@@ -48,6 +48,7 @@ fetch.mock('/v1/person/findById', (option) => {
 
 fetch.mock('/v1/person/create', (option) => {
     initPersons()
+debugger
     const id = mockData.persons.length
     const v = { ...option, id }
     mockData.persons.push(v)

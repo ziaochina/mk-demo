@@ -1,5 +1,3 @@
-import moment from 'moment'
-
 export function getMeta() {
 	return {
 		name: 'root',
@@ -165,7 +163,7 @@ export function getInitState(option) {
 			form: {
 				name: '',
 				sex: '0',
-				birthday: moment('1981-1-1'),
+				birthday: '1981-1-1',
 				mobile: '',
 				department: '',
 				address: '北京海淀'
