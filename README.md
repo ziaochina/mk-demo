@@ -1,6 +1,6 @@
 # mk-demo
 
-该demo是使用mk框架创建的一个demo，右上角有个star,亲点点哈，您懂的
+该demo是使用mk框架创建的一个demo
 
 > DEMO在线效果:[https://ziaochina.github.io/mk-demo/](https://ziaochina.github.io/mk-demo/)
 
