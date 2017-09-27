@@ -4,7 +4,7 @@ import CodeMirror from 'mk-component/lib/components/codeMirror'
 
 export default {
 	name: "mk-app-apidoc",
-	version: "1.0.2",
+	version: "1.0.5",
 	description: "mk-app-apidoc",
 	meta: data.getMeta(),
 	components: [{

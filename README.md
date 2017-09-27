@@ -25,10 +25,22 @@ http://127.0.0.1:8089
 
 - 如果npm start报错not found module
 ```
-$ npm cache clean
+$ npm cache clean --force
 $ rm -rf node_modules
 $ rm -rf package-lock.json
 $ npm install
+```
+
+- 2017.9.27 react v16.0.0版本发布
+
+```
+//这之前clone的版本npm update后可能会出现各种问题，请按下面步骤修复
+
+$ git pull //更新最新的demo代码，或者重新clone一份
+$ rm -rf node_modules
+$ rm -rf package-lock.json
+$ npm install
+$ npm start
 ```
 
 ## DEMO截图
