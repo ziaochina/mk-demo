@@ -6,11 +6,12 @@ export function getMeta() {
 		children: [{
 			name: 'products',
 			component: 'GridLayout.WidthProviderGridLayout',
+			className: 'mk-app-product-list-products',
 			cols: 12,
 			rowHeight: 50,
 			margin: [20, 20],
 			isResizable: false,
-			isDragable: false,
+			isDraggable: false,
 			_visible: '{{data.products && data.products.length > 0}}',
 			layout: '{{$getLayout()}}',
 			children: [{
