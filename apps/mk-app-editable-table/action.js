@@ -49,6 +49,11 @@ class action {
 
     mousedown = (e) => {
         const path = utils.path.findPathByEvent(e)
+        if(!path)
+            {
+                const ee =e 
+                debugger
+            }
         if (this.metaAction.isFocus(path)) return
 
         if (path.indexOf('cell.cell') != -1) {

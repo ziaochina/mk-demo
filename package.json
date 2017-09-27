@@ -5,19 +5,20 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && cross-env NODE_ENV=production COMPRESS=1 webpack",
-    "start": "cross-env  NODE_ENV=production webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
+    "start": "cross-env  NODE_ENV=development webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "mk-app-loader": "^1.0.13",
     "mk-component": "^1.0.29",
-    "mk-meta-engine": "^1.0.52",
-    "mk-utils": "^1.0.34",
+    "mk-meta-engine": "^1.0.55",
+    "mk-utils": "^1.0.36",
     "moment": "^2.18.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

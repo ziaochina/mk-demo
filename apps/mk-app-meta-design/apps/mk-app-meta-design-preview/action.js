@@ -14,17 +14,18 @@ class action {
         this.component = component
         this.injections = injections
         injections.reduce('init')
-
+        
         this.metaAction.setMetaForce('mk-app-meta-design-preview', utils.string.toJson(this.component.props.uiMeta))
         this.metaAction.sf('data', fromJS(utils.string.toJson(this.component.props.uiData)))
     }
 
     componentWillReceiveProps = (nextProps) => {
-        setTimeout(() => {
+
+        if (this.component.props.uiMeta != nextProps.uiMeta
+            || this.component.props.uiData != nextProps.uiData) {
             this.metaAction.setMetaForce('mk-app-meta-design-preview', utils.string.toJson(nextProps.uiMeta))
             this.metaAction.sf('data', fromJS(utils.string.toJson(nextProps.uiData)))
-        }, 0)
-
+        }
     }
 }
 
