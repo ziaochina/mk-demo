@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && cross-env NODE_ENV=production COMPRESS=1 webpack",
-    "start": "cross-env  NODE_ENV=development webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
+    "start": "cross-env  NODE_ENV=production webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,7 +14,7 @@
   "dependencies": {
     "mk-app-loader": "^1.0.13",
     "mk-component": "^1.0.29",
-    "mk-meta-engine": "^1.0.55",
+    "mk-meta-engine": "^1.0.56",
     "mk-utils": "^1.0.36",
     "moment": "^2.18.1",
     "react": "^16.0.0",
@@ -38,6 +38,6 @@
     "less-loader": "^4.0.5",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.8.2"
+    "webpack-dev-server": "^2.9.0"
   }
 }

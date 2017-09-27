@@ -25,7 +25,6 @@ class reducer {
             return
 
         var ret = []
-
         const appendNode = (group) => {
             var parent = ret
             group.forEach(s => {
@@ -36,7 +35,7 @@ class reducer {
                     parent.push(curr)
                     parent = curr.children
                 } else {
-                    parent.push(c)
+                    //parent.push(c)
                     parent = c.children
                 }
 

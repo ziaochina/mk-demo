@@ -141,8 +141,10 @@ export function getMeta() {
 						onPortalReload: '{{$load}}',
 						setPortalContent: '{{$setContent}}',
 						'...': '{{data.openTabs && data.openTabs.length > 0 && data.openTabs[_rowIndex].appProps}}',
-						notRender: '{{ !(data.content && data.content.name == data.openTabs[_rowIndex].name) }}',
+						isTabStyle: '{{data.isTabsStyle}}',
+						_notRender: '{{ !(data.content && data.content.name == data.openTabs[_rowIndex].name) }}',
 						_power: 'for in data.openTabs',
+						
 					}
 				}]
 			}]
