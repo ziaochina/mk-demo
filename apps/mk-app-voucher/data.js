@@ -167,6 +167,7 @@ export function getMeta() {
 		}, {
 			name: 'detailTitle',
 			component: 'Tabs',
+			className: 'mk-app-voucher-form-detailtitle',
 			type: 'card',
 			size: 'small',
 			children: [{
@@ -178,6 +179,7 @@ export function getMeta() {
 		}, {
 			name: 'formDetails',
 			component: 'DataGrid',
+			className: 'mk-app-voucher-form-details',
 			headerHeight: 40,
 			rowsCount: '{{data.form.details.length}}',
 			rowHeight: 40,

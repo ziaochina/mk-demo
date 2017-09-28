@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "mk-app-loader": "^1.0.13",
-    "mk-component": "^1.0.29",
+    "mk-component": "^1.0.32",
     "mk-meta-engine": "^1.0.56",
     "mk-utils": "^1.0.36",
     "moment": "^2.18.1",
