@@ -10,17 +10,19 @@ class reducer {
     }
 
     init = (state, option) => {
-        const initState = getInitState()
-
-        setTimeout(() => location.hash = initState.data.currentAppName, 0)
-
-        return this.metaReducer.init(state, initState)
+        this.replaceHistory(option.initState.data.currentAppName)
+        return this.metaReducer.init(state, option.initState)
     }
 
     redirect = (state, appName) => {
-        setTimeout(() => location.hash = appName, 0)
-        state = this.metaReducer.sf(state, 'data.currentAppName', appName)
-        return state
+        this.replaceHistory(appName)
+        return this.metaReducer.sf(state, 'data.currentAppName', appName)
+    }
+
+    replaceHistory = (appName) => {
+        setTimeout(() => {
+            this.config.history.push(`/mk-app-root/${appName}`)
+        }, 0)
     }
 }
 

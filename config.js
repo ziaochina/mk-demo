@@ -1,10 +1,12 @@
 import { Toast, Notification, Modal } from 'mk-component'
-import { fetch } from 'mk-utils'
+import { fetch, history } from 'mk-utils'
 import './mock.js' //脱离后台测试，启用mock，否则这行注释
 
 import apiDoc from './apiDoc'
 
 var _options = {}
+
+const hashHistory = history.createHashHistory()
 
 //配置fetch
 fetch.config({
@@ -13,8 +15,8 @@ fetch.config({
 	//fetch支持切面扩展（before,after），对restful api统一做返回值或者异常处理
 	after: (response, url) => {
 		if (response.result) {
-			if(response.token){
-				fetch.config({token:response.token})
+			if (response.token) {
+				fetch.config({ token: response.token })
 			}
 			return response.value
 		}
@@ -31,6 +33,7 @@ function config(options) {
 	//对应用进行配置，key会被转换为'^<key>$'跟app名称正则匹配
 	_options.apps && _options.apps.config({
 		//'*': { webapi } //正式网站应该有一个完整webapi对象，提供所有web请求函数
+		'*': { history: hashHistory },
 		'mk-app-root': {
 			startAppName: 'mk-app-login'
 		},
@@ -57,63 +60,63 @@ function config(options) {
 					key: '202',
 					name: '卡片',
 					appName: 'mk-app-person-card'
-				},{
+				}, {
 					key: '203',
 					name: '单据',
 					appName: 'mk-app-voucher'
-				},{
-					key:'204',
-					name:'复杂表格',
+				}, {
+					key: '204',
+					name: '复杂表格',
 					appName: 'mk-app-complex-table'
-				},{
-					key:'205',
-					name:'可编辑表格',
+				}, {
+					key: '205',
+					name: '可编辑表格',
 					appName: 'mk-app-editable-table'
-				},{
-					key:'206',
-					name:'树表',
+				}, {
+					key: '206',
+					name: '树表',
 					appName: 'mk-app-tree-table'
-				},{
+				}, {
 					key: '207',
 					name: '柱状图',
 					appName: 'mk-app-bar-graph'
-				},{
+				}, {
 					key: '208',
 					name: '版本时间轴',
 					appName: 'mk-app-versions'
-				},{
+				}, {
 					key: '209',
 					name: '报表',
 					appName: 'mk-app-report'
-				},{
+				}, {
 					key: '210',
 					name: '商品列表',
 					appName: 'mk-app-product-list'
-				},{
+				}, {
 					key: '211',
 					name: '开发工具',
 					appName: 'mk-app-devtools'
-				},{
+				}, {
 					key: '212',
 					name: '元数据设计',
 					appName: 'mk-app-meta-design'
-				},{
+				}, {
 					key: '213',
 					name: 'webapi文档',
 					appName: 'mk-app-apidoc'
-				},{
+				}, {
 					key: '214',
 					name: 'action监控',
 					appName: 'mk-app-trace-action'
-				},{
+				}, {
 					key: '215',
 					name: '元数据、状态修改',
 					appName: 'mk-app-hot-modify-app'
 				}]
 			}]
 		},
-		'mk-app-apidoc':{
-			apis:apiDoc
+		'mk-app-apidoc': {
+			apis: apiDoc
 		}
 	})
 
