@@ -30,9 +30,9 @@ class reducer {
             const ret = []
             children.forEach(child => {
                 menuKeyNameMap[child.name] = child.key
-                
+
                 //history增加
-                if(child.appName){
+                if (child.appName) {
                     menuAppNameMap[child.appName] = {
                         name: child.name,
                         props: {}
@@ -74,28 +74,32 @@ class reducer {
         state = this.metaReducer.sf(state, 'data.menuDefaultOpenKeys', menuDefaultOpenKeys)
 
         const childApp = history.getChildApp('mk-app-portal')
-        if(childApp)
+        if (childApp)
             return this.setContent(state, '', childApp, {})
         else
             return this.setContent(state, defaultContent.name, defaultContent.appName, defaultContent.appProps)
     }
 
     setContent = (state, name, appName, appProps) => {
-
+        debugger
         //判断当前显示页签appName和要新打开的是否一致
         const currContent = this.metaReducer.gf(state, 'data.content')
-        if(currContent && appName == currContent.get('appName'))
+        if (currContent && appName == currContent.get('appName'))
             return state
 
         //history增加
-        const menuAppNameMap = this.metaReducer.gf(state, 'data.menuAppNameMap')
-        if(name && appName && menuAppNameMap.getIn([appName,'name']) != name){
-            state = this.metaReducer.sf(state, 'data.menuAppNameMap', menuAppNameMap.set(appName, {name, props:appProps}))
+        let menuAppNameMap = this.metaReducer.gf(state, 'data.menuAppNameMap')
+        if (!menuAppNameMap.get(appName)) {
+            menuAppNameMap = menuAppNameMap.set(appName, fromJS({ name, props: appProps }))
+            state = this.metaReducer.sf(state, 'data.menuAppNameMap', menuAppNameMap)
+        }
+        else if (name && appName && menuAppNameMap.getIn([appName, 'name']) != name) {
+            state = this.metaReducer.sf(state, 'data.menuAppNameMap', menuAppNameMap.set(appName, { name, props: appProps }))
         }
 
         name = menuAppNameMap.getIn([appName, 'name'])
         appProps = menuAppNameMap.getIn([appName, 'props'])
-        
+
         const content = fromJS({ name, appName, appProps })
         state = this.metaReducer.sf(state, 'data.content', content)
 
@@ -116,7 +120,7 @@ class reducer {
                 state = this.metaReducer.sf(state, 'data.openTabs', openTabs)
             }
         }
-        
+
         setTimeout(() => {
             history.pushChildApp('mk-app-portal', content.get('appName'))
         }, 0)
