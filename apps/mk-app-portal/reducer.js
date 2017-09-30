@@ -2,6 +2,7 @@ import { Map, List, fromJS } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
 import { getInitState } from './data'
+import { history } from 'mk-utils'
 
 class reducer {
     constructor(option) {
@@ -23,12 +24,21 @@ class reducer {
         if (!menu || menu.lenght == 0)
             return state
 
-        var defaultMenuItem, firstMenuItem, defaultOpens = [], menuKeyNameMap = {}
+        var defaultMenuItem, firstMenuItem, defaultOpens = [], menuKeyNameMap = {}, menuAppNameMap = {}
 
         const loop = (children) => {
             const ret = []
             children.forEach(child => {
                 menuKeyNameMap[child.name] = child.key
+                
+                //history增加
+                if(child.appName){
+                    menuAppNameMap[child.appName] = {
+                        name: child.name,
+                        props: {}
+                    }
+                }
+
                 if (!child.children) {
                     if (!firstMenuItem) {
                         firstMenuItem = child
@@ -59,13 +69,33 @@ class reducer {
 
         state = this.metaReducer.sf(state, 'data.menu', fromJS(menu))
         state = this.metaReducer.sf(state, 'data.menuKeyNameMap', fromJS(menuKeyNameMap))
+        state = this.metaReducer.sf(state, 'data.menuAppNameMap', fromJS(menuAppNameMap))
         state = this.metaReducer.sf(state, 'data.menuSelectedKeys', menuSelectedKeys)
         state = this.metaReducer.sf(state, 'data.menuDefaultOpenKeys', menuDefaultOpenKeys)
 
-        return this.setContent(state, defaultContent.name, defaultContent.appName, defaultContent.appProps)
+        const childApp = history.getChildApp('mk-app-portal')
+        if(childApp)
+            return this.setContent(state, '', childApp, {})
+        else
+            return this.setContent(state, defaultContent.name, defaultContent.appName, defaultContent.appProps)
     }
 
     setContent = (state, name, appName, appProps) => {
+
+        //判断当前显示页签appName和要新打开的是否一致
+        const currContent = this.metaReducer.gf(state, 'data.content')
+        if(currContent && appName == currContent.get('appName'))
+            return state
+
+        //history增加
+        const menuAppNameMap = this.metaReducer.gf(state, 'data.menuAppNameMap')
+        if(name && appName && menuAppNameMap.getIn([appName,'name']) != name){
+            state = this.metaReducer.sf(state, 'data.menuAppNameMap', menuAppNameMap.set(appName, {name, props:appProps}))
+        }
+
+        name = menuAppNameMap.getIn([appName, 'name'])
+        appProps = menuAppNameMap.getIn([appName, 'props'])
+        
         const content = fromJS({ name, appName, appProps })
         state = this.metaReducer.sf(state, 'data.content', content)
 
@@ -86,6 +116,10 @@ class reducer {
                 state = this.metaReducer.sf(state, 'data.openTabs', openTabs)
             }
         }
+        
+        setTimeout(() => {
+            history.pushChildApp('mk-app-portal', content.get('appName'))
+        }, 0)
 
         return state
     }
@@ -96,6 +130,11 @@ class reducer {
         openTabs = openTabs.remove(hitIndex)
         state = this.metaReducer.sf(state, 'data.openTabs', openTabs)
         return this.metaReducer.sf(state, 'data.content', openTabs.get(openTabs.size - 1))
+    }
+
+    closeAll = (state) => {
+        state = this.metaReducer.sf(state, 'data.openTabs', new List())
+        return this.metaReducer.sf(state, 'data.content', new Map())
     }
 }
 

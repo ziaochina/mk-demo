@@ -2,6 +2,7 @@ import React from 'react'
 import { Menu } from 'mk-component'
 import { action as MetaAction, AppLoader } from 'mk-meta-engine'
 import { fromJS } from 'immutable'
+import { history } from 'mk-utils'
 import config from './config'
 
 class action {
@@ -17,7 +18,32 @@ class action {
         injections.reduce('init')
 
         this.load()
+
+        //history增加
+        history.listen('mk-app-portal', this.listen)
     }
+
+    //history增加
+    listen = (childApp, location, action) => {
+        const currentAppName = this.metaAction.gf('data.content.appName')
+        const targetAppName = childApp
+        if(!targetAppName ){
+            this.injections.reduce('closeAll')
+            return 
+        }
+
+        if ( targetAppName == currentAppName) {
+            return
+        }
+
+        this.setContent('', targetAppName, {})
+    }
+
+
+    componentWillUnmount = () => {
+        history.unlisten('mk-app-portal', this.listen)
+    }
+
 
     load = async () => {
         //网站中不存在login应用，那么就不做用户相关处理，正式环境应该不需要这段代码，仅为单应用运行使用
@@ -29,6 +55,7 @@ class action {
         }
 
         const response = await this.webapi.portal.init()
+        
         if (response.user) {
             this.metaAction.context.set('currentUser', response.user)
             this.metaAction.sf('data.other.currentUser', fromJS(response.user))
