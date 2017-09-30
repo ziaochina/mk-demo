@@ -1,7 +1,7 @@
 import React from 'react'
 import { action as MetaAction, AppLoader } from 'mk-meta-engine'
 import config from './config'
-import { history as hh } from 'mk-utils'
+import { history } from 'mk-utils'
 import { getInitState } from './data'
 
 class action {
@@ -13,42 +13,31 @@ class action {
     onInit = ({ component, injections }) => {
         this.component = component
         this.injections = injections
-        const initState = getInitState()
-        initState.data.currentAppName = this.getAppNameByPathname(this.config.history.location.pathname)
-        this.listenHistory()
+        const initState = getInitState(),
+            defaultAppName = initState.data.currentAppName
+
         injections.reduce('init', { initState })
+
+        history.listen('mk-app-root', this.listen)
+        this.onRedirect({appName: history.getChildApp('mk-app-root') || defaultAppName })
+    }
+
+    listen = (childApp, location, action) => {
+        const defaultAppName = getInitState().data.currentAppName
+        const currentAppName = this.metaAction.gf('data.currentAppName') || defaultAppName
+        const targetAppName = childApp || defaultAppName
+        if (targetAppName == currentAppName) {
+            return
+        }
+        this.injections.reduce('redirect', targetAppName)
     }
 
     onRedirect = ({ appName }) => {
-        this.injections.reduce('redirect', appName)
+        history.pushChildApp('mk-app-root', appName)
     }
 
-    listenHistory = () => {
-        const defaultAppName = getInitState().data.currentAppName
-
-        if (!this.unlisten) {
-            this.unlisten = this.config.history.listen((location, action) => {
-                const currentAppName = this.metaAction.gf('data.currentAppName') || defaultAppName
-                const targetAppName = this.getAppNameByPathname(location.pathname)
-
-                if (targetAppName == currentAppName){
-                    if(location.pathname != `/mk-app-root/${currentAppName}`){
-                        this.config.history.replace(`/mk-app-root/${currentAppName}`)
-                    }
-                    return
-                }
-                this.onRedirect({ appName: targetAppName })
-            })
-        }
-    }
-
-    getAppNameByPathname = (pathname) => {
-        const defaultAppName = getInitState().data.currentAppName
-        if (!pathname || pathname == '/' || pathname.indexOf('mk-app-root') == -1)
-            return defaultAppName
-
-        const segs = pathname.replace('/mk-app-root', '').split('/')
-        return segs.length > 1 ? segs[1] : defaultAppName
+    componentWillUnmount = () => {
+        history.unlisten('mk-app-root', this.listen)
     }
 }
 

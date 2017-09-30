@@ -73,7 +73,7 @@ module.exports = {
         }, {
             test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)(\?\S*)?$/,
             use: {
-                loader: 'file-loader',
+                loader: 'url-loader',
                 options: {
                     name: '[name].[hash:8].[ext]',
                 }
