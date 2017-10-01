@@ -35,7 +35,7 @@ class reducer {
                 if (child.appName) {
                     menuAppNameMap[child.appName] = {
                         name: child.name,
-                        props: {}
+                        props: child.appParams || {}
                     }
                 }
 
@@ -81,7 +81,7 @@ class reducer {
     }
 
     setContent = (state, name, appName, appProps) => {
-        debugger
+
         //判断当前显示页签appName和要新打开的是否一致
         const currContent = this.metaReducer.gf(state, 'data.content')
         if (currContent && appName == currContent.get('appName'))
@@ -89,12 +89,9 @@ class reducer {
 
         //history增加
         let menuAppNameMap = this.metaReducer.gf(state, 'data.menuAppNameMap')
-        if (!menuAppNameMap.get(appName)) {
+        if (name && appName && menuAppNameMap.getIn([appName, 'name']) != name) {
             menuAppNameMap = menuAppNameMap.set(appName, fromJS({ name, props: appProps }))
             state = this.metaReducer.sf(state, 'data.menuAppNameMap', menuAppNameMap)
-        }
-        else if (name && appName && menuAppNameMap.getIn([appName, 'name']) != name) {
-            state = this.metaReducer.sf(state, 'data.menuAppNameMap', menuAppNameMap.set(appName, { name, props: appProps }))
         }
 
         name = menuAppNameMap.getIn([appName, 'name'])
