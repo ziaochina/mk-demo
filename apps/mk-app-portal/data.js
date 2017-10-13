@@ -11,6 +11,7 @@ export function getMeta() {
 				name: 'left',
 				component: 'Layout',
 				className: 'mk-app-portal-header-left',
+				_visible: '{{data.isShowMenu}}',
 				children: [{
 					name: 'logo',
 					component: '::img',
@@ -26,11 +27,19 @@ export function getMeta() {
 				component: 'Layout',
 				className: 'mk-app-portal-header-right',
 				children: [{
+					name: 'foldMenu',
+					component: 'Icon',
+					type: `{{data.isShowMenu ? 'menu-fold': 'menu-unfold'}}`,
+					title: `{{data.isShowMenu ? '收起菜单': '展开菜单'}}`,
+					showStyle: 'showy',
+					style: { fontSize: 20 },
+					onClick: '{{$foldMenu}}'
+				}, {
 					name: 'topMenu',
 					component: 'Menu',
 					mode: 'horizontal',
-					theme: 'dark',
-					style: { backgroundColor: '#333' },
+					//theme: 'dark',
+					//style: { backgroundColor: '#333' },
 					onClick: '{{$topMenuClick}}',
 					selectedKeys: [],
 					children: [{
@@ -42,8 +51,8 @@ export function getMeta() {
 							component: 'Icon',
 							type: 'appstore-o'
 						},
-						"{{data.isTabsStyle ? '正常风格' : '多页签显示风格'}}"]
-					},{
+							"{{data.isTabsStyle ? '正常风格' : '多页签显示风格'}}"]
+					}, {
 						name: 'gitter',
 						component: 'Menu.Item',
 						key: 'gitter',
@@ -98,6 +107,7 @@ export function getMeta() {
 				name: 'left',
 				component: 'Layout',
 				className: 'mk-app-portal-content-left',
+				_visible: '{{data.isShowMenu}}',
 				children: [{
 					name: 'menu',
 					component: 'Menu',
@@ -121,7 +131,7 @@ export function getMeta() {
 					activeKey: '{{data.content && data.content.name}}',
 					onChange: '{{$tabChange}}',
 					onEdit: '{{$tabEdit}}',
-					_visible:'{{ data.isTabsStyle && data.openTabs && data.openTabs.length > 0}}',
+					_visible: '{{ data.isTabsStyle && data.openTabs && data.openTabs.length > 0}}',
 					children: [{
 						name: 'tab1',
 						component: 'Tabs.TabPane',
@@ -144,7 +154,7 @@ export function getMeta() {
 						isTabStyle: '{{data.isTabsStyle}}',
 						_notRender: '{{ !(data.content && data.content.name == data.openTabs[_rowIndex].name) }}',
 						_power: 'for in data.openTabs',
-						
+
 					}
 				}]
 			}]
@@ -161,6 +171,7 @@ export function getInitState() {
 			content: {},
 			openTabs: [],
 			isTabsStyle: false,
+			isShowMenu: true,
 			other: {}
 		}
 	}

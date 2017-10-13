@@ -27,12 +27,12 @@ class action {
     listen = (childApp, location, action) => {
         const currentAppName = this.metaAction.gf('data.content.appName')
         const targetAppName = childApp
-        if(!targetAppName ){
+        if (!targetAppName) {
             this.injections.reduce('closeAll')
-            return 
+            return
         }
 
-        if ( targetAppName == currentAppName) {
+        if (targetAppName == currentAppName) {
             return
         }
 
@@ -55,7 +55,7 @@ class action {
         }
 
         const response = await this.webapi.portal.init()
-        
+
         if (response.user) {
             this.metaAction.context.set('currentUser', response.user)
             this.metaAction.sf('data.other.currentUser', fromJS(response.user))
@@ -110,7 +110,7 @@ class action {
         return {
             _isMeta: true,
             value: loop(menu)
-        } 
+        }
 
     }
 
@@ -130,9 +130,9 @@ class action {
                 window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
                 break;
             case 'mySetting':
-                if(!this.config.apps['mk-app-my-setting'])
+                if (!this.config.apps['mk-app-my-setting'])
                     throw '不存在mk-app-my-setting应用，该功能不能使用'
-                
+
                 this.setContent('个人设置', 'mk-app-my-setting')
                 break;
             case 'toggleTabs':
@@ -163,25 +163,34 @@ class action {
 
     getMenuSelectKeys = () => {
         const content = this.metaAction.gf('data.content')
-        if(!content) return 
-        const menuKeyNameMap =  this.metaAction.gf('data.menuKeyNameMap')
+        if (!content) return
+        const menuKeyNameMap = this.metaAction.gf('data.menuKeyNameMap')
         return [menuKeyNameMap.get(content.get('name'))]
-        
+
     }
     tabChange = (key) => {
         const openTabs = this.metaAction.gf('data.openTabs')
-        const curr = openTabs.find(o=>o.get('name') == key)
+        const curr = openTabs.find(o => o.get('name') == key)
         this.setContent(curr.get('name'), curr.get('appName'), curr.get('appProps'))
     }
 
     tabEdit = (key, action) => {
-        if( action == 'remove'){
+        if (action == 'remove') {
             this.injections.reduce('closeContent', key)
         }
     }
 
     setContent = (name, appName, appProps = {}) => {
         this.injections.reduce('setContent', name, appName, appProps)
+    }
+
+    foldMenu = () => {
+        this.metaAction.sf('data.isShowMenu', !this.metaAction.gf('data.isShowMenu'))
+        setTimeout(function () {
+            var event = document.createEvent('HTMLEvents')
+            event.initEvent("resize", true, true)
+            window.dispatchEvent(event)
+        }, 0)
     }
 }
 

@@ -1,0 +1,71 @@
+.mk-app-stock-list {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    flex-direction: row;
+    &-iconbutton {
+        padding: 0 4px !important;
+    }
+    &-cell-left {
+        padding-left: 8px;
+        justify-content: flex-start;
+    }
+    &-cell-right {
+        padding-right: 8px;
+        justify-content: flex-end;
+    }
+    &-left {
+        width: 200px;
+        flex: 0 0 200px;
+        margin-right: 10px;
+    }
+    .mk-card {
+        display: flex;
+        flex-direction: column;
+        .ant-card-head {
+            padding: 0 10px;
+            flex: 0 0 50px;
+            .mk-btn {
+                margin-right: 4px;
+            }
+        }
+        .ant-card-body {
+            padding: 4px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &-content {
+        flex: 1;
+        .ant-card-extra {
+            display: flex;
+        }
+        &-header-left {
+            .ant-input-search {
+                width: 250px;
+                margin-right: 20px;
+            }
+        }
+        &-header-right {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .mkicon {
+                font-size: 22px;
+            }
+            .mk-btn {
+                margin-right: 8px !important;
+            }
+        }
+        &-footer {
+            flex-direction: row;
+            height: 58px;
+            flex: 0 0 58px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 0px 0px 8px;
+        }
+    }
+}

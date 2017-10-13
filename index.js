@@ -15,6 +15,8 @@ import mk_app_home_shortcuts from './apps/mk-app-home/apps/mk-app-home-shortcuts
 import mk_app_home from './apps/mk-app-home/index.js'
 import mk_app_hot_modify_app from './apps/mk-app-hot-modify-app/index.js'
 import mk_app_login from './apps/mk-app-login/index.js'
+import mk_app_mea_unit_card_test from './apps/mk-app-mea-unit-card/apps/mk-app-mea-unit-card-test/index.js'
+import mk_app_mea_unit_card from './apps/mk-app-mea-unit-card/index.js'
 import mk_app_meta_design_preview from './apps/mk-app-meta-design/apps/mk-app-meta-design-preview/index.js'
 import mk_app_meta_design from './apps/mk-app-meta-design/index.js'
 import mk_app_modify_password_test from './apps/mk-app-modify-password/apps/mk-app-modify-password-test/index.js'
@@ -33,6 +35,10 @@ import mk_app_report from './apps/mk-app-report/index.js'
 import mk_app_root_about from './apps/mk-app-root/apps/mk-app-root-about/index.js'
 import mk_app_root_helloWorld from './apps/mk-app-root/apps/mk-app-root-helloWorld/index.js'
 import mk_app_root from './apps/mk-app-root/index.js'
+import mk_app_stock_card from './apps/mk-app-stock-card/index.js'
+import mk_app_stock_list from './apps/mk-app-stock-list/index.js'
+import mk_app_stock_type_card_test from './apps/mk-app-stock-type-card/apps/mk-app-stock-type-card-test/index.js'
+import mk_app_stock_type_card from './apps/mk-app-stock-type-card/index.js'
 import mk_app_trace_action from './apps/mk-app-trace-action/index.js'
 import mk_app_tree_table_detail from './apps/mk-app-tree-table/apps/mk-app-tree-table-detail/index.js'
 import mk_app_tree_table_type from './apps/mk-app-tree-table/apps/mk-app-tree-table-type/index.js'
@@ -56,6 +62,8 @@ const apps = {
 	[mk_app_home.name]: mk_app_home,	
 	[mk_app_hot_modify_app.name]: mk_app_hot_modify_app,	
 	[mk_app_login.name]: mk_app_login,	
+	[mk_app_mea_unit_card_test.name]: mk_app_mea_unit_card_test,	
+	[mk_app_mea_unit_card.name]: mk_app_mea_unit_card,	
 	[mk_app_meta_design_preview.name]: mk_app_meta_design_preview,	
 	[mk_app_meta_design.name]: mk_app_meta_design,	
 	[mk_app_modify_password_test.name]: mk_app_modify_password_test,	
@@ -74,6 +82,10 @@ const apps = {
 	[mk_app_root_about.name]: mk_app_root_about,	
 	[mk_app_root_helloWorld.name]: mk_app_root_helloWorld,	
 	[mk_app_root.name]: mk_app_root,	
+	[mk_app_stock_card.name]: mk_app_stock_card,	
+	[mk_app_stock_list.name]: mk_app_stock_list,	
+	[mk_app_stock_type_card_test.name]: mk_app_stock_type_card_test,	
+	[mk_app_stock_type_card.name]: mk_app_stock_type_card,	
 	[mk_app_trace_action.name]: mk_app_trace_action,	
 	[mk_app_tree_table_detail.name]: mk_app_tree_table_detail,	
 	[mk_app_tree_table_type.name]: mk_app_tree_table_type,	
