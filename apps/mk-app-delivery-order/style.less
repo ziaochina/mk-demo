@@ -1,0 +1,163 @@
+.mk-app-delivery-order {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    .mkicon {
+        font-size: 22px;
+    }
+    &-iconbutton {
+        padding: 0 4px !important;
+    }
+    &-cell-left {
+        padding-left: 8px;
+        justify-content: flex-start;
+    }
+    &-cell-right {
+        padding-right: 8px;
+        justify-content: flex-end;
+    }
+    &-cell {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &>div {
+            width: 100%;
+            height: 100%;
+            input {
+                height: 100%;
+            }
+        }
+        /*input{
+            height: 40px;
+        }*/
+        .ant-select-selection {
+            height: 100%
+        }
+        .ant-select-selection__rendered {
+            height: 100%
+        }
+        .ant-select-selection-selected-value {
+            line-height: 40px;
+        }
+    }
+    &-cell-disabled {
+        //background-color: #eee
+        cursor: not-allowed;
+    }
+    .ant-tabs-bar {
+        margin-bottom: 0px;
+    }
+    &-header {
+        flex-direction: row;
+        height: 50px;
+        flex: 0 0 50px;
+        overflow: hidden;
+        &-left {
+            flex-direction: row;
+            align-items: center;
+            &>.mk-btn {
+                margin-left: 10px;
+            }
+        }
+        &-right {
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            overflow: hidden;
+            .mk-btn {
+                margin-left: 10px
+            }
+        }
+    }
+    &-title {
+        flex: 0 0 auto;
+        flex-direction: row;
+        justify-content: space-between;
+        &-left {
+            flex: 0 0 200px;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 10px;
+            &-tag {
+                border: 1px solid red;
+                padding: 4px 8px;
+                font-style: italic;
+                font-weight: bold;
+                color: red;
+            }
+        }
+        &-right {
+            flex: 0 0 200px;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 10px;
+        }
+    }
+    &-form-header {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 18px;
+        .mk-form-item {
+            margin-bottom: 20px;
+        }
+        .ant-form-item-label {
+            width: 100px;
+            padding: 0px;
+        }
+        .ant-form-item-control-wrapper {
+            width: 200px;
+            height:32px;
+        }
+        .mk-select {
+            width: 100%;
+        }
+        .mk-datepicker {
+            width: 100%;
+        }
+        .ant-form-explain {
+            margin-top: 5px;
+        }
+        &-memo {
+            .ant-form-item-control-wrapper {
+                width: 800px;
+            }
+        }
+    }
+    &-form-details {
+        flex: 1
+    }
+    &-form-footer {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        .ant-form-item-label {
+            width: 100px;
+        }
+        .ant-form-item-control-wrapper {
+            width: 200px;
+        }
+        .mk-select {
+            width: 100%;
+        }
+
+        &-settlement, &-advance, &-balance{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            .ant-form-item-control-wrapper {
+                width: 100px;
+            }
+        }
+    }
+    &-footer {
+        padding: 10px;
+        flex: 0 0 auto;
+        flex-direction: row;
+    }
+}

@@ -10,16 +10,18 @@ class reducer {
     }
 
     init = (state, option) => {
-        return this.metaReducer.init(state, getInitState())
+        const initState = getInitState()
+        return this.metaReducer.init(state, initState)
     }
 
     load = (state, response) => {
         state = this.metaReducer.sf(state, 'data.list', fromJS(response.list))
         state = this.metaReducer.sf(state, 'data.pagination', fromJS(response.pagination))
         state = this.metaReducer.sf(state, 'data.filter', fromJS(response.filter))
-        if (response.stockTypes) {
-            state = this.metaReducer.sf(state, 'data.other.stockTypes', fromJS(response.stockTypes))
-        }
+        state = this.metaReducer.sf(state, 'data.total', fromJS(response.total))
+        if (response.customers)
+            state = this.metaReducer.sf(state, 'data.other.customers', fromJS(response.customers))
+
         return state
     }
 }
@@ -28,6 +30,5 @@ export default function creator(option) {
     const metaReducer = new MetaReducer(option),
         extendReducer = extend.reducerCreator({ ...option, metaReducer }),
         o = new reducer({ ...option, metaReducer, extendReducer })
-
     return { ...metaReducer, ...extendReducer.gridReducer, ...o }
 }

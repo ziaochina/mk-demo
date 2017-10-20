@@ -3,10 +3,11 @@ import * as data from './data'
 
 export default {
 	name: "mk-app-stock-list",
-	version: "1.0.1",
+	version: "1.0.4",
 	description: "mk-app-stock-list",
 	meta: data.getMeta(),
 	components: [],
+	dependencies:['mk-aar-grid'],
 	config: config,
 	load: (cb) => {
 		require.ensure([], require => {

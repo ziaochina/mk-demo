@@ -2,6 +2,8 @@
 import './apps/mk-app-apidoc/mock.js';
 import './apps/mk-app-bar-graph/mock.js';
 import './apps/mk-app-complex-table/mock.js';
+import './apps/mk-app-delivery-order/mock.js';
+import './apps/mk-app-delivery-order-list/mock.js';
 import './apps/mk-app-devtools/apps/mk-app-devtools-test/mock.js';
 import './apps/mk-app-devtools/mock.js';
 import './apps/mk-app-editable-table/mock.js';

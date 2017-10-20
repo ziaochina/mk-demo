@@ -4,15 +4,18 @@ import { fromJS } from 'immutable'
 import config from './config'
 import moment from 'moment'
 import utils from 'mk-utils'
+import extend from './extend'
 
 class action {
     constructor(option) {
         this.metaAction = option.metaAction
+        this.extendAction = option.extendAction
         this.config = config.current
         this.webapi = this.config.webapi
     }
 
     onInit = ({ component, injections }) => {
+        this.extendAction.gridAction.onInit({ component, injections })
         this.component = component
         this.injections = injections
         injections.reduce('init')
@@ -32,22 +35,6 @@ class action {
         const pagination = this.metaAction.gf('data.pagination').toJS()
         const filter = this.metaAction.gf('data.filter').toJS()
         this.load(pagination, filter)
-    }
-
-    getListRowsCount = () => {
-        return this.metaAction.gf('data.list').size
-    }
-
-    isSelectAll = () => {
-        const lst = this.metaAction.gf('data.list')
-        if (!lst || lst.size == 0)
-            return false
-
-        return lst.every(o => o.get('selected'))
-    }
-
-    selectAll = (e) => {
-        this.injections.reduce('selectAll', e.target.checked)
     }
 
     pageChanged = (current, pageSize) => {
@@ -77,18 +64,6 @@ class action {
             children: n.children
         }))
         return { _isMeta: true, value }
-    }
-
-
-    getSelectedCount = () => {
-        var lst = this.metaAction.gf('data.list')
-
-        if (!lst || lst.size == 0)
-            return 0
-
-        var ret = lst.filter(o => !!o.get('selected')).size
-
-        return ret
     }
 
     searchChange = (e) => {
@@ -305,7 +280,6 @@ class action {
         if (!this.config.apps['mk-app-stock-card']) {
             throw '依赖mk-app-stock-card app,请使用mk clone mk-app-stock-card命令添加'
         }
-
         this.component.props.setPortalContent &&
             this.component.props.setPortalContent('存货卡片', 'mk-app-stock-card',{stockId: id})
 
@@ -333,8 +307,10 @@ class action {
 
 export default function creator(option) {
     const metaAction = new MetaAction(option),
-        o = new action({ ...option, metaAction }),
-        ret = { ...metaAction, ...o }
+        extendAction = extend.actionCreator({ ...option, metaAction }),
+        o = new action({ ...option, metaAction, extendAction })
+         
+    const ret = { ...metaAction,...extendAction.gridAction, ...o }
 
     metaAction.config({ metaHandlers: ret })
 

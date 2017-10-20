@@ -67,6 +67,9 @@ class action {
             }
         }
 
+        if (response.menu) {
+            this.injections.reduce('load', { menu: response.menu })
+        }
         /*
         如果菜单从ajax获取，那么使用下面的方式
         if (this.webapi.getMenu) {

@@ -95,7 +95,7 @@ class reducer {
         }
 
         name = menuAppNameMap.getIn([appName, 'name'])
-        appProps = menuAppNameMap.getIn([appName, 'props'])
+        appProps = appProps || menuAppNameMap.getIn([appName, 'props'])
 
         const content = fromJS({ name, appName, appProps })
         state = this.metaReducer.sf(state, 'data.content', content)

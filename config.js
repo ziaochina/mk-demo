@@ -73,8 +73,12 @@ function config(options) {
 						key: '20105',
 						name: '存货列表',
 						appName: 'mk-app-stock-list'
-					},{
+					}, {
 						key: '20106',
+						name: '销售出库单列表',
+						appName: 'mk-app-delivery-order-list'
+					}, {
+						key: '20107',
 						name: '报表',
 						appName: 'mk-app-report'
 					}]
@@ -90,10 +94,14 @@ function config(options) {
 						key: '20202',
 						name: '单据',
 						appName: 'mk-app-voucher'
-					},{
+					}, {
 						key: '20203',
 						name: '存货卡片',
 						appName: 'mk-app-stock-card'
+					}, {
+						key: '20204',
+						name: '销售出库单',
+						appName: 'mk-app-delivery-order'
 					}]
 
 				}, {

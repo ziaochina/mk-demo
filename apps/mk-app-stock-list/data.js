@@ -157,7 +157,7 @@ export function getMeta() {
 				rowHeight: 35,
 				enableSequence: true,
 				startSequence: '{{(data.pagination.current-1)*data.pagination.pageSize + 1}}',
-				rowsCount: "{{$getListRowsCount()}}",
+				rowsCount: "{{data.list ? data.list.length: 0}}",
 				columns: [{
 					name: 'select',
 					component: 'DataGrid.Column',
@@ -170,8 +170,8 @@ export function getMeta() {
 						children: {
 							name: 'cb',
 							component: 'Checkbox',
-							checked: '{{$isSelectAll()}}',
-							onChange: '{{$selectAll}}'
+							checked: "{{$isSelectAll('dataGrid')}}",
+							onChange: "{{$selectAll('dataGrid')}}"
 						}
 					},
 					cell: {
@@ -331,7 +331,7 @@ export function getMeta() {
 				children: [{
 					name: 'selectedCount',
 					component: '::h3',
-					children: `{{'选中' + $getSelectedCount() + '条'}}`
+					children: `{{'选中' + $getSelectedCount('dataGrid') + '条'}}`
 				}, {
 					name: 'pagination',
 					component: 'Pagination',

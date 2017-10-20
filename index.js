@@ -5,6 +5,8 @@ import myConfig  from './config'
 import mk_app_apidoc from './apps/mk-app-apidoc/index.js'
 import mk_app_bar_graph from './apps/mk-app-bar-graph/index.js'
 import mk_app_complex_table from './apps/mk-app-complex-table/index.js'
+import mk_app_delivery_order from './apps/mk-app-delivery-order/index.js'
+import mk_app_delivery_order_list from './apps/mk-app-delivery-order-list/index.js'
 import mk_app_devtools_test from './apps/mk-app-devtools/apps/mk-app-devtools-test/index.js'
 import mk_app_devtools from './apps/mk-app-devtools/index.js'
 import mk_app_editable_table from './apps/mk-app-editable-table/index.js'
@@ -52,6 +54,8 @@ const apps = {
 	[mk_app_apidoc.name]: mk_app_apidoc,	
 	[mk_app_bar_graph.name]: mk_app_bar_graph,	
 	[mk_app_complex_table.name]: mk_app_complex_table,	
+	[mk_app_delivery_order.name]: mk_app_delivery_order,	
+	[mk_app_delivery_order_list.name]: mk_app_delivery_order_list,	
 	[mk_app_devtools_test.name]: mk_app_devtools_test,	
 	[mk_app_devtools.name]: mk_app_devtools,	
 	[mk_app_editable_table.name]: mk_app_editable_table,	

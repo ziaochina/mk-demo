@@ -2,6 +2,7 @@ import { Map, List, fromJS } from 'immutable'
 import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
 import { getInitState } from './data'
+import extend from './extend'
 
 class reducer {
     constructor(option) {
@@ -45,52 +46,6 @@ class reducer {
         return state
     }
 
-
-    addUnitRow = (state, rowIndex) => {
-        return this.addRow(state, 'data.form.units', rowIndex)
-    }
-
-    delUnitRow = (state, rowIndex) => {
-        return this.delRow(state, 'data.form.units', rowIndex)
-    }
-
-    addPriceRow = (state, rowIndex) => {
-        return this.addRow(state, 'data.form.prices', rowIndex)
-    }
-    delPriceRow = (state, rowIndex) => {
-        return this.delRow(state, 'data.form.prices', rowIndex)
-    }
-
-    addBarcodeRow = (state, rowIndex) => {
-        return this.addRow(state, 'data.form.barcodes', rowIndex)
-    }
-    delBarcodeRow = (state, rowIndex) => {
-        return this.delRow(state, 'data.form.barcodes', rowIndex)
-    }
-
-    addRow = (state, path, rowIndex) => {
-        var lst = this.metaReducer.gf(state, path)
-        lst = lst.insert(rowIndex, Map({}))
-
-        return this.metaReducer.sf(state, path, lst)
-    }
-
-    delRow = (state, path, rowIndex) => {
-        var lst = this.metaReducer.gf(state, path)
-
-        if (rowIndex == -1)
-            return state
-
-        lst = lst.remove(rowIndex)
-
-        //永远保证有一行
-        if (lst.size == 0)
-            lst = lst.insert(rowIndex, Map({}))
-
-        return this.metaReducer.sf(state, path, lst)
-    }
-
-
     delImg = (state) => {
         const imgs = this.metaReducer.gf(state, 'data.form.imgs')
         if (!imgs || imgs.size == 0)
@@ -106,7 +61,8 @@ class reducer {
 
 export default function creator(option) {
     const metaReducer = new MetaReducer(option),
+        extendReducer = extend.reducerCreator({ ...option, metaReducer }),
         o = new reducer({ ...option, metaReducer })
 
-    return { ...metaReducer, ...o }
+    return { ...metaReducer, ...extendReducer.gridReducer, ...o }
 }
