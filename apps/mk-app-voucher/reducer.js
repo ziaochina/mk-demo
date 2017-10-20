@@ -3,6 +3,7 @@ import { reducer as MetaReducer } from 'mk-meta-engine'
 import config from './config'
 import { getInitState } from './data'
 import moment from 'moment'
+import extend from './extend'
 
 class reducer {
     constructor(option) {
@@ -33,33 +34,12 @@ class reducer {
         else
             return this.metaReducer.sf(state, 'data.form', fromJS(getInitState().data.form))
     }
-
-    addEmptyRow = (state, rowIndex) => {
-        var details = this.metaReducer.gf(state, 'data.form.details')
-        details = details.insert(rowIndex, Map({}))
-
-        return this.metaReducer.sf(state, 'data.form.details', details)
-    }
-
-    delrow = (state, rowIndex) => {
-        var details = this.metaReducer.gf(state, 'data.form.details')
-
-        if (rowIndex == -1)
-            return state
-
-        details = details.remove(rowIndex)
-
-        //永远保证有一行
-        if (details.size == 0)
-            details = details.insert(rowIndex, Map({}))
-
-        return this.metaReducer.sf(state, 'data.form.details', details)
-    }
 }
 
 export default function creator(option) {
     const metaReducer = new MetaReducer(option),
-        o = new reducer({ ...option, metaReducer })
+        extendReducer = extend.reducerCreator({ ...option, metaReducer }),
+        o = new reducer({ ...option, metaReducer, extendReducer })
 
-    return { ...metaReducer, ...o }
+    return { ...metaReducer, ...extendReducer.gridReducer, ...o }
 }

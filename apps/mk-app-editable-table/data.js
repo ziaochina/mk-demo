@@ -25,8 +25,11 @@ export function getMeta() {
 			enableSequence: true,
 			enableAddDelrow: true,
 			startSequence: 1,
-			onAddrow: '{{$addrow}}',
-			onDelrow: '{{$delrow}}',
+			onAddrow: "{{$addRow('table')}}",
+			onDelrow: "{{$delRow('table')}}",
+			onKeyDown: '{{$gridKeydown}}',
+			scrollToColumn: '{{data.other.tableScrollToColumn}}',
+			scrollToRow: '{{data.other.tableScrollToRow}}',
 			columns: [{
 				name: 'name',
 				component: 'DataGrid.Column',
@@ -87,7 +90,7 @@ export function getMeta() {
 							: data.list[_rowIndex].birthday
 					}}}`,
 					onChange: "{{(v)=>$sf('data.list.' + _rowIndex + '.birthday', $momentToString(v,'YYYY-MM-DD'))}}",
-					onOpenChange: "{{$gridBirthdayOpenChange}}",
+					onOpenChange: "{{$dateOpenChange}}",
 					_power: '({rowIndex})=>rowIndex',
 				}
 			}, {

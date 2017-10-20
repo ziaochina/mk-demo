@@ -5,17 +5,18 @@ import config from './config'
 import { Map, fromJS } from 'immutable'
 import moment from 'moment'
 import utils from 'mk-utils'
-
-const colKeys = ['name', 'rela', 'mobile', 'birthday', 'isWork']
+import extend from './extend'
 
 class action {
     constructor(option) {
         this.metaAction = option.metaAction
+        this.extendAction = option.extendAction
         this.config = config.current
         this.webapi = this.config.webapi
     }
 
     onInit = ({ component, injections }) => {
+        this.extendAction.gridAction.onInit({ component, injections })
         this.component = component
         this.injections = injections
         injections.reduce('init')
@@ -133,7 +134,6 @@ class action {
                 'data.form.education': fromJS(ret)
             })
         }
-
     }
 
     educationFocus = async () => {
@@ -146,125 +146,13 @@ class action {
         const education = educationDataSource.find(o => o.get('id') == v)
         this.metaAction.sf(`data.form.education`, education)
     }
-
-    addrow = (ps) => {
-        this.injections.reduce('addEmptyRow', ps.rowIndex + 1)
-    }
-
-    delrow = (ps) => {
-        this.injections.reduce('delrow', ps.rowIndex)
-    }
-
-    getCellClassName = (path) => {
-        return this.metaAction.isFocus(path) ? 'mk-app-voucher-cell editable-cell' : ''
-    }
-
-    gridBirthdayOpenChange = (status) => {
-        if (status) return
-        const editorDOM = ReactDOM.findDOMNode(this.component).querySelector(".editable-cell")
-        if (!editorDOM) return
-
-        if (editorDOM.className.indexOf('datepicker') != -1) {
-            const input = editorDOM.querySelector('input')
-            input.focus()
-        }
-    }
-
-    mousedown = (e) => {
-        const path = utils.path.findPathByEvent(e)
-        if (this.metaAction.isFocus(path)) return 
-
-        if (path.indexOf('cell.cell') != -1) {
-            this.focusCell(this.getCellInfo(path))
-        }
-        else {
-            if (!this.metaAction.focusByEvent(e)) return
-            setTimeout(this.cellAutoFocus, 16)
-        }
-    }
-
-    gridKeydown = (e) => {
-        var path = ''
-
-        if (e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 108 || e.keyCode == 9 || e.keyCode == 38 || e.keyCode == 40) {
-            path = utils.path.findPathByEvent(e)
-            if (!path || path.indexOf(',') == -1)
-                return
-        }
-
-        //37:左键
-        if (e.keyCode == 37) {
-            if (!utils.dom.cursorAtBegin(e)) return
-            this.moveEditCell(path, 'left')
-            return
-        }
-
-        //39:右键 13:回车 108回车 tab:9
-        if (e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 108 || e.keyCode == 9) {
-            if (!utils.dom.cursorAtEnd(e)) return
-            this.moveEditCell(path, 'right')
-            return
-        }
-
-        //38:上键
-        if (e.keyCode == 38) {
-            this.moveEditCell(path, 'up')
-            return
-        }
-
-        //40:下键
-        if (e.keyCode == 40) {
-            this.moveEditCell(path, 'down')
-            return
-        }
-
-    }
-
-    moveEditCell(path, action) {
-        const cellInfo = this.getCellInfo(path)
-        const position = utils.matrix.move(cellInfo.rowCount, cellInfo.colCount, { x: cellInfo.x, y: cellInfo.y }, action)
-        this.focusCell(position)
-    }
-
-    focusCell(position) {
-        this.metaAction.sfs({
-            'data.other.focusFieldPath': `root.children.formDetails.columns.${colKeys[position.x]}.cell.cell,${position.y}`,
-            'data.other.scrollToRow': position.y,
-            'data.other.scrollToColumn': position.x
-        })
-
-        setTimeout(this.cellAutoFocus, 16)
-    }
-
-    getCellInfo(path) {
-        const parsedPath = utils.path.parsePath(path)
-
-        const rowCount = this.metaAction.gf('data.form.details').size
-        const colCount = 5
-        var colKey = parsedPath
-            .path
-            .replace('root.children.formDetails.columns.', '')
-            .replace('.cell.cell', '')
-            .replace(/\s/g, '')
-
-        return {
-            x: colKeys.findIndex(o => o == colKey),
-            y: Number(parsedPath.vars[0]),
-            colCount,
-            rowCount,
-        }
-    }
-
-    cellAutoFocus = () => {
-        utils.dom.gridCellAutoFocus(this.component, '.editable-cell')
-    }
-
 }
 
 export default function creator(option) {
     const metaAction = new MetaAction(option),
-        o = new action({ ...option, metaAction }),
-        ret = { ...metaAction, ...o }
+        extendAction = extend.actionCreator({ ...option, metaAction }),
+        o = new action({ ...option, metaAction, extendAction }),
+        ret = { ...metaAction, ...extendAction.gridAction, ...o }
 
     metaAction.config({ metaHandlers: ret })
 

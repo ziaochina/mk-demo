@@ -3,10 +3,11 @@ import * as data from './data'
 
 export default {
 	name: "mk-app-voucher",
-	version: "1.0.4",
+	version: "1.0.7",
 	description: "mk-app-voucher",
 	meta: data.getMeta(),
 	components: [],
+	dependencies:['mk-aar-grid'],
 	config: config,
 	load: (cb) => {
 		require.ensure([], require => {

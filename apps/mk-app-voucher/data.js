@@ -177,7 +177,7 @@ export function getMeta() {
 				tab: '家庭情况'
 			}]
 		}, {
-			name: 'formDetails',
+			name: 'details',
 			component: 'DataGrid',
 			className: 'mk-app-voucher-form-details',
 			headerHeight: 40,
@@ -187,11 +187,11 @@ export function getMeta() {
 			enableSequence: true,
 			enableAddDelrow: true,
 			startSequence: 1,
-			scrollToColumn: '{{data.other.scrollToColumn}}',
-			scrollToRow: '{{data.other.scrollToRow}}',
-			onAddrow: '{{$addrow}}',
-			onDelrow: '{{$delrow}}',
+			onAddrow: "{{$addRow('details')}}",
+			onDelrow: "{{$delRow('details')}}",
 			onKeyDown: '{{$gridKeydown}}',
+			scrollToColumn: '{{data.other.detailsScrollToColumn}}',
+			scrollToRow: '{{data.other.detailsScrollToRow}}',
 			columns: [{
 				name: 'name',
 				component: 'DataGrid.Column',
@@ -246,8 +246,8 @@ export function getMeta() {
 					children: {
 						name: 'option',
 						component: 'Select.Option',
-						value: '{{data.other.relaDataSource[_vars[1]].id}}',
-						children: '{{data.other.relaDataSource[_vars[1]].name}}',
+						value: '{{data.other.relaDataSource[_lastIndex].id}}',
+						children: '{{data.other.relaDataSource[_lastIndex].name}}',
 						_power: 'for in data.other.relaDataSource'
 					},
 					onChange: `{{(v)=>{
@@ -297,7 +297,7 @@ export function getMeta() {
 							: data.form.details[_rowIndex].birthday
 					}}}`,
 					onChange: "{{(v)=>$sf('data.form.details.' + _rowIndex + '.birthday', $momentToString(v,'YYYY-MM-DD'))}}",
-					onOpenChange: "{{$gridBirthdayOpenChange}}",
+					onOpenChange: "{{$dateOpenChange}}",
 					_power: '({rowIndex})=>rowIndex',
 				}
 			}, {
@@ -334,8 +334,6 @@ export function getInitState() {
 				details: [{}]
 			},
 			other: {
-				//scrollToColumn: 0,
-				//scrollToRow: 0
 			}
 		}
 	}
