@@ -6,6 +6,7 @@ import moment from 'moment'
 import utils from 'mk-utils'
 import extend from './extend'
 
+
 class action {
     constructor(option) {
         this.metaAction = option.metaAction
@@ -47,7 +48,7 @@ class action {
             filter = this.metaAction.gf('data.filter').toJS(),
             stockTypes = this.metaAction.gf('data.other.stockTypes').toJS(),
             stockType = utils.tree.find(stockTypes, 'children', n => n.id == selectedKeys[0])
-        
+
         filter.type = stockType
         this.load(pagination, filter)
     }
@@ -66,13 +67,15 @@ class action {
         return { _isMeta: true, value }
     }
 
-    searchChange = (e) => {
+    searchChange = utils._.debounce((v) => {
         const pagination = this.metaAction.gf('data.pagination').toJS(),
             filter = this.metaAction.gf('data.filter').toJS()
 
-        filter.search = e.target.value
+        filter.search = v
         this.load(pagination, filter)
-    }
+    }, 200)
+
+
 
     showDisableChange = (e) => {
         const pagination = this.metaAction.gf('data.pagination').toJS(),
@@ -280,8 +283,9 @@ class action {
         if (!this.config.apps['mk-app-stock-card']) {
             throw '依赖mk-app-stock-card app,请使用mk clone mk-app-stock-card命令添加'
         }
+
         this.component.props.setPortalContent &&
-            this.component.props.setPortalContent('存货卡片', 'mk-app-stock-card',{stockId: id})
+            this.component.props.setPortalContent('存货卡片', 'mk-app-stock-card', { stockId: id })
 
     }
 
@@ -309,8 +313,8 @@ export default function creator(option) {
     const metaAction = new MetaAction(option),
         extendAction = extend.actionCreator({ ...option, metaAction }),
         o = new action({ ...option, metaAction, extendAction })
-         
-    const ret = { ...metaAction,...extendAction.gridAction, ...o }
+
+    const ret = { ...metaAction, ...extendAction.gridAction, ...o }
 
     metaAction.config({ metaHandlers: ret })
 

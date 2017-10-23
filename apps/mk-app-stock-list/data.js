@@ -53,8 +53,8 @@ export function getMeta() {
 					name: 'search',
 					component: 'Input.Search',
 					placeholder: '存货编码/存货名称',
-					value: '{{data.filter.search}}',
-					onChange: '{{$searchChange}}'
+					//value: '{{data.filter.search}}',
+					onChange: '{{(e)=>$searchChange(e.target.value)}}'
 				}, {
 					name: 'showDisable',
 					component: 'Checkbox',
