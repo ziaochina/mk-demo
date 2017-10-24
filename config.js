@@ -102,6 +102,10 @@ function config(options) {
 						key: '20204',
 						name: '销售出库单',
 						appName: 'mk-app-delivery-order'
+					}, {
+						key: '20205',
+						name: '凭证',
+						appName: 'mk-app-proof-of-charge'
 					}]
 
 				}, {
