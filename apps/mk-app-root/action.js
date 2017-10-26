@@ -23,7 +23,6 @@ class action {
     }
 
     listen = (childApp, location, action) => {
-        debugger
         const defaultAppName = getInitState().data.currentAppName
         const currentAppName = this.metaAction.gf('data.currentAppName') || defaultAppName
         const targetAppName = childApp || defaultAppName

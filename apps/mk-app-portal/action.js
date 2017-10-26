@@ -155,7 +155,7 @@ class action {
                 }
                 break;
             case 'github':
-                window.open('https://www.github.com/ziaochina/mk-docs')
+                window.open('https://www.github.com/ziaochina/mk-demo')
                 break;
             case 'gitter':
                 window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
