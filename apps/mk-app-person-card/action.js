@@ -3,15 +3,18 @@ import { action as MetaAction, AppLoader } from 'mk-meta-engine'
 import { List, fromJS } from 'immutable'
 import moment from 'moment'
 import config from './config'
+import extend from './extend'
 
 class action {
     constructor(option) {
         this.metaAction = option.metaAction
+        this.extendAction = option.extendAction
         this.config = config.current
         this.webapi = this.config.webapi
     }
 
     onInit = ({ component, injections }) => {
+        this.extendAction.formAction.onInit({ component, injections })
         this.component = component
         this.injections = injections
 
@@ -45,12 +48,12 @@ class action {
 
     save = async () => {
         const form = this.metaAction.gf('data.form').toJS()
-        
-        const ok = await this.check([{
+
+        const ok =  await this.extendAction.formAction.check([{
             path: 'data.form.name', value: form.name
         }, {
             path: 'data.form.mobile', value: form.mobile
-        }])
+        }], this.check)
 
         if (!ok) return false
 
@@ -98,58 +101,22 @@ class action {
         }
     }
 
-    fieldChange = async (fieldPath, value) => {
-        await this.check([{ path: fieldPath, value }])
-    }
-
-    check = async (fieldPathAndValues) => {
-        if (!fieldPathAndValues)
+    check = async (option) => {
+        if (!option || !option.path)
             return
 
-        var checkResults = []
-
-        for (var o of fieldPathAndValues) {
-            let r = { ...o }
-            if (o.path == 'data.form.name') {
-                Object.assign(r, await this.checkName(o.value))
-            }
-            else if (o.path == 'data.form.mobile') {
-                Object.assign(r, await this.checkMobile(o.value))
-            }
-            checkResults.push(r)
+        if (option.path == 'data.form.name') {
+            return { errorPath: 'data.other.error.name', message: option.value ? '' : '请录入姓名' }
         }
+        else if (option.path == 'data.form.mobile') {
+            let message
 
-        var json = {}
-        var hasError = true
-        checkResults.forEach(o => {
-            json[o.path] = o.value
-            json[o.errorPath] = o.message
-            if (o.message)
-                hasError = false
-        })
-
-        this.metaAction.sfs(json)
-        return hasError
-    }
-
-    checkName = async (name) => {
-        var message
-
-        if (!name)
-            message = '请录入姓名'
-
-        return { errorPath: 'data.other.error.name', message }
-    }
-
-    checkMobile = async (mobile) => {
-        var message
-
-        if (!mobile)
-            message = '请录入手机号'
-        else if (!/^1[3|4|5|8][0-9]\d{8}$/.test(mobile))
-            message = '请录入有效的手机号'
-
-        return { errorPath: 'data.other.error.mobile', message }
+            if (!option.value)
+                message = '请录入手机号'
+            else if (!/^1[3|4|5|8][0-9]\d{8}$/.test(option.value))
+                message = '请录入有效的手机号'
+            return { errorPath: 'data.other.error.mobile', message }
+        }
     }
 
     departmentFocus = async () => {
@@ -174,12 +141,17 @@ class action {
             this.injections.reduce('addDepartment', ret)
         }
     }
+
+    fieldChange = (path, value) => {
+        this.extendAction.formAction.fieldChange(path, value, this.check)
+    }
 }
 
 export default function creator(option) {
     const metaAction = new MetaAction(option),
-        o = new action({ ...option, metaAction }),
-        ret = { ...metaAction, ...o }
+        extendAction = extend.actionCreator({ ...option, metaAction }),
+        o = new action({ ...option, metaAction, extendAction }),
+        ret = { ...metaAction, ...extendAction.formAction, ...o }
 
     metaAction.config({ metaHandlers: ret })
 

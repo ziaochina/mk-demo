@@ -11,10 +11,12 @@ var _options = {
 		key: '1',
 		name: 'about',
 		appName: 'mk-app-portal-about',
+		icon: 'question-circle',
 		isDefault: true
 	}, {
 		key: '2',
 		name: 'apps',
+		icon: 'appstore',
 		isExpand:true,
 		children: [{
 			key: '201',

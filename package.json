@@ -12,6 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "mk-aar-form": "^1.0.0",
     "mk-aar-grid": "^1.0.7",
     "mk-app-loader": "^1.0.15",
     "mk-component": "^1.0.39",

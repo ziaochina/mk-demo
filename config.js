@@ -44,11 +44,13 @@ function config(options) {
 				key: '1',
 				name: '首页',
 				appName: 'mk-app-home',
+				icon: 'home',
 				isDefault: true
 			}, {
 				key: '2',
 				name: 'apps',
 				isExpand: true,
+				icon: 'appstore',
 				children: [{
 					key: '201',
 					name: '表格',

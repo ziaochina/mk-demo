@@ -3,10 +3,11 @@ import * as data from './data'
 
 export default {
 	name: "mk-app-person-card",
-	version: "1.0.7",
+	version: "1.0.8",
 	description: "mk-app-person-card",
 	meta: data.getMeta(),
 	components: [],
+	dependencies: ["mk-aar-form"],
 	config: config,
 	load: (cb) => {
 		require.ensure([], require => {

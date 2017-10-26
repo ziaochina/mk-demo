@@ -10,36 +10,45 @@ export function getMeta() {
 			children: [{
 				name: 'left',
 				component: 'Layout',
-				className: 'mk-app-portal-header-left',
-				_visible: '{{data.isShowMenu}}',
+				className: "{{'mk-app-portal-header-left mk-app-portal-header-left-' + (data.isFoldMenu?'fold':'unfold') }}",
 				children: [{
 					name: 'logo',
 					component: '::img',
 					className: 'mk-app-portal-header-left-logo',
+					_visible: '{{!data.isFoldMenu}}',
 					src: '{{$getLogo()}}'
 				}, {
 					name: 'siteName',
-					component: '::h1',
-					children: 'Monkey King'
+					component: '::h2',
+					children: 'Monkey King',
+					_visible: '{{!data.isFoldMenu}}',
+				}, {
+					name: 'foldMenu',
+					component: 'Icon',
+					type: `{{data.isFoldMenu ? 'menu-unfold' :'menu-fold'}}`,
+					title: '展开菜单',
+					showStyle: 'showy',
+					style: { fontSize: 19 },
+					onClick: '{{$foldMenu}}',
+					_visible: '{{data.isFoldMenu}}',
 				}]
 			}, {
 				name: 'right',
 				component: 'Layout',
-				className: 'mk-app-portal-header-right',
+				className: "{{'mk-app-portal-header-right mk-app-portal-header-right-' + (data.isFoldMenu?'fold':'unfold')}}",
 				children: [{
 					name: 'foldMenu',
 					component: 'Icon',
-					type: `{{data.isShowMenu ? 'menu-fold': 'menu-unfold'}}`,
-					title: `{{data.isShowMenu ? '收起菜单': '展开菜单'}}`,
+					type: `{{data.isFoldMenu ? 'menu-unfold' :'menu-fold'}}`,
+					title: '收起菜单',
 					showStyle: 'showy',
-					style: { fontSize: 20 },
-					onClick: '{{$foldMenu}}'
+					style: { fontSize: 19 },
+					onClick: '{{$foldMenu}}',
+					_visible: '{{!data.isFoldMenu}}',
 				}, {
 					name: 'topMenu',
 					component: 'Menu',
 					mode: 'horizontal',
-					//theme: 'dark',
-					//style: { backgroundColor: '#333' },
 					onClick: '{{$topMenuClick}}',
 					selectedKeys: [],
 					children: [{
@@ -106,13 +115,13 @@ export function getMeta() {
 			children: [{
 				name: 'left',
 				component: 'Layout',
-				className: 'mk-app-portal-content-left',
-				_visible: '{{data.isShowMenu}}',
+				className: "{{'mk-app-portal-content-left mk-app-portal-content-left-' + (data.isFoldMenu?'fold':'unfold') }}",
 				children: [{
 					name: 'menu',
 					component: 'Menu',
 					mode: 'inline',
 					theme: 'dark',
+					inlineCollapsed: '{{data.isFoldMenu}}',
 					selectedKeys: "{{$getMenuSelectKeys()}}",
 					defaultOpenKeys: "{{data.menuDefaultOpenKeys}}",
 					onClick: '{{$menuClick}}',
@@ -171,7 +180,7 @@ export function getInitState() {
 			content: {},
 			openTabs: [],
 			isTabsStyle: false,
-			isShowMenu: true,
+			isFoldMenu: false,
 			other: {}
 		}
 	}

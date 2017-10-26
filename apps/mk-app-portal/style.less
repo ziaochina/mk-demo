@@ -20,30 +20,47 @@
 
 		&-left{
 			height: 100%;
-			width:200px;
-			//padding-left:24px;
-			flex: 0 0 200px;
 			flex-direction: row;
 			align-items: center;
+			justify-content: center;
 			
 			&-logo {
 				width: 50px;
 				height: 50px;
 			}
 
-			h1{
+			h1,h2{
 				color:#fff;
 			}
+
+			&-fold {
+				width:64px;
+				flex: 0 0 64px;
+			}
+
+			&-unfold {
+				width:200px;
+				flex: 0 0 200px;
+			}
 		}
+
 		&-right{
 			height: 100%;
 			padding:0px 24px 0px 10px;
 			display:flex;
 			flex-direction:row;
 			align-items:center;
-			justify-content: space-between;
+			justify-content: flex-end;
 			overflow: visible;
 			background: #fff;
+
+			&-fold {
+				justify-content: flex-end;
+			}
+
+			&-unfold {
+				justify-content: space-between;
+			}
 
 			&-my-title{
 				display: flex;
@@ -91,10 +108,18 @@
 		flex: 1 1 auto;
 
 		&-left{
-			width:200px;
-			overflow:auto;
-			flex: 0 0 auto;
+			overflow: visible;
 			background-color: #404040;
+
+			&-fold {
+				width:64px;
+				flex: 0 0 64px;
+			}
+
+			&-unfold {
+				width:200px;
+				flex: 0 0 200px;
+			}
 		}
 
 		&-main{
