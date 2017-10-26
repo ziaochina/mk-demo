@@ -75,13 +75,12 @@ class reducer {
 
         const childApp = history.getChildApp('mk-app-portal')
         if (childApp)
-            return this.setContent(state, '', childApp, {})
+            return this.setContent(state, '', childApp)
         else
             return this.setContent(state, defaultContent.name, defaultContent.appName, defaultContent.appProps)
     }
 
     setContent = (state, name, appName, appProps) => {
-
         //判断当前显示页签appName和要新打开的是否一致
         const currContent = this.metaReducer.gf(state, 'data.content')
         if (currContent && appName == currContent.get('appName'))

@@ -36,7 +36,7 @@ class action {
             return
         }
 
-        this.setContent('', targetAppName, {})
+        this.setContent('', targetAppName)
     }
 
 
@@ -155,7 +155,7 @@ class action {
                 }
                 break;
             case 'github':
-                window.open('https://www.github.com/ziaochina/mk-demo')
+                window.open('https://www.github.com/ziaochina/mk-docs')
                 break;
             case 'gitter':
                 window.open('https://gitter.im/mk-js/mk-js?utm_source=share-link&utm_medium=link&utm_campaign=share-link')
@@ -197,7 +197,6 @@ class action {
         if (!content) return
         const menuKeyNameMap = this.metaAction.gf('data.menuKeyNameMap')
         return [menuKeyNameMap.get(content.get('name'))]
-
     }
     tabChange = (key) => {
         const openTabs = this.metaAction.gf('data.openTabs')
@@ -211,7 +210,7 @@ class action {
         }
     }
 
-    setContent = (name, appName, appProps = {}) => {
+    setContent = (name, appName, appProps) => {
         this.injections.reduce('setContent', name, appName, appProps)
     }
 
