@@ -14,12 +14,14 @@ class action {
         this.component = component
         this.injections = injections
         const initState = getInitState(),
-            defaultAppName = initState.data.currentAppName
+            defaultAppName = initState.data.currentAppName,
+            currentAppName = history.getChildApp('mk-app-root') || defaultAppName
 
+        initState.data.currentAppName = currentAppName
         injections.reduce('init', { initState })
 
         history.listen('mk-app-root', this.listen)
-        this.onRedirect({appName: history.getChildApp('mk-app-root') || defaultAppName })
+        this.onRedirect({ appName: history.getChildApp('mk-app-root') || defaultAppName })
     }
 
     listen = (childApp, location, action) => {

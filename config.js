@@ -1,5 +1,5 @@
 import { Toast, Notification, Modal } from 'mk-component'
-import { fetch } from 'mk-utils'
+import { fetch, history } from 'mk-utils'
 import './mock.js' //脱离后台测试，启用mock，否则这行注释
 
 import apiDoc from './apiDoc'
@@ -24,6 +24,33 @@ fetch.config({
 		}
 	}
 })
+
+/*
+//支持url hash别名配置
+history.config({
+	isAlias: (pathName) => {
+		if(!pathName || pathName == '/')
+			return false
+		const reg = /\/(mk-app-root\/){0,1}(mk-app-portal\/){0,1}([\s\S]+)/
+		const ret = pathName.match(reg)
+		return !ret[1]
+	},
+	toAlias: (pathName) => {
+		if(!pathName || pathName == '/')
+			return false
+		const reg = /\/(mk-app-root\/){0,1}(mk-app-portal\/){0,1}([\s\S]+)/
+		return pathName.replace(reg, (all, root, portal, app) => {
+			return all.replace(root, '').replace(portal, 'app-').replace(/mk-app-/g, '')
+		})
+	},
+	toRealName: (pathName) => {
+		const reg = /\/(app-){0,1}([\s\S]+)/
+		return pathName.replace(reg, (all, portal, app) => {
+			return `/mk-app-root/${portal ? 'mk-app-portal/' : ''}mk-app-${app}`
+		})
+	}
+})
+*/
 
 function config(options) {
 	Object.assign(_options, options)
