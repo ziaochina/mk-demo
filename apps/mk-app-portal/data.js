@@ -167,6 +167,22 @@ export function getMeta() {
 					}
 				}]
 			}]
+		}, {
+			name: 'issue',
+			component: 'Movable',
+			onClick: '{{$issueClick}}',
+			style: {
+				bottom: 30,
+				left: 8,
+				width: 50,
+				height: 50,
+			},
+			children: {
+				name: 'btn',
+				component: 'Button',
+				type: 'showy',
+				children: '填问题'
+			}
 		}]
 	}
 }

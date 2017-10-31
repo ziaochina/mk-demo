@@ -191,6 +191,10 @@ class action {
             this.setContent(hit.name, hit.appName, hit.appParams)
         }
     }
+    
+    issueClick = () => {
+        window.open('https://github.com/ziaochina/mk-demo/issues/new')
+    }
 
     getMenuSelectKeys = () => {
         const content = this.metaAction.gf('data.content')
