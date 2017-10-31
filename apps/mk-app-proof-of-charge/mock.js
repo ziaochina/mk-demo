@@ -43,6 +43,15 @@ function initMockData() {
                 code: ((i+1) +'').padStart(4,'0'),
                 date: '2017-10-24',
                 attachment: 0,
+                attachmentFiles: [{
+                    id: 1, 
+                    alt: '图片1',
+                    src: img1
+                },{
+                    id: 2, 
+                    alt: '图片2',
+                    src: img2
+                }],
                 details: [{
                     id: 1,
                     abstract: '卖东西',

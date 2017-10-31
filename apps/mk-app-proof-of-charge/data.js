@@ -185,8 +185,8 @@ export function getMeta() {
 					onChange: "{{(v)=>$sf('data.form.attachment',v)}}"
 				},'张',{
 					name: 'link',
-					component: '::a',
-					children: '附件'
+					component: 'Attachment',
+					data: '{{data.form.attachmentFiles}}'
 				}]
 			}]
 		}, {
@@ -231,7 +231,6 @@ export function getMeta() {
 								var ret = $isFocus(_ctrlPath)
 									? (data.form.details[_rowIndex].abstract.name || data.form.details[_rowIndex].abstract)
 									: (data.form.details[_rowIndex].abstract.name || data.form.details[_rowIndex].abstract)
-								console.log(ret)
 								return ret
 							}}}`,
 					onChange: `{{$abstractChange(_rowIndex, data.form.details[_rowIndex], data.other.abstracts)}}`,
