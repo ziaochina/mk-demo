@@ -20,7 +20,8 @@
     "mk-utils": "^1.0.51",
     "moment": "^2.19.1",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-fa": "^5.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

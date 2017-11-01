@@ -15,27 +15,17 @@ export function getMeta() {
 					name: 'logo',
 					component: '::img',
 					className: 'mk-app-portal-header-left-logo',
-					_visible: '{{!data.isFoldMenu}}',
 					src: '{{$getLogo()}}'
 				}, {
 					name: 'siteName',
 					component: '::h2',
 					children: 'Monkey King',
 					_visible: '{{!data.isFoldMenu}}',
-				}, {
-					name: 'foldMenu',
-					component: 'Icon',
-					type: `{{data.isFoldMenu ? 'menu-unfold' :'menu-fold'}}`,
-					title: '展开菜单',
-					showStyle: 'showy',
-					style: { fontSize: 19 },
-					onClick: '{{$foldMenu}}',
-					_visible: '{{data.isFoldMenu}}',
 				}]
 			}, {
 				name: 'right',
 				component: 'Layout',
-				className: "{{'mk-app-portal-header-right mk-app-portal-header-right-' + (data.isFoldMenu?'fold':'unfold')}}",
+				className: "mk-app-portal-header-right",
 				children: [{
 					name: 'foldMenu',
 					component: 'Icon',
@@ -43,8 +33,7 @@ export function getMeta() {
 					title: '收起菜单',
 					showStyle: 'showy',
 					style: { fontSize: 19 },
-					onClick: '{{$foldMenu}}',
-					_visible: '{{!data.isFoldMenu}}',
+					onClick: '{{$foldMenu}}'
 				}, {
 					name: 'topMenu',
 					component: 'Menu',
@@ -68,7 +57,8 @@ export function getMeta() {
 						children: [{
 							name: 'icon',
 							component: 'Icon',
-							type: 'smile-o'
+							fontFamily: 'awesome',
+							type: 'wechat'
 						}, '聊天']
 					}, {
 						name: 'github',
