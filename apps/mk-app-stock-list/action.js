@@ -75,8 +75,6 @@ class action {
         this.load(pagination, filter)
     }, 200)
 
-
-
     showDisableChange = (e) => {
         const pagination = this.metaAction.gf('data.pagination').toJS(),
             filter = this.metaAction.gf('data.filter').toJS()
@@ -315,7 +313,6 @@ export default function creator(option) {
         o = new action({ ...option, metaAction, extendAction })
 
     const ret = { ...metaAction, ...extendAction.gridAction, ...o }
-
     metaAction.config({ metaHandlers: ret })
 
     return ret
