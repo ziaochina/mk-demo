@@ -74,12 +74,12 @@ function config(options) {
 				icon: 'home',
 				isDefault: true
 			}, {
-				key: '2',
+				key: '3',
 				name: '分析面板',
 				appName: 'mk-app-dashboard-analysis',
 				icon: 'pie-chart'
 			},{
-				key: '3',
+				key: '2',
 				name: 'apps',
 				isExpand: true,
 				icon: 'appstore',

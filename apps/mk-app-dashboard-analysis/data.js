@@ -3,6 +3,7 @@ export function getMeta() {
 		name: 'root',
 		component: 'Layout',
 		className: 'mk-app-dashboard-analysis',
+		_visible: '{{!!data.visit}}',
 		children: [{
 			name: 'gridLayout',
 			component: 'GridLayout.WidthProviderGridLayout',
@@ -12,6 +13,7 @@ export function getMeta() {
 			rowHeight: 50,
 			isResizable: false,
 			isDraggable: false,
+			useCSSTransforms: false,
 			//margin:[20,20],
 			containerPadding: [10, 10],
 			layout: [

@@ -94,7 +94,6 @@ export function getMeta() {
 export function getInitState() {
 	return {
 		data: {
-			content: 'hello world'
 		}
 	}
 }
