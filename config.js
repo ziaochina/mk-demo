@@ -75,6 +75,11 @@ function config(options) {
 				isDefault: true
 			}, {
 				key: '2',
+				name: '分析面板',
+				appName: 'mk-app-dashboard-analysis',
+				icon: 'pie-chart'
+			},{
+				key: '3',
 				name: 'apps',
 				isExpand: true,
 				icon: 'appstore',

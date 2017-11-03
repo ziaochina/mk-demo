@@ -5,6 +5,14 @@ import myConfig  from './config'
 import mk_app_apidoc from './apps/mk-app-apidoc/index.js'
 import mk_app_bar_graph from './apps/mk-app-bar-graph/index.js'
 import mk_app_complex_table from './apps/mk-app-complex-table/index.js'
+import mk_app_hot_search_widget from './apps/mk-app-dashboard-analysis/apps/mk-app-hot-search-widget/index.js'
+import mk_app_market_widget from './apps/mk-app-dashboard-analysis/apps/mk-app-market-widget/index.js'
+import mk_app_sale_proportion_widget from './apps/mk-app-dashboard-analysis/apps/mk-app-sale-proportion-widget/index.js'
+import mk_app_sale_trend_widget from './apps/mk-app-dashboard-analysis/apps/mk-app-sale-trend-widget/index.js'
+import mk_app_sale_widget from './apps/mk-app-dashboard-analysis/apps/mk-app-sale-widget/index.js'
+import mk_app_trade_widget from './apps/mk-app-dashboard-analysis/apps/mk-app-trade-widget/index.js'
+import mk_app_visit_widget from './apps/mk-app-dashboard-analysis/apps/mk-app-visit-widget/index.js'
+import mk_app_dashboard_analysis from './apps/mk-app-dashboard-analysis/index.js'
 import mk_app_delivery_order from './apps/mk-app-delivery-order/index.js'
 import mk_app_delivery_order_list from './apps/mk-app-delivery-order-list/index.js'
 import mk_app_devtools_test from './apps/mk-app-devtools/apps/mk-app-devtools-test/index.js'
@@ -55,6 +63,14 @@ const apps = {
 	[mk_app_apidoc.name]: mk_app_apidoc,	
 	[mk_app_bar_graph.name]: mk_app_bar_graph,	
 	[mk_app_complex_table.name]: mk_app_complex_table,	
+	[mk_app_hot_search_widget.name]: mk_app_hot_search_widget,	
+	[mk_app_market_widget.name]: mk_app_market_widget,	
+	[mk_app_sale_proportion_widget.name]: mk_app_sale_proportion_widget,	
+	[mk_app_sale_trend_widget.name]: mk_app_sale_trend_widget,	
+	[mk_app_sale_widget.name]: mk_app_sale_widget,	
+	[mk_app_trade_widget.name]: mk_app_trade_widget,	
+	[mk_app_visit_widget.name]: mk_app_visit_widget,	
+	[mk_app_dashboard_analysis.name]: mk_app_dashboard_analysis,	
 	[mk_app_delivery_order.name]: mk_app_delivery_order,	
 	[mk_app_delivery_order_list.name]: mk_app_delivery_order_list,	
 	[mk_app_devtools_test.name]: mk_app_devtools_test,	

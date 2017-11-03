@@ -2,6 +2,14 @@
 import './apps/mk-app-apidoc/mock.js';
 import './apps/mk-app-bar-graph/mock.js';
 import './apps/mk-app-complex-table/mock.js';
+import './apps/mk-app-dashboard-analysis/apps/mk-app-hot-search-widget/mock.js';
+import './apps/mk-app-dashboard-analysis/apps/mk-app-market-widget/mock.js';
+import './apps/mk-app-dashboard-analysis/apps/mk-app-sale-proportion-widget/mock.js';
+import './apps/mk-app-dashboard-analysis/apps/mk-app-sale-trend-widget/mock.js';
+import './apps/mk-app-dashboard-analysis/apps/mk-app-sale-widget/mock.js';
+import './apps/mk-app-dashboard-analysis/apps/mk-app-trade-widget/mock.js';
+import './apps/mk-app-dashboard-analysis/apps/mk-app-visit-widget/mock.js';
+import './apps/mk-app-dashboard-analysis/mock.js';
 import './apps/mk-app-delivery-order/mock.js';
 import './apps/mk-app-delivery-order-list/mock.js';
 import './apps/mk-app-devtools/apps/mk-app-devtools-test/mock.js';
