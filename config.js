@@ -77,8 +77,8 @@ function config(options) {
 				key: '3',
 				name: '分析面板',
 				appName: 'mk-app-dashboard-analysis',
-				icon: 'pie-chart'
-			},{
+				icon: 'pie-chart' 
+			}, {
 				key: '2',
 				name: 'apps',
 				isExpand: true,
@@ -196,7 +196,6 @@ function config(options) {
 
 	_options.targetDomId = 'app' //react render到目标dom
 	_options.startAppName = 'mk-app-root' //启动app名，需要根据实际情况配置
-
 	_options.toast = Toast //轻提示使用组件，mk-meta-engine使用
 	_options.notification = Notification //通知组件
 	_options.modal = Modal //模式弹窗组件
