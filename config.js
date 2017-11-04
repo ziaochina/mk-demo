@@ -25,7 +25,7 @@ fetch.config({
 	}
 })
 
-/*
+
 //支持url hash别名配置
 history.config({
 	isAlias: (pathName) => {
@@ -50,7 +50,7 @@ history.config({
 		})
 	}
 })
-*/
+
 
 function config(options) {
 	Object.assign(_options, options)
