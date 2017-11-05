@@ -8,8 +8,20 @@
     "start": "cross-env  NODE_ENV=production webpack-dev-server --inline --progress --colors --watch --compress --content-base ./dist  --port 8089 --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "reactjs",
+    "flux",
+    "redux",
+    "react-redux",
+    "antd",
+    "immutable",
+    "mk",
+    "mongkey king",
+    "whatsmk",
+    "mk-js"
+  ],
+  "author": "Liujian Zhang <ziaochina@gmail.com> (http://github.com/ziaochina)",
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.4",
