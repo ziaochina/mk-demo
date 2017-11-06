@@ -24,6 +24,7 @@
   "author": "Liujian Zhang <ziaochina@gmail.com> (http://github.com/ziaochina)",
   "license": "MIT",
   "dependencies": {
+    "fixed-data-table-2": "^0.8.6",
     "lodash": "^4.17.4",
     "lodash-decorators": "^4.4.1",
     "mk-aar-form": "^1.0.0",
