@@ -1,4 +1,4 @@
-import { Toast, Notification, Modal } from 'mk-component'
+import { Toast, Notification, Modal, localeWrapper } from 'mk-component'
 import { fetch, history } from 'mk-utils'
 import './mock.js' //脱离后台测试，启用mock，否则这行注释
 
@@ -199,6 +199,7 @@ function config(options) {
 	_options.toast = Toast //轻提示使用组件，mk-meta-engine使用
 	_options.notification = Notification //通知组件
 	_options.modal = Modal //模式弹窗组件
+	_options.rootWrapper = (child) => localeWrapper('zh-CN', child) //国际化处理
 	return _options
 }
 

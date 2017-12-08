@@ -161,6 +161,7 @@ export function getMeta() {
 		}, {
 			name: 'issue',
 			component: 'Movable',
+			_visible: false,
 			onClick: '{{$issueClick}}',
 			style: {
 				bottom: 30,
