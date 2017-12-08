@@ -4,6 +4,7 @@
  */
 
 import { fetch } from 'mk-utils'
+import moment from 'moment'
 
 const mockData = fetch.mockData
 
@@ -49,7 +50,7 @@ fetch.mock('/v1/person/query', (option) => {
             data = data.filter(o => o.name.indexOf(filter.name) != -1)
         if (filter.sex)
             data = data.filter(o => o.sex == filter.sex)
-        if (filter.birthdayRange) {
+        if (filter.birthdayRange && filter.birthdayRange.length == 2) {
             data = data.filter(o => moment(o.birthday).isAfter(filter.birthdayRange[0]) && moment(o.birthday).isBefore(filter.birthdayRange[1]))
         }
     }

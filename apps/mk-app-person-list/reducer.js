@@ -33,6 +33,8 @@ class reducer {
 
         return state
     }
+
+
 }
 
 export default function creator(option) {

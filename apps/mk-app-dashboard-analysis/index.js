@@ -3,7 +3,7 @@ import * as data from './data'
 
 export default {
 	name: "mk-app-dashboard-analysis",
-	version: "1.0.1",
+	version: "1.0.2",
 	description: "mk-app-dashboard-analysis",
 	meta: data.getMeta(),
 	components: [],
