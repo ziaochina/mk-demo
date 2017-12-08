@@ -54,7 +54,7 @@ export function getMeta() {
 				name: 'state',
 				component: 'JSONTree',
 				_visible: "{{data.tabKey=='state'}}",
-				data: {}//'{{$getState()}}'
+				data: '{{$getState()}}'
 			}, {
 				name: 'apps',
 				component: 'JSONTree',

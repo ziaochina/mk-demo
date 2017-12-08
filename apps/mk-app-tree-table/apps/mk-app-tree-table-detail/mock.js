@@ -16,6 +16,7 @@ fetch.mock('/v1/goods/create', (option) => {
 
 fetch.mock('/v1/goods/update', (option) => {
     const v = mockData.goods.find(o => o.id == option.id)
+    debugger
     v.code = option.code
     v.name = option.name
     return { result: true, value: v }
