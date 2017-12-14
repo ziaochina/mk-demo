@@ -43,7 +43,7 @@ plugins.push(extractCSS)
 plugins.push(extractLESS)
 
 module.exports = {
-    //devtool: 'source-map',
+    devtool: 'source-map',
     entry: {
         bundle: ["./index.js", "./assets/styles/index.less"],
         vendor: ["react", "react-dom", "moment"],
