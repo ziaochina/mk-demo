@@ -1,4 +1,4 @@
-新版框架将于10.24号正式发布:https://www.makajs.org
+新版框架将于2018.10.24号正式发布:https://www.makajs.org
 
 # mk-demo
 
