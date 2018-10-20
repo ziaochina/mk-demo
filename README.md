@@ -1,3 +1,5 @@
+新版框架将于10.24号正式发布:https://www.makajs.org
+
 # mk-demo
 
 该demo是使用mk框架创建的一个demo
